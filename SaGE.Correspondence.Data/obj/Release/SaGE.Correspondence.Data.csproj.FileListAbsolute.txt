@@ -1,0 +1,4 @@
+C:\Work\Steve\OMSA.xPression.Tax\SaGE.Correspondence.Data\obj\Release\SaGE.Correspondence.Data.csprojAssemblyReference.cache
+C:\Work\Steve\OMSA.xPression.Tax\SaGE.Correspondence.Data\obj\Release\SaGE.Correspondence.Data.csproj.CoreCompileInputs.cache
+C:\Work\Steve\OMSA.xPression.Tax\SaGE.Correspondence.Data\obj\Release\SaGE.Correspondence.Data.dll
+C:\Work\Steve\OMSA.xPression.Tax\SaGE.Correspondence.Data\obj\Release\SaGE.Correspondence.Data.pdb

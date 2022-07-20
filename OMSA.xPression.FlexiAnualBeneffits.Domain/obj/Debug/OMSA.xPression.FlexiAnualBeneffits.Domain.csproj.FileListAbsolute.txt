@@ -1,0 +1,9 @@
+C:\Work\OMSA.xPression.FlexiAnualBeneffits\OMSA.xPression.FlexiAnualBeneffits.Domain\obj\Debug\OMSA.xPression.FlexiAnualBeneffits.Domain.csprojAssemblyReference.cache
+C:\Work\OMSA.xPression.FlexiAnualBeneffits\OMSA.xPression.FlexiAnualBeneffits.Domain\obj\Debug\OMSA.xPression.FlexiAnualBeneffits.Domain.csproj.CoreCompileInputs.cache
+C:\Work\OMSA.xPression.FlexiAnualBeneffits\OMSA.xPression.FlexiAnualBeneffits.Domain\bin\Debug\OMSA.xPression.FlexiAnualBeneffits.Domain.dll
+C:\Work\OMSA.xPression.FlexiAnualBeneffits\OMSA.xPression.FlexiAnualBeneffits.Domain\bin\Debug\OMSA.xPression.FlexiAnualBeneffits.Domain.pdb
+C:\Work\OMSA.xPression.FlexiAnualBeneffits\OMSA.xPression.FlexiAnualBeneffits.Domain\obj\Debug\OMSA.xPression.FlexiAnualBeneffits.Domain.dll
+C:\Work\OMSA.xPression.FlexiAnualBeneffits\OMSA.xPression.FlexiAnualBeneffits.Domain\obj\Debug\OMSA.xPression.FlexiAnualBeneffits.Domain.pdb
+C:\Work\OMSA.xPression.FlexiAnualBeneffits\OMSA.xPression.FlexiAnualBeneffits.Domain\bin\Debug\FileHelpers.dll
+C:\Work\OMSA.xPression.FlexiAnualBeneffits\OMSA.xPression.FlexiAnualBeneffits.Domain\bin\Debug\FileHelpers.xml
+C:\Work\OMSA.xPression.FlexiAnualBeneffits\OMSA.xPression.FlexiAnualBeneffits.Domain\obj\Debug\OMSA.xPression.FlexiAnualBeneffits.Domain.csproj.CopyComplete

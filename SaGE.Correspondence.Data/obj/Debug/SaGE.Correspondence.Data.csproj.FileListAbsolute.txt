@@ -1,0 +1,17 @@
+C:\Work\Steve\Library\AutoMapper.Net4.dll
+C:\Work\Steve\Library\SaGE.Correspondence.Data.dll.config
+C:\Work\Steve\Library\SaGE.Correspondence.Data.dll
+C:\Work\Steve\Library\SaGE.Correspondence.Data.pdb
+C:\Work\Steve\OMSA.xPression.Tax\SaGE.Correspondence.Data\obj\Debug\SaGE.Correspondence.Data.csproj.CoreCompileInputs.cache
+C:\Work\Steve\OMSA.xPression.Tax\SaGE.Correspondence.Data\obj\Debug\SaGE.Correspondence.Data.csproj.CopyComplete
+C:\Work\Steve\OMSA.xPression.Tax\SaGE.Correspondence.Data\obj\Debug\SaGE.Correspondence.Data.dll
+C:\Work\Steve\OMSA.xPression.Tax\SaGE.Correspondence.Data\obj\Debug\SaGE.Correspondence.Data.pdb
+C:\Work\Library\AutoMapper.Net4.dll
+C:\Work\Library\SaGE.Correspondence.Data.dll.config
+C:\Work\Library\SaGE.Correspondence.Data.dll
+C:\Work\Library\SaGE.Correspondence.Data.pdb
+C:\Work\OMSA.xPression.FlexiAnualBeneffits\SaGE.Correspondence.Data\obj\Debug\SaGE.Correspondence.Data.csprojAssemblyReference.cache
+C:\Work\OMSA.xPression.FlexiAnualBeneffits\SaGE.Correspondence.Data\obj\Debug\SaGE.Correspondence.Data.csproj.CoreCompileInputs.cache
+C:\Work\OMSA.xPression.FlexiAnualBeneffits\SaGE.Correspondence.Data\obj\Debug\SaGE.Correspondence.Data.csproj.CopyComplete
+C:\Work\OMSA.xPression.FlexiAnualBeneffits\SaGE.Correspondence.Data\obj\Debug\SaGE.Correspondence.Data.dll
+C:\Work\OMSA.xPression.FlexiAnualBeneffits\SaGE.Correspondence.Data\obj\Debug\SaGE.Correspondence.Data.pdb

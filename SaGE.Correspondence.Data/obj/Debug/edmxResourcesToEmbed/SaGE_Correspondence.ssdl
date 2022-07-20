@@ -1,0 +1,1089 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SaGECorrespondenceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="KeyId" />
+    </Key>
+    <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParentKeyId" Type="int" />
+    <Property Name="AccountName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LineOfBusiness" Type="nvarchar" MaxLength="50" />
+    <Property Name="BusinessArea" Type="nvarchar" MaxLength="50" />
+    <Property Name="RequestPath" Type="nvarchar" MaxLength="250" />
+    <Property Name="DocumentPath" Type="nvarchar" MaxLength="250" />
+    <Property Name="RejectPath" Type="nvarchar" MaxLength="250" />
+    <Property Name="TemplatePath" Type="nvarchar" MaxLength="250" />
+    <Property Name="OutPath" Type="nvarchar" MaxLength="250" />
+    <Property Name="Prefix" Type="nvarchar" MaxLength="10" />
+    <Property Name="Counter" Type="int" />
+  </EntityType>
+  <EntityType Name="Audit">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClientId" Type="varchar(max)" Nullable="false" />
+    <Property Name="Filename" Type="varchar(max)" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" />
+    <Property Name="DateSent" Type="datetime" />
+    <Property Name="Channel" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Batch">
+    <Key>
+      <PropertyRef Name="KeyId" />
+    </Key>
+    <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JobId" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="JobType" Type="nvarchar" MaxLength="20" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="ExpiryDate" Type="datetime" />
+    <Property Name="Enabled" Type="bit" />
+    <Property Name="State" Type="nvarchar" MaxLength="50" />
+    <Property Name="Engine" Type="int" />
+  </EntityType>
+  <EntityType Name="BouncedMail">
+    <Key>
+      <PropertyRef Name="KeyId" />
+    </Key>
+    <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MailAddress" Type="nvarchar(max)" />
+    <Property Name="Processed" Type="bit" />
+  </EntityType>
+  <EntityType Name="Channel">
+    <Key>
+      <PropertyRef Name="KeyId" />
+    </Key>
+    <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ChannelBatch">
+    <Key>
+      <PropertyRef Name="KeyId" />
+    </Key>
+    <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JobId" Type="int" />
+    <Property Name="ChannelId" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="Enabled" Type="bit" />
+    <Property Name="State" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ChannelBatchTransaction">
+    <Key>
+      <PropertyRef Name="KeyId" />
+    </Key>
+    <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ChannelBatchId" Type="int" />
+    <Property Name="TransactionId" Type="int" />
+    <Property Name="Enabled" Type="bit" />
+    <Property Name="State" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ChannelSequence">
+    <Key>
+      <PropertyRef Name="KeyId" />
+    </Key>
+    <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JobDefId" Type="int" />
+    <Property Name="CurrentChannelId" Type="int" />
+    <Property Name="NextChannelIdSuccess" Type="int" />
+    <Property Name="NextChannelIdFail" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SaGECorrespondence.dbo.DocStore' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DocStore">
+    <Key>
+      <PropertyRef Name="KeyId" />
+    </Key>
+    <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JobDefId" Type="int" />
+    <Property Name="Format" Type="nvarchar" MaxLength="20" />
+    <Property Name="LineOfBusiness" Type="nvarchar" MaxLength="20" />
+    <Property Name="Process" Type="nvarchar" MaxLength="20" />
+    <Property Name="Permission" Type="nvarchar" MaxLength="20" />
+    <Property Name="Category" Type="nvarchar" MaxLength="20" />
+    <Property Name="Description" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Email">
+    <Key>
+      <PropertyRef Name="KeyId" />
+    </Key>
+    <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JobDefId" Type="int" />
+    <Property Name="FromAddress" Type="nvarchar" MaxLength="255" />
+    <Property Name="FriendlyName" Type="nvarchar" MaxLength="255" />
+    <Property Name="BCC" Type="nvarchar" MaxLength="255" />
+    <Property Name="AttachmentFriendlyName" Type="nvarchar" MaxLength="255" />
+    <Property Name="SubjectEnglish" Type="nvarchar" MaxLength="255" />
+    <Property Name="SubjectAfrikaans" Type="nvarchar" MaxLength="255" />
+    <Property Name="EngTemplateId" Type="int" />
+    <Property Name="AfrTemplateId" Type="int" />
+  </EntityType>
+  <EntityType Name="Engine">
+    <Key>
+      <PropertyRef Name="KeyId" />
+    </Key>
+    <Property Name="KeyId" Type="int" Nullable="false" />
+    <Property Name="EngineType" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Job">
+    <Key>
+      <PropertyRef Name="KeyId" />
+    </Key>
+    <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JobDefId" Type="int" />
+    <Property Name="JobName" Type="nvarchar" MaxLength="50" />
+    <Property Name="SourcePath" Type="nvarchar" MaxLength="255" />
+    <Property Name="LoadDate" Type="datetime" />
+    <Property Name="DeliveryDate" Type="datetime" />
+    <Property Name="Process" Type="nvarchar" MaxLength="50" />
+    <Property Name="State" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="JobDefChannels">
+    <Key>
+      <PropertyRef Name="KeyId" />
+    </Key>
+    <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JobDefId" Type="int" Nullable="false" />
+    <Property Name="ChannelId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="JobDefinition">
+    <Key>
+      <PropertyRef Name="KeyId" />
+    </Key>
+    <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AccountId" Type="int" />
+    <Property Name="EngineId" Type="int" />
+    <Property Name="JobName" Type="nvarchar" MaxLength="50" />
+    <Property Name="DataSource" Type="nvarchar" MaxLength="50" />
+    <Property Name="JobType" Type="nvarchar" MaxLength="20" />
+    <Property Name="Description" Type="nvarchar" MaxLength="132" />
+    <Property Name="BatchItemCount" Type="int" />
+    <Property Name="Mode" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="MergeBatch">
+    <Key>
+      <PropertyRef Name="KeyId" />
+    </Key>
+    <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JobId" Type="int" Nullable="false" />
+    <Property Name="ChannelId" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="Engine" Type="int" />
+    <Property Name="Enabled" Type="bit" />
+    <Property Name="State" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MergeBatchState">
+    <Key>
+      <PropertyRef Name="KeyId" />
+    </Key>
+    <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="MergeBatchTransaction">
+    <Key>
+      <PropertyRef Name="KeyId" />
+    </Key>
+    <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MergeBatchId" Type="int" Nullable="false" />
+    <Property Name="TransactionId" Type="int" />
+    <Property Name="Enabled" Type="bit" />
+    <Property Name="State" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Package">
+    <Key>
+      <PropertyRef Name="KeyId" />
+    </Key>
+    <Property Name="KeyId" Type="int" Nullable="false" />
+    <Property Name="JobDefId" Type="int" />
+    <Property Name="LOBId" Type="nvarchar" MaxLength="10" />
+    <Property Name="Description" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="PrinterDetail">
+    <Key>
+      <PropertyRef Name="KeyId" />
+    </Key>
+    <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JobId" Type="int" />
+    <Property Name="SupplierId" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="PrintType" Type="nvarchar" MaxLength="20" />
+    <Property Name="Default" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="PrinterTray">
+    <Key>
+      <PropertyRef Name="KeyId" />
+    </Key>
+    <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PrinterDetailId" Type="int" />
+    <Property Name="Tray" Type="nvarchar" MaxLength="20" />
+    <Property Name="Stationery" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PrintSupplier">
+    <Key>
+      <PropertyRef Name="KeyId" />
+    </Key>
+    <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="20" />
+    <Property Name="ContactName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ContactInfo" Type="nvarchar" MaxLength="132" />
+  </EntityType>
+  <EntityType Name="Stuffer">
+    <Key>
+      <PropertyRef Name="KeyId" />
+    </Key>
+    <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmailId" Type="int" />
+    <Property Name="StufferGroupId" Type="int" />
+    <Property Name="StufferPath" Type="nvarchar" MaxLength="255" />
+    <Property Name="StufferName" Type="nvarchar" MaxLength="255" />
+    <Property Name="EffectiveDate" Type="datetime" />
+    <Property Name="Enabled" Type="bit" />
+  </EntityType>
+  <EntityType Name="StufferGroup">
+    <Key>
+      <PropertyRef Name="KeyId" />
+    </Key>
+    <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="GroupName" Type="nvarchar" MaxLength="50" />
+    <Property Name="AccountId" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Template">
+    <Key>
+      <PropertyRef Name="KeyId" />
+    </Key>
+    <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TemplateGroupId" Type="int" />
+    <Property Name="TemplateName" Type="varchar" MaxLength="250" />
+    <Property Name="Format" Type="nvarchar" MaxLength="50" />
+    <Property Name="EffectiveDate" Type="datetime" />
+    <Property Name="Enabled" Type="bit" />
+  </EntityType>
+  <EntityType Name="TemplateGroup">
+    <Key>
+      <PropertyRef Name="KeyId" />
+    </Key>
+    <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="GroupName" Type="nvarchar" MaxLength="50" />
+    <Property Name="AccountId" Type="int" />
+  </EntityType>
+  <EntityType Name="Transaction">
+    <Key>
+      <PropertyRef Name="KeyId" />
+    </Key>
+    <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TransactionDefinitionId" Type="nvarchar" MaxLength="50" />
+    <Property Name="JobId" Type="int" />
+    <Property Name="BatchId" Type="int" />
+    <Property Name="ChannelId" Type="int" />
+    <Property Name="Guid" Type="nvarchar" MaxLength="20" />
+    <Property Name="ClientId" Type="nvarchar" MaxLength="20" />
+    <Property Name="LOBId" Type="nvarchar" MaxLength="50" />
+    <Property Name="LOBKey" Type="nvarchar" MaxLength="50" />
+    <Property Name="State" Type="nvarchar" MaxLength="50" />
+    <Property Name="Locked" Type="bit" />
+    <Property Name="LockDate" Type="datetime" />
+    <Property Name="PostCode" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TransactionChannel">
+    <Key>
+      <PropertyRef Name="KeyId" />
+    </Key>
+    <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TransactionId" Type="int" />
+    <Property Name="ChannelId" Type="int" />
+    <Property Name="AddressLine1" Type="nvarchar" MaxLength="50" />
+    <Property Name="AddressLine2" Type="nvarchar" MaxLength="50" />
+    <Property Name="AddressLine3" Type="nvarchar" MaxLength="50" />
+    <Property Name="AddressLine4" Type="nvarchar" MaxLength="50" />
+    <Property Name="PostalCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="ContactString" Type="nvarchar" MaxLength="132" />
+    <Property Name="NumberBody" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="TransactionContactPoint">
+    <Key>
+      <PropertyRef Name="KeyId" />
+    </Key>
+    <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ContactPointId" Type="int" Nullable="false" />
+    <Property Name="TransactionId" Type="int" Nullable="false" />
+    <Property Name="ContactType" Type="nvarchar" MaxLength="40" />
+    <Property Name="AddressLine1" Type="nvarchar" MaxLength="50" />
+    <Property Name="AddressLine2" Type="nvarchar" MaxLength="50" />
+    <Property Name="AddressLine3" Type="nvarchar" MaxLength="50" />
+    <Property Name="AddressLine4" Type="nvarchar" MaxLength="50" />
+    <Property Name="PostalCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="ContactString" Type="nvarchar" MaxLength="132" />
+    <Property Name="NumberBody" Type="nvarchar" MaxLength="20" />
+    <Property Name="Status" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="TransactionData">
+    <Key>
+      <PropertyRef Name="KeyId" />
+    </Key>
+    <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TransactionId" Type="int" />
+    <Property Name="DataTypeId" Type="int" />
+    <Property Name="Data" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="TransactionDefinition">
+    <Key>
+      <PropertyRef Name="KeyId" />
+    </Key>
+    <Property Name="KeyId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AccountId" Type="int" />
+    <Property Name="Description" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="TransactionEntity">
+    <Key>
+      <PropertyRef Name="KeyId" />
+    </Key>
+    <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TransactionId" Type="int" />
+    <Property Name="PartyType" Type="nvarchar" MaxLength="50" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="255" />
+    <Property Name="StatPE" Type="nvarchar" MaxLength="20" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" />
+    <Property Name="Initials" Type="nvarchar" MaxLength="20" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Surname" Type="nvarchar" MaxLength="50" />
+    <Property Name="Language" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="TransDataType">
+    <Key>
+      <PropertyRef Name="KeyId" />
+    </Key>
+    <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Account_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="Account1" Type="Self.Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="Account1">
+        <PropertyRef Name="ParentKeyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Batch_Job">
+    <End Role="Job" Type="Self.Job" Multiplicity="0..1" />
+    <End Role="Batch" Type="Self.Batch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Job">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="Batch">
+        <PropertyRef Name="JobId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChannelBatch_Channel">
+    <End Role="Channel" Type="Self.Channel" Multiplicity="0..1" />
+    <End Role="ChannelBatch" Type="Self.ChannelBatch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Channel">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="ChannelBatch">
+        <PropertyRef Name="ChannelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChannelBatch_Job">
+    <End Role="Job" Type="Self.Job" Multiplicity="0..1" />
+    <End Role="ChannelBatch" Type="Self.ChannelBatch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Job">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="ChannelBatch">
+        <PropertyRef Name="JobId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChannelData_Channel">
+    <End Role="Channel" Type="Self.Channel" Multiplicity="0..1" />
+    <End Role="TransactionChannel" Type="Self.TransactionChannel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Channel">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="TransactionChannel">
+        <PropertyRef Name="ChannelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChannelData_Transaction">
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="0..1" />
+    <End Role="TransactionChannel" Type="Self.TransactionChannel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Transaction">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="TransactionChannel">
+        <PropertyRef Name="TransactionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChannelSequence_Channel">
+    <End Role="Channel" Type="Self.Channel" Multiplicity="0..1" />
+    <End Role="ChannelSequence" Type="Self.ChannelSequence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Channel">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="ChannelSequence">
+        <PropertyRef Name="CurrentChannelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChannelSequence_Channel1">
+    <End Role="Channel" Type="Self.Channel" Multiplicity="0..1" />
+    <End Role="ChannelSequence" Type="Self.ChannelSequence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Channel">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="ChannelSequence">
+        <PropertyRef Name="NextChannelIdFail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChannelSequence_Channel2">
+    <End Role="Channel" Type="Self.Channel" Multiplicity="0..1" />
+    <End Role="ChannelSequence" Type="Self.ChannelSequence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Channel">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="ChannelSequence">
+        <PropertyRef Name="NextChannelIdSuccess" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChannelSequence_JobDefinition">
+    <End Role="JobDefinition" Type="Self.JobDefinition" Multiplicity="0..1" />
+    <End Role="ChannelSequence" Type="Self.ChannelSequence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JobDefinition">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="ChannelSequence">
+        <PropertyRef Name="JobDefId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChannelTransaction_ChannelBatch">
+    <End Role="ChannelBatch" Type="Self.ChannelBatch" Multiplicity="0..1" />
+    <End Role="ChannelBatchTransaction" Type="Self.ChannelBatchTransaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChannelBatch">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="ChannelBatchTransaction">
+        <PropertyRef Name="ChannelBatchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChannelTransaction_Transaction">
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="0..1" />
+    <End Role="ChannelBatchTransaction" Type="Self.ChannelBatchTransaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Transaction">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="ChannelBatchTransaction">
+        <PropertyRef Name="TransactionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DocStore_JobDefinition">
+    <End Role="JobDefinition" Type="Self.JobDefinition" Multiplicity="0..1" />
+    <End Role="DocStore" Type="Self.DocStore" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JobDefinition">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="DocStore">
+        <PropertyRef Name="JobDefId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Email_JobDefinition">
+    <End Role="JobDefinition" Type="Self.JobDefinition" Multiplicity="0..1" />
+    <End Role="Email" Type="Self.Email" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JobDefinition">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="Email">
+        <PropertyRef Name="JobDefId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Email_Template">
+    <End Role="Template" Type="Self.Template" Multiplicity="0..1" />
+    <End Role="Email" Type="Self.Email" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Template">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="Email">
+        <PropertyRef Name="EngTemplateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Email_Template1">
+    <End Role="Template" Type="Self.Template" Multiplicity="0..1" />
+    <End Role="Email" Type="Self.Email" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Template">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="Email">
+        <PropertyRef Name="AfrTemplateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Job_JobDefinition">
+    <End Role="JobDefinition" Type="Self.JobDefinition" Multiplicity="0..1" />
+    <End Role="Job" Type="Self.Job" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JobDefinition">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="Job">
+        <PropertyRef Name="JobDefId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JobDefChannels_Channel">
+    <End Role="Channel" Type="Self.Channel" Multiplicity="1" />
+    <End Role="JobDefChannels" Type="Self.JobDefChannels" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Channel">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="JobDefChannels">
+        <PropertyRef Name="ChannelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JobDefChannels_JobDefinition">
+    <End Role="JobDefinition" Type="Self.JobDefinition" Multiplicity="1" />
+    <End Role="JobDefChannels" Type="Self.JobDefChannels" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JobDefinition">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="JobDefChannels">
+        <PropertyRef Name="JobDefId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JobDefinition_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="JobDefinition" Type="Self.JobDefinition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="JobDefinition">
+        <PropertyRef Name="AccountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MergeBatch_MergeBatchState">
+    <End Role="MergeBatchState" Type="Self.MergeBatchState" Multiplicity="1" />
+    <End Role="MergeBatch" Type="Self.MergeBatch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MergeBatchState">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="MergeBatch">
+        <PropertyRef Name="State" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MergeBatchState_MergeBatchState">
+    <End Role="MergeBatchState" Type="Self.MergeBatchState" Multiplicity="1" />
+    <End Role="MergeBatchState1" Type="Self.MergeBatchState" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="MergeBatchState">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="MergeBatchState1">
+        <PropertyRef Name="KeyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MergeBatchTransaction_MergeBatch">
+    <End Role="MergeBatch" Type="Self.MergeBatch" Multiplicity="1" />
+    <End Role="MergeBatchTransaction" Type="Self.MergeBatchTransaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MergeBatch">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="MergeBatchTransaction">
+        <PropertyRef Name="MergeBatchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MergeBatchTransaction_Transaction">
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="0..1" />
+    <End Role="MergeBatchTransaction" Type="Self.MergeBatchTransaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Transaction">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="MergeBatchTransaction">
+        <PropertyRef Name="TransactionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrinterDetail_Job">
+    <End Role="Job" Type="Self.Job" Multiplicity="0..1" />
+    <End Role="PrinterDetail" Type="Self.PrinterDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Job">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="PrinterDetail">
+        <PropertyRef Name="JobId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrinterDetail_PrintSupplier">
+    <End Role="PrintSupplier" Type="Self.PrintSupplier" Multiplicity="0..1" />
+    <End Role="PrinterDetail" Type="Self.PrinterDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrintSupplier">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="PrinterDetail">
+        <PropertyRef Name="SupplierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrinterTray_PrinterDetail">
+    <End Role="PrinterDetail" Type="Self.PrinterDetail" Multiplicity="0..1" />
+    <End Role="PrinterTray" Type="Self.PrinterTray" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrinterDetail">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="PrinterTray">
+        <PropertyRef Name="PrinterDetailId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Stuffer_Email">
+    <End Role="Email" Type="Self.Email" Multiplicity="0..1" />
+    <End Role="Stuffer" Type="Self.Stuffer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Email">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="Stuffer">
+        <PropertyRef Name="EmailId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Stuffer_StufferGroup">
+    <End Role="StufferGroup" Type="Self.StufferGroup" Multiplicity="0..1" />
+    <End Role="Stuffer" Type="Self.Stuffer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StufferGroup">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="Stuffer">
+        <PropertyRef Name="StufferGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StufferGroup_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="StufferGroup" Type="Self.StufferGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="StufferGroup">
+        <PropertyRef Name="AccountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Template_TemplateGroup">
+    <End Role="TemplateGroup" Type="Self.TemplateGroup" Multiplicity="0..1" />
+    <End Role="Template" Type="Self.Template" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TemplateGroup">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="Template">
+        <PropertyRef Name="TemplateGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TemplateGroup_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="TemplateGroup" Type="Self.TemplateGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="TemplateGroup">
+        <PropertyRef Name="AccountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transaction_Channel">
+    <End Role="Channel" Type="Self.Channel" Multiplicity="0..1" />
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Channel">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="ChannelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transaction_Job">
+    <End Role="Job" Type="Self.Job" Multiplicity="0..1" />
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Job">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="JobId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transaction_TransactionDefinition">
+    <End Role="TransactionDefinition" Type="Self.TransactionDefinition" Multiplicity="0..1" />
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TransactionDefinition">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="TransactionDefinitionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TransactionContactPoint_Transaction">
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="1" />
+    <End Role="TransactionContactPoint" Type="Self.TransactionContactPoint" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Transaction">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="TransactionContactPoint">
+        <PropertyRef Name="TransactionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TransactionData_Transaction">
+    <End Role="TransDataType" Type="Self.TransDataType" Multiplicity="0..1" />
+    <End Role="TransactionData" Type="Self.TransactionData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TransDataType">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="TransactionData">
+        <PropertyRef Name="DataTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TransactionDefinition_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="TransactionDefinition" Type="Self.TransactionDefinition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="TransactionDefinition">
+        <PropertyRef Name="AccountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TransactionEntity_Transaction">
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="0..1" />
+    <End Role="TransactionEntity" Type="Self.TransactionEntity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Transaction">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="TransactionEntity">
+        <PropertyRef Name="TransactionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TransData_Transaction">
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="0..1" />
+    <End Role="TransactionData" Type="Self.TransactionData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Transaction">
+        <PropertyRef Name="KeyId" />
+      </Principal>
+      <Dependent Role="TransactionData">
+        <PropertyRef Name="TransactionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="SaGECorrespondenceModelStoreContainer">
+    <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Audit" EntityType="Self.Audit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Batch" EntityType="Self.Batch" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BouncedMail" EntityType="Self.BouncedMail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Channel" EntityType="Self.Channel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChannelBatch" EntityType="Self.ChannelBatch" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChannelBatchTransaction" EntityType="Self.ChannelBatchTransaction" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChannelSequence" EntityType="Self.ChannelSequence" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Email" EntityType="Self.Email" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Engine" EntityType="Self.Engine" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Job" EntityType="Self.Job" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="JobDefChannels" EntityType="Self.JobDefChannels" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="JobDefinition" EntityType="Self.JobDefinition" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MergeBatch" EntityType="Self.MergeBatch" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MergeBatchState" EntityType="Self.MergeBatchState" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MergeBatchTransaction" EntityType="Self.MergeBatchTransaction" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Package" EntityType="Self.Package" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PrinterDetail" EntityType="Self.PrinterDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PrinterTray" EntityType="Self.PrinterTray" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PrintSupplier" EntityType="Self.PrintSupplier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Stuffer" EntityType="Self.Stuffer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StufferGroup" EntityType="Self.StufferGroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Template" EntityType="Self.Template" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TemplateGroup" EntityType="Self.TemplateGroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Transaction" EntityType="Self.Transaction" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TransactionChannel" EntityType="Self.TransactionChannel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TransactionContactPoint" EntityType="Self.TransactionContactPoint" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TransactionData" EntityType="Self.TransactionData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TransactionDefinition" EntityType="Self.TransactionDefinition" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TransactionEntity" EntityType="Self.TransactionEntity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TransDataType" EntityType="Self.TransDataType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DocStore" EntityType="Self.DocStore" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[DocStore].[KeyId] AS [KeyId], 
+[DocStore].[JobDefId] AS [JobDefId], 
+[DocStore].[Format] AS [Format], 
+[DocStore].[LineOfBusiness] AS [LineOfBusiness], 
+[DocStore].[Process] AS [Process], 
+[DocStore].[Permission] AS [Permission], 
+[DocStore].[Category] AS [Category], 
+[DocStore].[Description] AS [Description]
+FROM [dbo].[DocStore] AS [DocStore]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Account_Account" Association="Self.FK_Account_Account">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Account1" EntitySet="Account" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Batch_Job" Association="Self.FK_Batch_Job">
+      <End Role="Job" EntitySet="Job" />
+      <End Role="Batch" EntitySet="Batch" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChannelBatch_Channel" Association="Self.FK_ChannelBatch_Channel">
+      <End Role="Channel" EntitySet="Channel" />
+      <End Role="ChannelBatch" EntitySet="ChannelBatch" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChannelBatch_Job" Association="Self.FK_ChannelBatch_Job">
+      <End Role="Job" EntitySet="Job" />
+      <End Role="ChannelBatch" EntitySet="ChannelBatch" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChannelData_Channel" Association="Self.FK_ChannelData_Channel">
+      <End Role="Channel" EntitySet="Channel" />
+      <End Role="TransactionChannel" EntitySet="TransactionChannel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChannelData_Transaction" Association="Self.FK_ChannelData_Transaction">
+      <End Role="Transaction" EntitySet="Transaction" />
+      <End Role="TransactionChannel" EntitySet="TransactionChannel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChannelSequence_Channel" Association="Self.FK_ChannelSequence_Channel">
+      <End Role="Channel" EntitySet="Channel" />
+      <End Role="ChannelSequence" EntitySet="ChannelSequence" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChannelSequence_Channel1" Association="Self.FK_ChannelSequence_Channel1">
+      <End Role="Channel" EntitySet="Channel" />
+      <End Role="ChannelSequence" EntitySet="ChannelSequence" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChannelSequence_Channel2" Association="Self.FK_ChannelSequence_Channel2">
+      <End Role="Channel" EntitySet="Channel" />
+      <End Role="ChannelSequence" EntitySet="ChannelSequence" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChannelSequence_JobDefinition" Association="Self.FK_ChannelSequence_JobDefinition">
+      <End Role="JobDefinition" EntitySet="JobDefinition" />
+      <End Role="ChannelSequence" EntitySet="ChannelSequence" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChannelTransaction_ChannelBatch" Association="Self.FK_ChannelTransaction_ChannelBatch">
+      <End Role="ChannelBatch" EntitySet="ChannelBatch" />
+      <End Role="ChannelBatchTransaction" EntitySet="ChannelBatchTransaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChannelTransaction_Transaction" Association="Self.FK_ChannelTransaction_Transaction">
+      <End Role="Transaction" EntitySet="Transaction" />
+      <End Role="ChannelBatchTransaction" EntitySet="ChannelBatchTransaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DocStore_JobDefinition" Association="Self.FK_DocStore_JobDefinition">
+      <End Role="JobDefinition" EntitySet="JobDefinition" />
+      <End Role="DocStore" EntitySet="DocStore" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Email_JobDefinition" Association="Self.FK_Email_JobDefinition">
+      <End Role="JobDefinition" EntitySet="JobDefinition" />
+      <End Role="Email" EntitySet="Email" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Email_Template" Association="Self.FK_Email_Template">
+      <End Role="Template" EntitySet="Template" />
+      <End Role="Email" EntitySet="Email" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Email_Template1" Association="Self.FK_Email_Template1">
+      <End Role="Template" EntitySet="Template" />
+      <End Role="Email" EntitySet="Email" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Job_JobDefinition" Association="Self.FK_Job_JobDefinition">
+      <End Role="JobDefinition" EntitySet="JobDefinition" />
+      <End Role="Job" EntitySet="Job" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JobDefChannels_Channel" Association="Self.FK_JobDefChannels_Channel">
+      <End Role="Channel" EntitySet="Channel" />
+      <End Role="JobDefChannels" EntitySet="JobDefChannels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JobDefChannels_JobDefinition" Association="Self.FK_JobDefChannels_JobDefinition">
+      <End Role="JobDefinition" EntitySet="JobDefinition" />
+      <End Role="JobDefChannels" EntitySet="JobDefChannels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JobDefinition_Account" Association="Self.FK_JobDefinition_Account">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="JobDefinition" EntitySet="JobDefinition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MergeBatch_MergeBatchState" Association="Self.FK_MergeBatch_MergeBatchState">
+      <End Role="MergeBatchState" EntitySet="MergeBatchState" />
+      <End Role="MergeBatch" EntitySet="MergeBatch" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MergeBatchState_MergeBatchState" Association="Self.FK_MergeBatchState_MergeBatchState">
+      <End Role="MergeBatchState" EntitySet="MergeBatchState" />
+      <End Role="MergeBatchState1" EntitySet="MergeBatchState" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MergeBatchTransaction_MergeBatch" Association="Self.FK_MergeBatchTransaction_MergeBatch">
+      <End Role="MergeBatch" EntitySet="MergeBatch" />
+      <End Role="MergeBatchTransaction" EntitySet="MergeBatchTransaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MergeBatchTransaction_Transaction" Association="Self.FK_MergeBatchTransaction_Transaction">
+      <End Role="Transaction" EntitySet="Transaction" />
+      <End Role="MergeBatchTransaction" EntitySet="MergeBatchTransaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrinterDetail_Job" Association="Self.FK_PrinterDetail_Job">
+      <End Role="Job" EntitySet="Job" />
+      <End Role="PrinterDetail" EntitySet="PrinterDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrinterDetail_PrintSupplier" Association="Self.FK_PrinterDetail_PrintSupplier">
+      <End Role="PrintSupplier" EntitySet="PrintSupplier" />
+      <End Role="PrinterDetail" EntitySet="PrinterDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrinterTray_PrinterDetail" Association="Self.FK_PrinterTray_PrinterDetail">
+      <End Role="PrinterDetail" EntitySet="PrinterDetail" />
+      <End Role="PrinterTray" EntitySet="PrinterTray" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Stuffer_Email" Association="Self.FK_Stuffer_Email">
+      <End Role="Email" EntitySet="Email" />
+      <End Role="Stuffer" EntitySet="Stuffer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Stuffer_StufferGroup" Association="Self.FK_Stuffer_StufferGroup">
+      <End Role="StufferGroup" EntitySet="StufferGroup" />
+      <End Role="Stuffer" EntitySet="Stuffer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StufferGroup_Account" Association="Self.FK_StufferGroup_Account">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="StufferGroup" EntitySet="StufferGroup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Template_TemplateGroup" Association="Self.FK_Template_TemplateGroup">
+      <End Role="TemplateGroup" EntitySet="TemplateGroup" />
+      <End Role="Template" EntitySet="Template" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TemplateGroup_Account" Association="Self.FK_TemplateGroup_Account">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="TemplateGroup" EntitySet="TemplateGroup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transaction_Channel" Association="Self.FK_Transaction_Channel">
+      <End Role="Channel" EntitySet="Channel" />
+      <End Role="Transaction" EntitySet="Transaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transaction_Job" Association="Self.FK_Transaction_Job">
+      <End Role="Job" EntitySet="Job" />
+      <End Role="Transaction" EntitySet="Transaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transaction_TransactionDefinition" Association="Self.FK_Transaction_TransactionDefinition">
+      <End Role="TransactionDefinition" EntitySet="TransactionDefinition" />
+      <End Role="Transaction" EntitySet="Transaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TransactionContactPoint_Transaction" Association="Self.FK_TransactionContactPoint_Transaction">
+      <End Role="Transaction" EntitySet="Transaction" />
+      <End Role="TransactionContactPoint" EntitySet="TransactionContactPoint" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TransactionData_Transaction" Association="Self.FK_TransactionData_Transaction">
+      <End Role="TransDataType" EntitySet="TransDataType" />
+      <End Role="TransactionData" EntitySet="TransactionData" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TransactionDefinition_Account" Association="Self.FK_TransactionDefinition_Account">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="TransactionDefinition" EntitySet="TransactionDefinition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TransactionEntity_Transaction" Association="Self.FK_TransactionEntity_Transaction">
+      <End Role="Transaction" EntitySet="Transaction" />
+      <End Role="TransactionEntity" EntitySet="TransactionEntity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TransData_Transaction" Association="Self.FK_TransData_Transaction">
+      <End Role="Transaction" EntitySet="Transaction" />
+      <End Role="TransactionData" EntitySet="TransactionData" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

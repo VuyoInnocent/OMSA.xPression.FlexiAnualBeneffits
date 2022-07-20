@@ -1,0 +1,2 @@
+C:\Work\Steve\OMSA.xPression.Tax\SaGE.Correspondence.Domain\obj\Release\SaGE.Correspondence.Domain.csprojAssemblyReference.cache
+C:\Work\Steve\OMSA.xPression.Tax\SaGE.Correspondence.Domain\obj\Release\SaGE.Correspondence.Domain.csproj.CoreCompileInputs.cache

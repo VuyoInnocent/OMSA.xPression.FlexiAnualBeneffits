@@ -1,0 +1,429 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SaGECorrespondenceModelStoreContainer" CdmEntityContainer="SaGECorrespondenceEntities">
+    <EntitySetMapping Name="Accounts">
+      <EntityTypeMapping TypeName="SaGECorrespondenceModel.Account">
+        <MappingFragment StoreEntitySet="Account">
+          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+          <ScalarProperty Name="ParentKeyId" ColumnName="ParentKeyId" />
+          <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+          <ScalarProperty Name="LineOfBusiness" ColumnName="LineOfBusiness" />
+          <ScalarProperty Name="BusinessArea" ColumnName="BusinessArea" />
+          <ScalarProperty Name="RequestPath" ColumnName="RequestPath" />
+          <ScalarProperty Name="DocumentPath" ColumnName="DocumentPath" />
+          <ScalarProperty Name="RejectPath" ColumnName="RejectPath" />
+          <ScalarProperty Name="TemplatePath" ColumnName="TemplatePath" />
+          <ScalarProperty Name="OutPath" ColumnName="OutPath" />
+          <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+          <ScalarProperty Name="Counter" ColumnName="Counter" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Batches">
+      <EntityTypeMapping TypeName="SaGECorrespondenceModel.Batch">
+        <MappingFragment StoreEntitySet="Batch">
+          <ScalarProperty Name="JobType" ColumnName="JobType" />
+          <ScalarProperty Name="Engine" ColumnName="Engine" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+          <ScalarProperty Name="JobId" ColumnName="JobId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Channels">
+      <EntityTypeMapping TypeName="SaGECorrespondenceModel.Channel">
+        <MappingFragment StoreEntitySet="Channel">
+          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChannelSequences">
+      <EntityTypeMapping TypeName="SaGECorrespondenceModel.ChannelSequence">
+        <MappingFragment StoreEntitySet="ChannelSequence">
+          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+          <ScalarProperty Name="JobDefId" ColumnName="JobDefId" />
+          <ScalarProperty Name="CurrentChannelId" ColumnName="CurrentChannelId" />
+          <ScalarProperty Name="NextChannelIdSuccess" ColumnName="NextChannelIdSuccess" />
+          <ScalarProperty Name="NextChannelIdFail" ColumnName="NextChannelIdFail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DocStores">
+      <EntityTypeMapping TypeName="SaGECorrespondenceModel.DocStore">
+        <MappingFragment StoreEntitySet="DocStore">
+          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+          <ScalarProperty Name="JobDefId" ColumnName="JobDefId" />
+          <ScalarProperty Name="Format" ColumnName="Format" />
+          <ScalarProperty Name="LineOfBusiness" ColumnName="LineOfBusiness" />
+          <ScalarProperty Name="Process" ColumnName="Process" />
+          <ScalarProperty Name="Permission" ColumnName="Permission" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Engines">
+      <EntityTypeMapping TypeName="SaGECorrespondenceModel.Engine">
+        <MappingFragment StoreEntitySet="Engine">
+          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+          <ScalarProperty Name="EngineType" ColumnName="EngineType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Jobs">
+      <EntityTypeMapping TypeName="SaGECorrespondenceModel.Job">
+        <MappingFragment StoreEntitySet="Job">
+          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+          <ScalarProperty Name="JobDefId" ColumnName="JobDefId" />
+          <ScalarProperty Name="JobName" ColumnName="JobName" />
+          <ScalarProperty Name="SourcePath" ColumnName="SourcePath" />
+          <ScalarProperty Name="LoadDate" ColumnName="LoadDate" />
+          <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+          <ScalarProperty Name="Process" ColumnName="Process" />
+          <ScalarProperty Name="State" ColumnName="State" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JobDefChannels">
+      <EntityTypeMapping TypeName="SaGECorrespondenceModel.JobDefChannel">
+        <MappingFragment StoreEntitySet="JobDefChannels">
+          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+          <ScalarProperty Name="JobDefId" ColumnName="JobDefId" />
+          <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Packages">
+      <EntityTypeMapping TypeName="SaGECorrespondenceModel.Package">
+        <MappingFragment StoreEntitySet="Package">
+          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+          <ScalarProperty Name="JobDefId" ColumnName="JobDefId" />
+          <ScalarProperty Name="LOBId" ColumnName="LOBId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrinterDetails">
+      <EntityTypeMapping TypeName="SaGECorrespondenceModel.PrinterDetail">
+        <MappingFragment StoreEntitySet="PrinterDetail">
+          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+          <ScalarProperty Name="JobId" ColumnName="JobId" />
+          <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PrintType" ColumnName="PrintType" />
+          <ScalarProperty Name="Default" ColumnName="Default" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrinterTrays">
+      <EntityTypeMapping TypeName="SaGECorrespondenceModel.PrinterTray">
+        <MappingFragment StoreEntitySet="PrinterTray">
+          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+          <ScalarProperty Name="PrinterDetailId" ColumnName="PrinterDetailId" />
+          <ScalarProperty Name="Tray" ColumnName="Tray" />
+          <ScalarProperty Name="Stationery" ColumnName="Stationery" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrintSuppliers">
+      <EntityTypeMapping TypeName="SaGECorrespondenceModel.PrintSupplier">
+        <MappingFragment StoreEntitySet="PrintSupplier">
+          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+          <ScalarProperty Name="ContactInfo" ColumnName="ContactInfo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stuffers">
+      <EntityTypeMapping TypeName="SaGECorrespondenceModel.Stuffer">
+        <MappingFragment StoreEntitySet="Stuffer">
+          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="StufferGroupId" ColumnName="StufferGroupId" />
+          <ScalarProperty Name="StufferPath" ColumnName="StufferPath" />
+          <ScalarProperty Name="StufferName" ColumnName="StufferName" />
+          <ScalarProperty Name="EffectiveDate" ColumnName="EffectiveDate" />
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StufferGroups">
+      <EntityTypeMapping TypeName="SaGECorrespondenceModel.StufferGroup">
+        <MappingFragment StoreEntitySet="StufferGroup">
+          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Templates">
+      <EntityTypeMapping TypeName="SaGECorrespondenceModel.Template">
+        <MappingFragment StoreEntitySet="Template">
+          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+          <ScalarProperty Name="TemplateGroupId" ColumnName="TemplateGroupId" />
+          <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+          <ScalarProperty Name="Format" ColumnName="Format" />
+          <ScalarProperty Name="EffectiveDate" ColumnName="EffectiveDate" />
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TemplateGroups">
+      <EntityTypeMapping TypeName="SaGECorrespondenceModel.TemplateGroup">
+        <MappingFragment StoreEntitySet="TemplateGroup">
+          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transactions">
+      <EntityTypeMapping TypeName="SaGECorrespondenceModel.Transaction">
+        <MappingFragment StoreEntitySet="Transaction">
+          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+          <ScalarProperty Name="TransactionDefinitionId" ColumnName="TransactionDefinitionId" />
+          <ScalarProperty Name="JobId" ColumnName="JobId" />
+          <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+          <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="LOBId" ColumnName="LOBId" />
+          <ScalarProperty Name="LOBKey" ColumnName="LOBKey" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Locked" ColumnName="Locked" />
+          <ScalarProperty Name="LockDate" ColumnName="LockDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransactionChannels">
+      <EntityTypeMapping TypeName="SaGECorrespondenceModel.TransactionChannel">
+        <MappingFragment StoreEntitySet="TransactionChannel">
+          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+          <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+          <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+          <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+          <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+          <ScalarProperty Name="AddressLine3" ColumnName="AddressLine3" />
+          <ScalarProperty Name="AddressLine4" ColumnName="AddressLine4" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="ContactString" ColumnName="ContactString" />
+          <ScalarProperty Name="NumberBody" ColumnName="NumberBody" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransactionDatas">
+      <EntityTypeMapping TypeName="SaGECorrespondenceModel.TransactionData">
+        <MappingFragment StoreEntitySet="TransactionData">
+          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+          <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+          <ScalarProperty Name="DataTypeId" ColumnName="DataTypeId" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransactionDefinitions">
+      <EntityTypeMapping TypeName="SaGECorrespondenceModel.TransactionDefinition">
+        <MappingFragment StoreEntitySet="TransactionDefinition">
+          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+          <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransDataTypes">
+      <EntityTypeMapping TypeName="SaGECorrespondenceModel.TransDataType">
+        <MappingFragment StoreEntitySet="TransDataType">
+          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransactionContactPoints">
+      <EntityTypeMapping TypeName="SaGECorrespondenceModel.TransactionContactPoint">
+        <MappingFragment StoreEntitySet="TransactionContactPoint">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="NumberBody" ColumnName="NumberBody" />
+          <ScalarProperty Name="ContactString" ColumnName="ContactString" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="AddressLine4" ColumnName="AddressLine4" />
+          <ScalarProperty Name="AddressLine3" ColumnName="AddressLine3" />
+          <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+          <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+          <ScalarProperty Name="ContactType" ColumnName="ContactType" />
+          <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+          <ScalarProperty Name="ContactPointId" ColumnName="ContactPointId" />
+          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransactionEntities">
+      <EntityTypeMapping TypeName="SaGECorrespondenceModel.TransactionEntity">
+        <MappingFragment StoreEntitySet="TransactionEntity">
+          <ScalarProperty Name="Language" ColumnName="Language" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Initials" ColumnName="Initials" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="StatPE" ColumnName="StatPE" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="PartyType" ColumnName="PartyType" />
+          <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Emails">
+      <EntityTypeMapping TypeName="SaGECorrespondenceModel.Email">
+        <MappingFragment StoreEntitySet="Email">
+          <ScalarProperty Name="AttachmentFriendlyName" ColumnName="AttachmentFriendlyName" />
+          <ScalarProperty Name="AfrTemplateId" ColumnName="AfrTemplateId" />
+          <ScalarProperty Name="EngTemplateId" ColumnName="EngTemplateId" />
+          <ScalarProperty Name="SubjectAfrikaans" ColumnName="SubjectAfrikaans" />
+          <ScalarProperty Name="SubjectEnglish" ColumnName="SubjectEnglish" />
+          <ScalarProperty Name="BCC" ColumnName="BCC" />
+          <ScalarProperty Name="FriendlyName" ColumnName="FriendlyName" />
+          <ScalarProperty Name="FromAddress" ColumnName="FromAddress" />
+          <ScalarProperty Name="JobDefId" ColumnName="JobDefId" />
+          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChannelBatches">
+      <EntityTypeMapping TypeName="SaGECorrespondenceModel.ChannelBatch">
+        <MappingFragment StoreEntitySet="ChannelBatch">
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+          <ScalarProperty Name="JobId" ColumnName="JobId" />
+          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChannelBatchTransactions">
+      <EntityTypeMapping TypeName="SaGECorrespondenceModel.ChannelBatchTransaction">
+        <MappingFragment StoreEntitySet="ChannelBatchTransaction">
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+          <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+          <ScalarProperty Name="ChannelBatchId" ColumnName="ChannelBatchId" />
+          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MergeBatchTransactions">
+      <EntityTypeMapping TypeName="SaGECorrespondenceModel.MergeBatchTransaction">
+        <MappingFragment StoreEntitySet="MergeBatchTransaction">
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+          <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+          <ScalarProperty Name="MergeBatchId" ColumnName="MergeBatchId" />
+          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JobDefinitions">
+      <EntityTypeMapping TypeName="SaGECorrespondenceModel.JobDefinition">
+        <MappingFragment StoreEntitySet="JobDefinition">
+          <ScalarProperty Name="Mode" ColumnName="Mode" />
+          <ScalarProperty Name="BatchItemCount" ColumnName="BatchItemCount" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="JobType" ColumnName="JobType" />
+          <ScalarProperty Name="DataSource" ColumnName="DataSource" />
+          <ScalarProperty Name="JobName" ColumnName="JobName" />
+          <ScalarProperty Name="EngineId" ColumnName="EngineId" />
+          <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BouncedMails">
+      <EntityTypeMapping TypeName="SaGECorrespondenceModel.BouncedMail">
+        <MappingFragment StoreEntitySet="BouncedMail">
+          <ScalarProperty Name="Processed" ColumnName="Processed" />
+          <ScalarProperty Name="MailAddress" ColumnName="MailAddress" />
+          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Audits">
+      <EntityTypeMapping TypeName="SaGECorrespondenceModel.Audit">
+        <MappingFragment StoreEntitySet="Audit">
+          <ScalarProperty Name="Channel" ColumnName="Channel" />
+          <ScalarProperty Name="DateSent" ColumnName="DateSent" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="Filename" ColumnName="Filename" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MergeBatches">
+      <EntityTypeMapping TypeName="SaGECorrespondenceModel.MergeBatch">
+        <MappingFragment StoreEntitySet="MergeBatch">
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+          <ScalarProperty Name="Engine" ColumnName="Engine" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+          <ScalarProperty Name="JobId" ColumnName="JobId" />
+          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MergeBatchStates">
+      <EntityTypeMapping TypeName="SaGECorrespondenceModel.MergeBatchState">
+        <MappingFragment StoreEntitySet="MergeBatchState">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="SaGECorrespondenceModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="SaGECorrespondenceModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="SaGECorrespondenceModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="SaGECorrespondenceModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="SaGECorrespondenceModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SaGECorrespondenceModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="SaGECorrespondenceModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SaGECorrespondenceModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="SaGECorrespondenceModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="SaGECorrespondenceModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>
