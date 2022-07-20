@@ -1,0 +1,79 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OMSA.xPression.FlexiAnualBeneffits", "OMSA.xPression.FlexiAnualBeneffits\OMSA.xPression.FlexiAnualBeneffits.csproj", "{35E223BB-F853-4DEC-8601-80753F3A77E7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApplicationLAyer", "ApplicationLAyer", "{33C1DD10-8B0D-4472-944F-15A54EB7F062}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BusinessLayer", "BusinessLayer", "{D7245AD6-8441-424F-98F3-1469B8D56E9F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DomainLayer", "DomainLayer", "{CD576217-6F73-4BEB-B969-8FC0A60D2C7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OMSA.xPression.FlexiAnualBeneffits.Business", "OMSA.xPression.FlexiAnualBeneffits.Business\OMSA.xPression.FlexiAnualBeneffits.Business.csproj", "{52BF1C40-B2B0-438B-BCF8-720089A232D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OMSA.xPression.FlexiAnualBeneffits.Domain", "OMSA.xPression.FlexiAnualBeneffits.Domain\OMSA.xPression.FlexiAnualBeneffits.Domain.csproj", "{59A81EA7-3634-4782-8D52-B2A6AED49C0D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Correspondence", "Correspondence", "{2FB80C15-33F9-4338-989C-EA5A4CEB7389}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaGE.Correspondence.Domain", "SaGE.Correspondence.Domain\SaGE.Correspondence.Domain.csproj", "{E7EDB3B1-78B4-43FD-8E2D-5A22DEC6639B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataLayer", "DataLayer", "{4A665418-CAD8-4893-B798-E865A98F1E1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaGE.Correspondence.Data", "SaGE.Correspondence.Data\SaGE.Correspondence.Data.csproj", "{CCF974AA-9E55-4341-9E98-96E045F1E98E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{53E54DA1-8D09-4DB9-985B-BB809C3BFBB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaGE.Common", "SaGE.Common\SaGE.Common.csproj", "{EE07465D-B854-4EBF-BC27-683AFAAD3EA8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Correspondance", "Correspondance", "{2CFB4222-BA7F-4598-A809-F3C30703AA67}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{35E223BB-F853-4DEC-8601-80753F3A77E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35E223BB-F853-4DEC-8601-80753F3A77E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35E223BB-F853-4DEC-8601-80753F3A77E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35E223BB-F853-4DEC-8601-80753F3A77E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52BF1C40-B2B0-438B-BCF8-720089A232D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52BF1C40-B2B0-438B-BCF8-720089A232D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52BF1C40-B2B0-438B-BCF8-720089A232D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52BF1C40-B2B0-438B-BCF8-720089A232D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59A81EA7-3634-4782-8D52-B2A6AED49C0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59A81EA7-3634-4782-8D52-B2A6AED49C0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59A81EA7-3634-4782-8D52-B2A6AED49C0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59A81EA7-3634-4782-8D52-B2A6AED49C0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7EDB3B1-78B4-43FD-8E2D-5A22DEC6639B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7EDB3B1-78B4-43FD-8E2D-5A22DEC6639B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7EDB3B1-78B4-43FD-8E2D-5A22DEC6639B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7EDB3B1-78B4-43FD-8E2D-5A22DEC6639B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCF974AA-9E55-4341-9E98-96E045F1E98E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCF974AA-9E55-4341-9E98-96E045F1E98E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCF974AA-9E55-4341-9E98-96E045F1E98E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCF974AA-9E55-4341-9E98-96E045F1E98E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE07465D-B854-4EBF-BC27-683AFAAD3EA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE07465D-B854-4EBF-BC27-683AFAAD3EA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE07465D-B854-4EBF-BC27-683AFAAD3EA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE07465D-B854-4EBF-BC27-683AFAAD3EA8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{35E223BB-F853-4DEC-8601-80753F3A77E7} = {33C1DD10-8B0D-4472-944F-15A54EB7F062}
+		{52BF1C40-B2B0-438B-BCF8-720089A232D2} = {D7245AD6-8441-424F-98F3-1469B8D56E9F}
+		{59A81EA7-3634-4782-8D52-B2A6AED49C0D} = {CD576217-6F73-4BEB-B969-8FC0A60D2C7D}
+		{2FB80C15-33F9-4338-989C-EA5A4CEB7389} = {CD576217-6F73-4BEB-B969-8FC0A60D2C7D}
+		{E7EDB3B1-78B4-43FD-8E2D-5A22DEC6639B} = {2FB80C15-33F9-4338-989C-EA5A4CEB7389}
+		{CCF974AA-9E55-4341-9E98-96E045F1E98E} = {2CFB4222-BA7F-4598-A809-F3C30703AA67}
+		{EE07465D-B854-4EBF-BC27-683AFAAD3EA8} = {53E54DA1-8D09-4DB9-985B-BB809C3BFBB0}
+		{2CFB4222-BA7F-4598-A809-F3C30703AA67} = {4A665418-CAD8-4893-B798-E865A98F1E1D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {04530E10-3BA6-4DCD-95E0-65D2AE6F25A4}
+	EndGlobalSection
+EndGlobal

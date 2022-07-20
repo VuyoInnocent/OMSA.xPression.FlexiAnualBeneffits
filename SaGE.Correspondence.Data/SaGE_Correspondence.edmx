@@ -1,0 +1,2892 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SaGECorrespondenceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentKeyId" Type="int" />
+          <Property Name="AccountName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LineOfBusiness" Type="nvarchar" MaxLength="50" />
+          <Property Name="BusinessArea" Type="nvarchar" MaxLength="50" />
+          <Property Name="RequestPath" Type="nvarchar" MaxLength="250" />
+          <Property Name="DocumentPath" Type="nvarchar" MaxLength="250" />
+          <Property Name="RejectPath" Type="nvarchar" MaxLength="250" />
+          <Property Name="TemplatePath" Type="nvarchar" MaxLength="250" />
+          <Property Name="OutPath" Type="nvarchar" MaxLength="250" />
+          <Property Name="Prefix" Type="nvarchar" MaxLength="10" />
+          <Property Name="Counter" Type="int" />
+        </EntityType>
+        <EntityType Name="Audit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientId" Type="varchar(max)" Nullable="false" />
+          <Property Name="Filename" Type="varchar(max)" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="DateSent" Type="datetime" />
+          <Property Name="Channel" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Batch">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="JobType" Type="nvarchar" MaxLength="20" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="ExpiryDate" Type="datetime" />
+          <Property Name="Enabled" Type="bit" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+          <Property Name="Engine" Type="int" />
+        </EntityType>
+        <EntityType Name="BouncedMail">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MailAddress" Type="nvarchar(max)" />
+          <Property Name="Processed" Type="bit" />
+        </EntityType>
+        <EntityType Name="Channel">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ChannelBatch">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobId" Type="int" />
+          <Property Name="ChannelId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Enabled" Type="bit" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ChannelBatchTransaction">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ChannelBatchId" Type="int" />
+          <Property Name="TransactionId" Type="int" />
+          <Property Name="Enabled" Type="bit" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ChannelSequence">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobDefId" Type="int" />
+          <Property Name="CurrentChannelId" Type="int" />
+          <Property Name="NextChannelIdSuccess" Type="int" />
+          <Property Name="NextChannelIdFail" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SaGECorrespondence.dbo.DocStore' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DocStore">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobDefId" Type="int" />
+          <Property Name="Format" Type="nvarchar" MaxLength="20" />
+          <Property Name="LineOfBusiness" Type="nvarchar" MaxLength="20" />
+          <Property Name="Process" Type="nvarchar" MaxLength="20" />
+          <Property Name="Permission" Type="nvarchar" MaxLength="20" />
+          <Property Name="Category" Type="nvarchar" MaxLength="20" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Email">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobDefId" Type="int" />
+          <Property Name="FromAddress" Type="nvarchar" MaxLength="255" />
+          <Property Name="FriendlyName" Type="nvarchar" MaxLength="255" />
+          <Property Name="BCC" Type="nvarchar" MaxLength="255" />
+          <Property Name="AttachmentFriendlyName" Type="nvarchar" MaxLength="255" />
+          <Property Name="SubjectEnglish" Type="nvarchar" MaxLength="255" />
+          <Property Name="SubjectAfrikaans" Type="nvarchar" MaxLength="255" />
+          <Property Name="EngTemplateId" Type="int" />
+          <Property Name="AfrTemplateId" Type="int" />
+        </EntityType>
+        <EntityType Name="Engine">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="int" Nullable="false" />
+          <Property Name="EngineType" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobDefId" Type="int" />
+          <Property Name="JobName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SourcePath" Type="nvarchar" MaxLength="255" />
+          <Property Name="LoadDate" Type="datetime" />
+          <Property Name="DeliveryDate" Type="datetime" />
+          <Property Name="Process" Type="nvarchar" MaxLength="50" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="JobDefChannels">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobDefId" Type="int" Nullable="false" />
+          <Property Name="ChannelId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JobDefinition">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountId" Type="int" />
+          <Property Name="EngineId" Type="int" />
+          <Property Name="JobName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DataSource" Type="nvarchar" MaxLength="50" />
+          <Property Name="JobType" Type="nvarchar" MaxLength="20" />
+          <Property Name="Description" Type="nvarchar" MaxLength="132" />
+          <Property Name="BatchItemCount" Type="int" />
+          <Property Name="Mode" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MergeBatch">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobId" Type="int" Nullable="false" />
+          <Property Name="ChannelId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Engine" Type="int" />
+          <Property Name="Enabled" Type="bit" />
+          <Property Name="State" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MergeBatchState">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MergeBatchTransaction">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MergeBatchId" Type="int" Nullable="false" />
+          <Property Name="TransactionId" Type="int" />
+          <Property Name="Enabled" Type="bit" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Package">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="int" Nullable="false" />
+          <Property Name="JobDefId" Type="int" />
+          <Property Name="LOBId" Type="nvarchar" MaxLength="10" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="PrinterDetail">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobId" Type="int" />
+          <Property Name="SupplierId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="PrintType" Type="nvarchar" MaxLength="20" />
+          <Property Name="Default" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="PrinterTray">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PrinterDetailId" Type="int" />
+          <Property Name="Tray" Type="nvarchar" MaxLength="20" />
+          <Property Name="Stationery" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PrintSupplier">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" />
+          <Property Name="ContactName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContactInfo" Type="nvarchar" MaxLength="132" />
+        </EntityType>
+        <EntityType Name="Stuffer">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmailId" Type="int" />
+          <Property Name="StufferGroupId" Type="int" />
+          <Property Name="StufferPath" Type="nvarchar" MaxLength="255" />
+          <Property Name="StufferName" Type="nvarchar" MaxLength="255" />
+          <Property Name="EffectiveDate" Type="datetime" />
+          <Property Name="Enabled" Type="bit" />
+        </EntityType>
+        <EntityType Name="StufferGroup">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="50" />
+          <Property Name="AccountId" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Template">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TemplateGroupId" Type="int" />
+          <Property Name="TemplateName" Type="varchar" MaxLength="250" />
+          <Property Name="Format" Type="nvarchar" MaxLength="50" />
+          <Property Name="EffectiveDate" Type="datetime" />
+          <Property Name="Enabled" Type="bit" />
+        </EntityType>
+        <EntityType Name="TemplateGroup">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="50" />
+          <Property Name="AccountId" Type="int" />
+        </EntityType>
+        <EntityType Name="Transaction">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TransactionDefinitionId" Type="nvarchar" MaxLength="50" />
+          <Property Name="JobId" Type="int" />
+          <Property Name="BatchId" Type="int" />
+          <Property Name="ChannelId" Type="int" />
+          <Property Name="Guid" Type="nvarchar" MaxLength="20" />
+          <Property Name="ClientId" Type="nvarchar" MaxLength="20" />
+          <Property Name="LOBId" Type="nvarchar" MaxLength="50" />
+          <Property Name="LOBKey" Type="nvarchar" MaxLength="50" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+          <Property Name="Locked" Type="bit" />
+          <Property Name="LockDate" Type="datetime" />
+          <Property Name="PostCode" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TransactionChannel">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TransactionId" Type="int" />
+          <Property Name="ChannelId" Type="int" />
+          <Property Name="AddressLine1" Type="nvarchar" MaxLength="50" />
+          <Property Name="AddressLine2" Type="nvarchar" MaxLength="50" />
+          <Property Name="AddressLine3" Type="nvarchar" MaxLength="50" />
+          <Property Name="AddressLine4" Type="nvarchar" MaxLength="50" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContactString" Type="nvarchar" MaxLength="132" />
+          <Property Name="NumberBody" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="TransactionContactPoint">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContactPointId" Type="int" Nullable="false" />
+          <Property Name="TransactionId" Type="int" Nullable="false" />
+          <Property Name="ContactType" Type="nvarchar" MaxLength="40" />
+          <Property Name="AddressLine1" Type="nvarchar" MaxLength="50" />
+          <Property Name="AddressLine2" Type="nvarchar" MaxLength="50" />
+          <Property Name="AddressLine3" Type="nvarchar" MaxLength="50" />
+          <Property Name="AddressLine4" Type="nvarchar" MaxLength="50" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContactString" Type="nvarchar" MaxLength="132" />
+          <Property Name="NumberBody" Type="nvarchar" MaxLength="20" />
+          <Property Name="Status" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="TransactionData">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TransactionId" Type="int" />
+          <Property Name="DataTypeId" Type="int" />
+          <Property Name="Data" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TransactionDefinition">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AccountId" Type="int" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TransactionEntity">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TransactionId" Type="int" />
+          <Property Name="PartyType" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="255" />
+          <Property Name="StatPE" Type="nvarchar" MaxLength="20" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Initials" Type="nvarchar" MaxLength="20" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Language" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="TransDataType">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Account_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="Account1" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="Account1">
+              <PropertyRef Name="ParentKeyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Batch_Job">
+          <End Role="Job" Type="Self.Job" Multiplicity="0..1" />
+          <End Role="Batch" Type="Self.Batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="Batch">
+              <PropertyRef Name="JobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChannelBatch_Channel">
+          <End Role="Channel" Type="Self.Channel" Multiplicity="0..1" />
+          <End Role="ChannelBatch" Type="Self.ChannelBatch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Channel">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="ChannelBatch">
+              <PropertyRef Name="ChannelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChannelBatch_Job">
+          <End Role="Job" Type="Self.Job" Multiplicity="0..1" />
+          <End Role="ChannelBatch" Type="Self.ChannelBatch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="ChannelBatch">
+              <PropertyRef Name="JobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChannelData_Channel">
+          <End Role="Channel" Type="Self.Channel" Multiplicity="0..1" />
+          <End Role="TransactionChannel" Type="Self.TransactionChannel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Channel">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="TransactionChannel">
+              <PropertyRef Name="ChannelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChannelData_Transaction">
+          <End Role="Transaction" Type="Self.Transaction" Multiplicity="0..1" />
+          <End Role="TransactionChannel" Type="Self.TransactionChannel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transaction">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="TransactionChannel">
+              <PropertyRef Name="TransactionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChannelSequence_Channel">
+          <End Role="Channel" Type="Self.Channel" Multiplicity="0..1" />
+          <End Role="ChannelSequence" Type="Self.ChannelSequence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Channel">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="ChannelSequence">
+              <PropertyRef Name="CurrentChannelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChannelSequence_Channel1">
+          <End Role="Channel" Type="Self.Channel" Multiplicity="0..1" />
+          <End Role="ChannelSequence" Type="Self.ChannelSequence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Channel">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="ChannelSequence">
+              <PropertyRef Name="NextChannelIdFail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChannelSequence_Channel2">
+          <End Role="Channel" Type="Self.Channel" Multiplicity="0..1" />
+          <End Role="ChannelSequence" Type="Self.ChannelSequence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Channel">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="ChannelSequence">
+              <PropertyRef Name="NextChannelIdSuccess" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChannelSequence_JobDefinition">
+          <End Role="JobDefinition" Type="Self.JobDefinition" Multiplicity="0..1" />
+          <End Role="ChannelSequence" Type="Self.ChannelSequence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobDefinition">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="ChannelSequence">
+              <PropertyRef Name="JobDefId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChannelTransaction_ChannelBatch">
+          <End Role="ChannelBatch" Type="Self.ChannelBatch" Multiplicity="0..1" />
+          <End Role="ChannelBatchTransaction" Type="Self.ChannelBatchTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChannelBatch">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="ChannelBatchTransaction">
+              <PropertyRef Name="ChannelBatchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChannelTransaction_Transaction">
+          <End Role="Transaction" Type="Self.Transaction" Multiplicity="0..1" />
+          <End Role="ChannelBatchTransaction" Type="Self.ChannelBatchTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transaction">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="ChannelBatchTransaction">
+              <PropertyRef Name="TransactionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DocStore_JobDefinition">
+          <End Role="JobDefinition" Type="Self.JobDefinition" Multiplicity="0..1" />
+          <End Role="DocStore" Type="Self.DocStore" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobDefinition">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="DocStore">
+              <PropertyRef Name="JobDefId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Email_JobDefinition">
+          <End Role="JobDefinition" Type="Self.JobDefinition" Multiplicity="0..1" />
+          <End Role="Email" Type="Self.Email" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobDefinition">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="Email">
+              <PropertyRef Name="JobDefId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Email_Template">
+          <End Role="Template" Type="Self.Template" Multiplicity="0..1" />
+          <End Role="Email" Type="Self.Email" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Template">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="Email">
+              <PropertyRef Name="EngTemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Email_Template1">
+          <End Role="Template" Type="Self.Template" Multiplicity="0..1" />
+          <End Role="Email" Type="Self.Email" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Template">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="Email">
+              <PropertyRef Name="AfrTemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Job_JobDefinition">
+          <End Role="JobDefinition" Type="Self.JobDefinition" Multiplicity="0..1" />
+          <End Role="Job" Type="Self.Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobDefinition">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="JobDefId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobDefChannels_Channel">
+          <End Role="Channel" Type="Self.Channel" Multiplicity="1" />
+          <End Role="JobDefChannels" Type="Self.JobDefChannels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Channel">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="JobDefChannels">
+              <PropertyRef Name="ChannelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobDefChannels_JobDefinition">
+          <End Role="JobDefinition" Type="Self.JobDefinition" Multiplicity="1" />
+          <End Role="JobDefChannels" Type="Self.JobDefChannels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobDefinition">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="JobDefChannels">
+              <PropertyRef Name="JobDefId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobDefinition_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="JobDefinition" Type="Self.JobDefinition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="JobDefinition">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MergeBatch_MergeBatchState">
+          <End Role="MergeBatchState" Type="Self.MergeBatchState" Multiplicity="1" />
+          <End Role="MergeBatch" Type="Self.MergeBatch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MergeBatchState">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="MergeBatch">
+              <PropertyRef Name="State" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MergeBatchState_MergeBatchState">
+          <End Role="MergeBatchState" Type="Self.MergeBatchState" Multiplicity="1" />
+          <End Role="MergeBatchState1" Type="Self.MergeBatchState" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="MergeBatchState">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="MergeBatchState1">
+              <PropertyRef Name="KeyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MergeBatchTransaction_MergeBatch">
+          <End Role="MergeBatch" Type="Self.MergeBatch" Multiplicity="1" />
+          <End Role="MergeBatchTransaction" Type="Self.MergeBatchTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MergeBatch">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="MergeBatchTransaction">
+              <PropertyRef Name="MergeBatchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MergeBatchTransaction_Transaction">
+          <End Role="Transaction" Type="Self.Transaction" Multiplicity="0..1" />
+          <End Role="MergeBatchTransaction" Type="Self.MergeBatchTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transaction">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="MergeBatchTransaction">
+              <PropertyRef Name="TransactionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrinterDetail_Job">
+          <End Role="Job" Type="Self.Job" Multiplicity="0..1" />
+          <End Role="PrinterDetail" Type="Self.PrinterDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="PrinterDetail">
+              <PropertyRef Name="JobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrinterDetail_PrintSupplier">
+          <End Role="PrintSupplier" Type="Self.PrintSupplier" Multiplicity="0..1" />
+          <End Role="PrinterDetail" Type="Self.PrinterDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrintSupplier">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="PrinterDetail">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrinterTray_PrinterDetail">
+          <End Role="PrinterDetail" Type="Self.PrinterDetail" Multiplicity="0..1" />
+          <End Role="PrinterTray" Type="Self.PrinterTray" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrinterDetail">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="PrinterTray">
+              <PropertyRef Name="PrinterDetailId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stuffer_Email">
+          <End Role="Email" Type="Self.Email" Multiplicity="0..1" />
+          <End Role="Stuffer" Type="Self.Stuffer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Email">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="Stuffer">
+              <PropertyRef Name="EmailId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stuffer_StufferGroup">
+          <End Role="StufferGroup" Type="Self.StufferGroup" Multiplicity="0..1" />
+          <End Role="Stuffer" Type="Self.Stuffer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StufferGroup">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="Stuffer">
+              <PropertyRef Name="StufferGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StufferGroup_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="StufferGroup" Type="Self.StufferGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="StufferGroup">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Template_TemplateGroup">
+          <End Role="TemplateGroup" Type="Self.TemplateGroup" Multiplicity="0..1" />
+          <End Role="Template" Type="Self.Template" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TemplateGroup">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="Template">
+              <PropertyRef Name="TemplateGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TemplateGroup_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="TemplateGroup" Type="Self.TemplateGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="TemplateGroup">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transaction_Channel">
+          <End Role="Channel" Type="Self.Channel" Multiplicity="0..1" />
+          <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Channel">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="Transaction">
+              <PropertyRef Name="ChannelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transaction_Job">
+          <End Role="Job" Type="Self.Job" Multiplicity="0..1" />
+          <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="Transaction">
+              <PropertyRef Name="JobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transaction_TransactionDefinition">
+          <End Role="TransactionDefinition" Type="Self.TransactionDefinition" Multiplicity="0..1" />
+          <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransactionDefinition">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="Transaction">
+              <PropertyRef Name="TransactionDefinitionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionContactPoint_Transaction">
+          <End Role="Transaction" Type="Self.Transaction" Multiplicity="1" />
+          <End Role="TransactionContactPoint" Type="Self.TransactionContactPoint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transaction">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="TransactionContactPoint">
+              <PropertyRef Name="TransactionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionData_Transaction">
+          <End Role="TransDataType" Type="Self.TransDataType" Multiplicity="0..1" />
+          <End Role="TransactionData" Type="Self.TransactionData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransDataType">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="TransactionData">
+              <PropertyRef Name="DataTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionDefinition_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="TransactionDefinition" Type="Self.TransactionDefinition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="TransactionDefinition">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionEntity_Transaction">
+          <End Role="Transaction" Type="Self.Transaction" Multiplicity="0..1" />
+          <End Role="TransactionEntity" Type="Self.TransactionEntity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transaction">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="TransactionEntity">
+              <PropertyRef Name="TransactionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransData_Transaction">
+          <End Role="Transaction" Type="Self.Transaction" Multiplicity="0..1" />
+          <End Role="TransactionData" Type="Self.TransactionData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transaction">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="TransactionData">
+              <PropertyRef Name="TransactionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="SaGECorrespondenceModelStoreContainer">
+          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Audit" EntityType="Self.Audit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Batch" EntityType="Self.Batch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BouncedMail" EntityType="Self.BouncedMail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Channel" EntityType="Self.Channel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChannelBatch" EntityType="Self.ChannelBatch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChannelBatchTransaction" EntityType="Self.ChannelBatchTransaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChannelSequence" EntityType="Self.ChannelSequence" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Email" EntityType="Self.Email" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Engine" EntityType="Self.Engine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Job" EntityType="Self.Job" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobDefChannels" EntityType="Self.JobDefChannels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobDefinition" EntityType="Self.JobDefinition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MergeBatch" EntityType="Self.MergeBatch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MergeBatchState" EntityType="Self.MergeBatchState" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MergeBatchTransaction" EntityType="Self.MergeBatchTransaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Package" EntityType="Self.Package" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PrinterDetail" EntityType="Self.PrinterDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PrinterTray" EntityType="Self.PrinterTray" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PrintSupplier" EntityType="Self.PrintSupplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stuffer" EntityType="Self.Stuffer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StufferGroup" EntityType="Self.StufferGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Template" EntityType="Self.Template" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TemplateGroup" EntityType="Self.TemplateGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transaction" EntityType="Self.Transaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransactionChannel" EntityType="Self.TransactionChannel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransactionContactPoint" EntityType="Self.TransactionContactPoint" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransactionData" EntityType="Self.TransactionData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransactionDefinition" EntityType="Self.TransactionDefinition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransactionEntity" EntityType="Self.TransactionEntity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransDataType" EntityType="Self.TransDataType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DocStore" EntityType="Self.DocStore" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[DocStore].[KeyId] AS [KeyId], 
+[DocStore].[JobDefId] AS [JobDefId], 
+[DocStore].[Format] AS [Format], 
+[DocStore].[LineOfBusiness] AS [LineOfBusiness], 
+[DocStore].[Process] AS [Process], 
+[DocStore].[Permission] AS [Permission], 
+[DocStore].[Category] AS [Category], 
+[DocStore].[Description] AS [Description]
+FROM [dbo].[DocStore] AS [DocStore]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Account_Account" Association="Self.FK_Account_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Account1" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Batch_Job" Association="Self.FK_Batch_Job">
+            <End Role="Job" EntitySet="Job" />
+            <End Role="Batch" EntitySet="Batch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChannelBatch_Channel" Association="Self.FK_ChannelBatch_Channel">
+            <End Role="Channel" EntitySet="Channel" />
+            <End Role="ChannelBatch" EntitySet="ChannelBatch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChannelBatch_Job" Association="Self.FK_ChannelBatch_Job">
+            <End Role="Job" EntitySet="Job" />
+            <End Role="ChannelBatch" EntitySet="ChannelBatch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChannelData_Channel" Association="Self.FK_ChannelData_Channel">
+            <End Role="Channel" EntitySet="Channel" />
+            <End Role="TransactionChannel" EntitySet="TransactionChannel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChannelData_Transaction" Association="Self.FK_ChannelData_Transaction">
+            <End Role="Transaction" EntitySet="Transaction" />
+            <End Role="TransactionChannel" EntitySet="TransactionChannel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChannelSequence_Channel" Association="Self.FK_ChannelSequence_Channel">
+            <End Role="Channel" EntitySet="Channel" />
+            <End Role="ChannelSequence" EntitySet="ChannelSequence" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChannelSequence_Channel1" Association="Self.FK_ChannelSequence_Channel1">
+            <End Role="Channel" EntitySet="Channel" />
+            <End Role="ChannelSequence" EntitySet="ChannelSequence" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChannelSequence_Channel2" Association="Self.FK_ChannelSequence_Channel2">
+            <End Role="Channel" EntitySet="Channel" />
+            <End Role="ChannelSequence" EntitySet="ChannelSequence" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChannelSequence_JobDefinition" Association="Self.FK_ChannelSequence_JobDefinition">
+            <End Role="JobDefinition" EntitySet="JobDefinition" />
+            <End Role="ChannelSequence" EntitySet="ChannelSequence" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChannelTransaction_ChannelBatch" Association="Self.FK_ChannelTransaction_ChannelBatch">
+            <End Role="ChannelBatch" EntitySet="ChannelBatch" />
+            <End Role="ChannelBatchTransaction" EntitySet="ChannelBatchTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChannelTransaction_Transaction" Association="Self.FK_ChannelTransaction_Transaction">
+            <End Role="Transaction" EntitySet="Transaction" />
+            <End Role="ChannelBatchTransaction" EntitySet="ChannelBatchTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DocStore_JobDefinition" Association="Self.FK_DocStore_JobDefinition">
+            <End Role="JobDefinition" EntitySet="JobDefinition" />
+            <End Role="DocStore" EntitySet="DocStore" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Email_JobDefinition" Association="Self.FK_Email_JobDefinition">
+            <End Role="JobDefinition" EntitySet="JobDefinition" />
+            <End Role="Email" EntitySet="Email" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Email_Template" Association="Self.FK_Email_Template">
+            <End Role="Template" EntitySet="Template" />
+            <End Role="Email" EntitySet="Email" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Email_Template1" Association="Self.FK_Email_Template1">
+            <End Role="Template" EntitySet="Template" />
+            <End Role="Email" EntitySet="Email" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Job_JobDefinition" Association="Self.FK_Job_JobDefinition">
+            <End Role="JobDefinition" EntitySet="JobDefinition" />
+            <End Role="Job" EntitySet="Job" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobDefChannels_Channel" Association="Self.FK_JobDefChannels_Channel">
+            <End Role="Channel" EntitySet="Channel" />
+            <End Role="JobDefChannels" EntitySet="JobDefChannels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobDefChannels_JobDefinition" Association="Self.FK_JobDefChannels_JobDefinition">
+            <End Role="JobDefinition" EntitySet="JobDefinition" />
+            <End Role="JobDefChannels" EntitySet="JobDefChannels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobDefinition_Account" Association="Self.FK_JobDefinition_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="JobDefinition" EntitySet="JobDefinition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MergeBatch_MergeBatchState" Association="Self.FK_MergeBatch_MergeBatchState">
+            <End Role="MergeBatchState" EntitySet="MergeBatchState" />
+            <End Role="MergeBatch" EntitySet="MergeBatch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MergeBatchState_MergeBatchState" Association="Self.FK_MergeBatchState_MergeBatchState">
+            <End Role="MergeBatchState" EntitySet="MergeBatchState" />
+            <End Role="MergeBatchState1" EntitySet="MergeBatchState" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MergeBatchTransaction_MergeBatch" Association="Self.FK_MergeBatchTransaction_MergeBatch">
+            <End Role="MergeBatch" EntitySet="MergeBatch" />
+            <End Role="MergeBatchTransaction" EntitySet="MergeBatchTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MergeBatchTransaction_Transaction" Association="Self.FK_MergeBatchTransaction_Transaction">
+            <End Role="Transaction" EntitySet="Transaction" />
+            <End Role="MergeBatchTransaction" EntitySet="MergeBatchTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrinterDetail_Job" Association="Self.FK_PrinterDetail_Job">
+            <End Role="Job" EntitySet="Job" />
+            <End Role="PrinterDetail" EntitySet="PrinterDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrinterDetail_PrintSupplier" Association="Self.FK_PrinterDetail_PrintSupplier">
+            <End Role="PrintSupplier" EntitySet="PrintSupplier" />
+            <End Role="PrinterDetail" EntitySet="PrinterDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrinterTray_PrinterDetail" Association="Self.FK_PrinterTray_PrinterDetail">
+            <End Role="PrinterDetail" EntitySet="PrinterDetail" />
+            <End Role="PrinterTray" EntitySet="PrinterTray" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stuffer_Email" Association="Self.FK_Stuffer_Email">
+            <End Role="Email" EntitySet="Email" />
+            <End Role="Stuffer" EntitySet="Stuffer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stuffer_StufferGroup" Association="Self.FK_Stuffer_StufferGroup">
+            <End Role="StufferGroup" EntitySet="StufferGroup" />
+            <End Role="Stuffer" EntitySet="Stuffer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StufferGroup_Account" Association="Self.FK_StufferGroup_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="StufferGroup" EntitySet="StufferGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Template_TemplateGroup" Association="Self.FK_Template_TemplateGroup">
+            <End Role="TemplateGroup" EntitySet="TemplateGroup" />
+            <End Role="Template" EntitySet="Template" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TemplateGroup_Account" Association="Self.FK_TemplateGroup_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="TemplateGroup" EntitySet="TemplateGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transaction_Channel" Association="Self.FK_Transaction_Channel">
+            <End Role="Channel" EntitySet="Channel" />
+            <End Role="Transaction" EntitySet="Transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transaction_Job" Association="Self.FK_Transaction_Job">
+            <End Role="Job" EntitySet="Job" />
+            <End Role="Transaction" EntitySet="Transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transaction_TransactionDefinition" Association="Self.FK_Transaction_TransactionDefinition">
+            <End Role="TransactionDefinition" EntitySet="TransactionDefinition" />
+            <End Role="Transaction" EntitySet="Transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionContactPoint_Transaction" Association="Self.FK_TransactionContactPoint_Transaction">
+            <End Role="Transaction" EntitySet="Transaction" />
+            <End Role="TransactionContactPoint" EntitySet="TransactionContactPoint" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionData_Transaction" Association="Self.FK_TransactionData_Transaction">
+            <End Role="TransDataType" EntitySet="TransDataType" />
+            <End Role="TransactionData" EntitySet="TransactionData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionDefinition_Account" Association="Self.FK_TransactionDefinition_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="TransactionDefinition" EntitySet="TransactionDefinition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionEntity_Transaction" Association="Self.FK_TransactionEntity_Transaction">
+            <End Role="Transaction" EntitySet="Transaction" />
+            <End Role="TransactionEntity" EntitySet="TransactionEntity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransData_Transaction" Association="Self.FK_TransData_Transaction">
+            <End Role="Transaction" EntitySet="Transaction" />
+            <End Role="TransactionData" EntitySet="TransactionData" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SaGECorrespondenceModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="SaGECorrespondenceEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="SaGECorrespondenceModel.Account" />
+          <EntitySet Name="Batches" EntityType="SaGECorrespondenceModel.Batch" />
+          <EntitySet Name="Channels" EntityType="SaGECorrespondenceModel.Channel" />
+          <EntitySet Name="ChannelSequences" EntityType="SaGECorrespondenceModel.ChannelSequence" />
+          <EntitySet Name="DocStores" EntityType="SaGECorrespondenceModel.DocStore" />
+          <EntitySet Name="Engines" EntityType="SaGECorrespondenceModel.Engine" />
+          <EntitySet Name="Jobs" EntityType="SaGECorrespondenceModel.Job" />
+          <EntitySet Name="JobDefChannels" EntityType="SaGECorrespondenceModel.JobDefChannel" />
+          <EntitySet Name="Packages" EntityType="SaGECorrespondenceModel.Package" />
+          <EntitySet Name="PrinterDetails" EntityType="SaGECorrespondenceModel.PrinterDetail" />
+          <EntitySet Name="PrinterTrays" EntityType="SaGECorrespondenceModel.PrinterTray" />
+          <EntitySet Name="PrintSuppliers" EntityType="SaGECorrespondenceModel.PrintSupplier" />
+          <EntitySet Name="Stuffers" EntityType="SaGECorrespondenceModel.Stuffer" />
+          <EntitySet Name="StufferGroups" EntityType="SaGECorrespondenceModel.StufferGroup" />
+          <EntitySet Name="Templates" EntityType="SaGECorrespondenceModel.Template" />
+          <EntitySet Name="TemplateGroups" EntityType="SaGECorrespondenceModel.TemplateGroup" />
+          <EntitySet Name="Transactions" EntityType="SaGECorrespondenceModel.Transaction" />
+          <EntitySet Name="TransactionChannels" EntityType="SaGECorrespondenceModel.TransactionChannel" />
+          <EntitySet Name="TransactionDatas" EntityType="SaGECorrespondenceModel.TransactionData" />
+          <EntitySet Name="TransactionDefinitions" EntityType="SaGECorrespondenceModel.TransactionDefinition" />
+          <EntitySet Name="TransDataTypes" EntityType="SaGECorrespondenceModel.TransDataType" />
+          <AssociationSet Name="FK_Account_Account" Association="SaGECorrespondenceModel.FK_Account_Account">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="Account1" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StufferGroup_Account" Association="SaGECorrespondenceModel.FK_StufferGroup_Account">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="StufferGroup" EntitySet="StufferGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TemplateGroup_Account" Association="SaGECorrespondenceModel.FK_TemplateGroup_Account">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="TemplateGroup" EntitySet="TemplateGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionDefinition_Account" Association="SaGECorrespondenceModel.FK_TransactionDefinition_Account">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="TransactionDefinition" EntitySet="TransactionDefinitions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Batch_Job" Association="SaGECorrespondenceModel.FK_Batch_Job">
+            <End Role="Job" EntitySet="Jobs" />
+            <End Role="Batch" EntitySet="Batches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChannelData_Channel" Association="SaGECorrespondenceModel.FK_ChannelData_Channel">
+            <End Role="Channel" EntitySet="Channels" />
+            <End Role="TransactionChannel" EntitySet="TransactionChannels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChannelSequence_Channel" Association="SaGECorrespondenceModel.FK_ChannelSequence_Channel">
+            <End Role="Channel" EntitySet="Channels" />
+            <End Role="ChannelSequence" EntitySet="ChannelSequences" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChannelSequence_Channel1" Association="SaGECorrespondenceModel.FK_ChannelSequence_Channel1">
+            <End Role="Channel" EntitySet="Channels" />
+            <End Role="ChannelSequence" EntitySet="ChannelSequences" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChannelSequence_Channel2" Association="SaGECorrespondenceModel.FK_ChannelSequence_Channel2">
+            <End Role="Channel" EntitySet="Channels" />
+            <End Role="ChannelSequence" EntitySet="ChannelSequences" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobDefChannels_Channel" Association="SaGECorrespondenceModel.FK_JobDefChannels_Channel">
+            <End Role="Channel" EntitySet="Channels" />
+            <End Role="JobDefChannels" EntitySet="JobDefChannels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transaction_Channel" Association="SaGECorrespondenceModel.FK_Transaction_Channel">
+            <End Role="Channel" EntitySet="Channels" />
+            <End Role="Transaction" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrinterDetail_Job" Association="SaGECorrespondenceModel.FK_PrinterDetail_Job">
+            <End Role="Job" EntitySet="Jobs" />
+            <End Role="PrinterDetail" EntitySet="PrinterDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transaction_Job" Association="SaGECorrespondenceModel.FK_Transaction_Job">
+            <End Role="Job" EntitySet="Jobs" />
+            <End Role="Transaction" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrinterDetail_PrintSupplier" Association="SaGECorrespondenceModel.FK_PrinterDetail_PrintSupplier">
+            <End Role="PrintSupplier" EntitySet="PrintSuppliers" />
+            <End Role="PrinterDetail" EntitySet="PrinterDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrinterTray_PrinterDetail" Association="SaGECorrespondenceModel.FK_PrinterTray_PrinterDetail">
+            <End Role="PrinterDetail" EntitySet="PrinterDetails" />
+            <End Role="PrinterTray" EntitySet="PrinterTrays" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stuffer_StufferGroup" Association="SaGECorrespondenceModel.FK_Stuffer_StufferGroup">
+            <End Role="StufferGroup" EntitySet="StufferGroups" />
+            <End Role="Stuffer" EntitySet="Stuffers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Template_TemplateGroup" Association="SaGECorrespondenceModel.FK_Template_TemplateGroup">
+            <End Role="TemplateGroup" EntitySet="TemplateGroups" />
+            <End Role="Template" EntitySet="Templates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChannelData_Transaction" Association="SaGECorrespondenceModel.FK_ChannelData_Transaction">
+            <End Role="Transaction" EntitySet="Transactions" />
+            <End Role="TransactionChannel" EntitySet="TransactionChannels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transaction_Transaction" Association="SaGECorrespondenceModel.FK_Transaction_Transaction">
+            <End Role="TransactionDefinition" EntitySet="TransactionDefinitions" />
+            <End Role="Transaction" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransData_Transaction" Association="SaGECorrespondenceModel.FK_TransData_Transaction">
+            <End Role="Transaction" EntitySet="Transactions" />
+            <End Role="TransactionData" EntitySet="TransactionDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionData_Transaction" Association="SaGECorrespondenceModel.FK_TransactionData_Transaction">
+            <End Role="TransDataType" EntitySet="TransDataTypes" />
+            <End Role="TransactionData" EntitySet="TransactionDatas" />
+          </AssociationSet>
+          <EntitySet Name="TransactionContactPoints" EntityType="SaGECorrespondenceModel.TransactionContactPoint" />
+          <EntitySet Name="TransactionEntities" EntityType="SaGECorrespondenceModel.TransactionEntity" />
+          <AssociationSet Name="FK_TransactionContactPoint_Transaction" Association="SaGECorrespondenceModel.FK_TransactionContactPoint_Transaction">
+            <End Role="Transaction" EntitySet="Transactions" />
+            <End Role="TransactionContactPoint" EntitySet="TransactionContactPoints" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionEntity_Transaction" Association="SaGECorrespondenceModel.FK_TransactionEntity_Transaction">
+            <End Role="Transaction" EntitySet="Transactions" />
+            <End Role="TransactionEntity" EntitySet="TransactionEntities" />
+          </AssociationSet>
+          <EntitySet Name="Emails" EntityType="SaGECorrespondenceModel.Email" />
+          <AssociationSet Name="FK_Email_Template" Association="SaGECorrespondenceModel.FK_Email_Template">
+            <End Role="Template" EntitySet="Templates" />
+            <End Role="Email" EntitySet="Emails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Email_Template1" Association="SaGECorrespondenceModel.FK_Email_Template1">
+            <End Role="Template" EntitySet="Templates" />
+            <End Role="Email" EntitySet="Emails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stuffer_Email" Association="SaGECorrespondenceModel.FK_Stuffer_Email">
+            <End Role="Email" EntitySet="Emails" />
+            <End Role="Stuffer" EntitySet="Stuffers" />
+          </AssociationSet>
+          <EntitySet Name="ChannelBatches" EntityType="SaGECorrespondenceModel.ChannelBatch" />
+          <EntitySet Name="ChannelBatchTransactions" EntityType="SaGECorrespondenceModel.ChannelBatchTransaction" />
+          <AssociationSet Name="FK_ChannelBatch_Channel" Association="SaGECorrespondenceModel.FK_ChannelBatch_Channel">
+            <End Role="Channel" EntitySet="Channels" />
+            <End Role="ChannelBatch" EntitySet="ChannelBatches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChannelBatch_Job" Association="SaGECorrespondenceModel.FK_ChannelBatch_Job">
+            <End Role="Job" EntitySet="Jobs" />
+            <End Role="ChannelBatch" EntitySet="ChannelBatches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChannelTransaction_ChannelBatch" Association="SaGECorrespondenceModel.FK_ChannelTransaction_ChannelBatch">
+            <End Role="ChannelBatch" EntitySet="ChannelBatches" />
+            <End Role="ChannelBatchTransaction" EntitySet="ChannelBatchTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChannelTransaction_Transaction" Association="SaGECorrespondenceModel.FK_ChannelTransaction_Transaction">
+            <End Role="Transaction" EntitySet="Transactions" />
+            <End Role="ChannelBatchTransaction" EntitySet="ChannelBatchTransactions" />
+          </AssociationSet>
+          <EntitySet Name="MergeBatchTransactions" EntityType="SaGECorrespondenceModel.MergeBatchTransaction" />
+          <AssociationSet Name="FK_MergeBatchTransaction_Transaction" Association="SaGECorrespondenceModel.FK_MergeBatchTransaction_Transaction">
+            <End Role="Transaction" EntitySet="Transactions" />
+            <End Role="MergeBatchTransaction" EntitySet="MergeBatchTransactions" />
+          </AssociationSet>
+          <EntitySet Name="JobDefinitions" EntityType="SaGECorrespondenceModel.JobDefinition" />
+          <AssociationSet Name="FK_JobDefinition_Account" Association="SaGECorrespondenceModel.FK_JobDefinition_Account">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="JobDefinition" EntitySet="JobDefinitions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChannelSequence_JobDefinition" Association="SaGECorrespondenceModel.FK_ChannelSequence_JobDefinition">
+            <End Role="JobDefinition" EntitySet="JobDefinitions" />
+            <End Role="ChannelSequence" EntitySet="ChannelSequences" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Email_JobDefinition" Association="SaGECorrespondenceModel.FK_Email_JobDefinition">
+            <End Role="JobDefinition" EntitySet="JobDefinitions" />
+            <End Role="Email" EntitySet="Emails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobDefChannels_JobDefinition" Association="SaGECorrespondenceModel.FK_JobDefChannels_JobDefinition">
+            <End Role="JobDefinition" EntitySet="JobDefinitions" />
+            <End Role="JobDefChannel" EntitySet="JobDefChannels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DocStore_JobDefinition" Association="SaGECorrespondenceModel.FK_DocStore_JobDefinition">
+            <End Role="JobDefinition" EntitySet="JobDefinitions" />
+            <End Role="DocStore" EntitySet="DocStores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Job_JobDefinition" Association="SaGECorrespondenceModel.FK_Job_JobDefinition">
+            <End Role="JobDefinition" EntitySet="JobDefinitions" />
+            <End Role="Job" EntitySet="Jobs" />
+          </AssociationSet>
+          <EntitySet Name="BouncedMails" EntityType="SaGECorrespondenceModel.BouncedMail" />
+          <EntitySet Name="Audits" EntityType="SaGECorrespondenceModel.Audit" />
+          <EntitySet Name="MergeBatches" EntityType="SaGECorrespondenceModel.MergeBatch" />
+          <AssociationSet Name="FK_MergeBatchTransaction_MergeBatch" Association="SaGECorrespondenceModel.FK_MergeBatchTransaction_MergeBatch">
+            <End Role="MergeBatch" EntitySet="MergeBatches" />
+            <End Role="MergeBatchTransaction" EntitySet="MergeBatchTransactions" />
+          </AssociationSet>
+          <EntitySet Name="MergeBatchStates" EntityType="SaGECorrespondenceModel.MergeBatchState" />
+          <AssociationSet Name="FK_MergeBatch_MergeBatchState" Association="SaGECorrespondenceModel.FK_MergeBatch_MergeBatchState">
+            <End Role="MergeBatchState" EntitySet="MergeBatchStates" />
+            <End Role="MergeBatch" EntitySet="MergeBatches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MergeBatchState_MergeBatchState" Association="SaGECorrespondenceModel.FK_MergeBatchState_MergeBatchState">
+            <End Role="MergeBatchState" EntitySet="MergeBatchStates" />
+            <End Role="MergeBatchState1" EntitySet="MergeBatchStates" />
+          </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="SaGECorrespondenceModel.sysdiagram" />
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(SaGECorrespondenceModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(SaGECorrespondenceModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          </EntityContainer>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentKeyId" Type="Int32" />
+          <Property Name="AccountName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LineOfBusiness" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="BusinessArea" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="RequestPath" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="DocumentPath" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="RejectPath" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="TemplatePath" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="OutPath" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="Prefix" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Counter" Type="Int32" />
+          <NavigationProperty Name="Account1" Relationship="SaGECorrespondenceModel.FK_Account_Account" FromRole="Account" ToRole="Account1" />
+          <NavigationProperty Name="Account2" Relationship="SaGECorrespondenceModel.FK_Account_Account" FromRole="Account1" ToRole="Account" />
+          <NavigationProperty Name="StufferGroups" Relationship="SaGECorrespondenceModel.FK_StufferGroup_Account" FromRole="Account" ToRole="StufferGroup" />
+          <NavigationProperty Name="TemplateGroups" Relationship="SaGECorrespondenceModel.FK_TemplateGroup_Account" FromRole="Account" ToRole="TemplateGroup" />
+          <NavigationProperty Name="TransactionDefinitions" Relationship="SaGECorrespondenceModel.FK_TransactionDefinition_Account" FromRole="Account" ToRole="TransactionDefinition" />
+          <NavigationProperty Name="JobDefinitions" Relationship="SaGECorrespondenceModel.FK_JobDefinition_Account" FromRole="Account" ToRole="JobDefinition" />
+        </EntityType>
+        <EntityType Name="Batch">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
+          <Property Name="Enabled" Type="Boolean" />
+          <NavigationProperty Name="Job" Relationship="SaGECorrespondenceModel.FK_Batch_Job" FromRole="Batch" ToRole="Job" />
+          <Property Type="String" Name="State" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Engine" />
+          <Property Type="String" Name="JobType" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Channel">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="TransactionChannels" Relationship="SaGECorrespondenceModel.FK_ChannelData_Channel" FromRole="Channel" ToRole="TransactionChannel" />
+          <NavigationProperty Name="ChannelSequences" Relationship="SaGECorrespondenceModel.FK_ChannelSequence_Channel" FromRole="Channel" ToRole="ChannelSequence" />
+          <NavigationProperty Name="ChannelSequences1" Relationship="SaGECorrespondenceModel.FK_ChannelSequence_Channel1" FromRole="Channel" ToRole="ChannelSequence" />
+          <NavigationProperty Name="ChannelSequences2" Relationship="SaGECorrespondenceModel.FK_ChannelSequence_Channel2" FromRole="Channel" ToRole="ChannelSequence" />
+          <NavigationProperty Name="JobDefChannels" Relationship="SaGECorrespondenceModel.FK_JobDefChannels_Channel" FromRole="Channel" ToRole="JobDefChannels" />
+          <NavigationProperty Name="Transactions" Relationship="SaGECorrespondenceModel.FK_Transaction_Channel" FromRole="Channel" ToRole="Transaction" />
+          <NavigationProperty Name="ChannelBatches" Relationship="SaGECorrespondenceModel.FK_ChannelBatch_Channel" FromRole="Channel" ToRole="ChannelBatch" />
+        </EntityType>
+        <EntityType Name="ChannelSequence">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobDefId" Type="Int32" />
+          <Property Name="CurrentChannelId" Type="Int32" />
+          <Property Name="NextChannelIdSuccess" Type="Int32" />
+          <Property Name="NextChannelIdFail" Type="Int32" />
+          <NavigationProperty Name="Channel" Relationship="SaGECorrespondenceModel.FK_ChannelSequence_Channel" FromRole="ChannelSequence" ToRole="Channel" />
+          <NavigationProperty Name="Channel1" Relationship="SaGECorrespondenceModel.FK_ChannelSequence_Channel1" FromRole="ChannelSequence" ToRole="Channel" />
+          <NavigationProperty Name="Channel2" Relationship="SaGECorrespondenceModel.FK_ChannelSequence_Channel2" FromRole="ChannelSequence" ToRole="Channel" />
+          <NavigationProperty Name="JobDefinition" Relationship="SaGECorrespondenceModel.FK_ChannelSequence_JobDefinition" FromRole="ChannelSequence" ToRole="JobDefinition" />
+        </EntityType>
+        <EntityType Name="DocStore">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobDefId" Type="Int32" />
+          <Property Name="Format" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="LineOfBusiness" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Process" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Permission" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Category" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="JobDefinition" Relationship="SaGECorrespondenceModel.FK_DocStore_JobDefinition" FromRole="DocStore" ToRole="JobDefinition" />
+        </EntityType>
+        <EntityType Name="Engine">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="Int32" Nullable="false" />
+          <Property Name="EngineType" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobDefId" Type="Int32" />
+          <Property Name="JobName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="SourcePath" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="LoadDate" Type="DateTime" Precision="3" />
+          <Property Name="DeliveryDate" Type="DateTime" Precision="3" />
+          <Property Name="Process" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="State" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Batches" Relationship="SaGECorrespondenceModel.FK_Batch_Job" FromRole="Job" ToRole="Batch" />
+          <NavigationProperty Name="PrinterDetails" Relationship="SaGECorrespondenceModel.FK_PrinterDetail_Job" FromRole="Job" ToRole="PrinterDetail" />
+          <NavigationProperty Name="Transactions" Relationship="SaGECorrespondenceModel.FK_Transaction_Job" FromRole="Job" ToRole="Transaction" />
+          <NavigationProperty Name="ChannelBatches" Relationship="SaGECorrespondenceModel.FK_ChannelBatch_Job" FromRole="Job" ToRole="ChannelBatch" />
+          <NavigationProperty Name="JobDefinition" Relationship="SaGECorrespondenceModel.FK_Job_JobDefinition" FromRole="Job" ToRole="JobDefinition" />
+        </EntityType>
+        <EntityType Name="JobDefChannel">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobDefId" Type="Int32" Nullable="false" />
+          <Property Name="ChannelId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Channel" Relationship="SaGECorrespondenceModel.FK_JobDefChannels_Channel" FromRole="JobDefChannels" ToRole="Channel" />
+          <NavigationProperty Name="JobDefinition" Relationship="SaGECorrespondenceModel.FK_JobDefChannels_JobDefinition" FromRole="JobDefChannel" ToRole="JobDefinition" />
+        </EntityType>
+        <EntityType Name="Package">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="Int32" Nullable="false" />
+          <Property Name="JobDefId" Type="Int32" />
+          <Property Name="LOBId" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="PrinterDetail">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobId" Type="Int32" />
+          <Property Name="SupplierId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PrintType" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Default" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Job" Relationship="SaGECorrespondenceModel.FK_PrinterDetail_Job" FromRole="PrinterDetail" ToRole="Job" />
+          <NavigationProperty Name="PrintSupplier" Relationship="SaGECorrespondenceModel.FK_PrinterDetail_PrintSupplier" FromRole="PrinterDetail" ToRole="PrintSupplier" />
+          <NavigationProperty Name="PrinterTrays" Relationship="SaGECorrespondenceModel.FK_PrinterTray_PrinterDetail" FromRole="PrinterDetail" ToRole="PrinterTray" />
+        </EntityType>
+        <EntityType Name="PrinterTray">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PrinterDetailId" Type="Int32" />
+          <Property Name="Tray" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Stationery" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="PrinterDetail" Relationship="SaGECorrespondenceModel.FK_PrinterTray_PrinterDetail" FromRole="PrinterTray" ToRole="PrinterDetail" />
+        </EntityType>
+        <EntityType Name="PrintSupplier">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="ContactName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ContactInfo" Type="String" MaxLength="132" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="PrinterDetails" Relationship="SaGECorrespondenceModel.FK_PrinterDetail_PrintSupplier" FromRole="PrintSupplier" ToRole="PrinterDetail" />
+        </EntityType>
+        <EntityType Name="Stuffer">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmailId" Type="Int32" />
+          <Property Name="StufferGroupId" Type="Int32" />
+          <Property Name="StufferPath" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="StufferName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="EffectiveDate" Type="DateTime" Precision="3" />
+          <Property Name="Enabled" Type="Boolean" />
+          <NavigationProperty Name="StufferGroup" Relationship="SaGECorrespondenceModel.FK_Stuffer_StufferGroup" FromRole="Stuffer" ToRole="StufferGroup" />
+          <NavigationProperty Name="Email" Relationship="SaGECorrespondenceModel.FK_Stuffer_Email" FromRole="Stuffer" ToRole="Email" />
+        </EntityType>
+        <EntityType Name="StufferGroup">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="GroupName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="AccountId" Type="Int32" />
+          <NavigationProperty Name="Account" Relationship="SaGECorrespondenceModel.FK_StufferGroup_Account" FromRole="StufferGroup" ToRole="Account" />
+          <NavigationProperty Name="Stuffers" Relationship="SaGECorrespondenceModel.FK_Stuffer_StufferGroup" FromRole="StufferGroup" ToRole="Stuffer" />
+        </EntityType>
+        <EntityType Name="Template">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TemplateGroupId" Type="Int32" />
+          <Property Name="TemplateName" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="Format" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="EffectiveDate" Type="DateTime" Precision="3" />
+          <Property Name="Enabled" Type="Boolean" />
+          <NavigationProperty Name="TemplateGroup" Relationship="SaGECorrespondenceModel.FK_Template_TemplateGroup" FromRole="Template" ToRole="TemplateGroup" />
+          <NavigationProperty Name="Emails" Relationship="SaGECorrespondenceModel.FK_Email_Template" FromRole="Template" ToRole="Email" />
+          <NavigationProperty Name="Emails1" Relationship="SaGECorrespondenceModel.FK_Email_Template1" FromRole="Template" ToRole="Email" />
+          </EntityType>
+        <EntityType Name="TemplateGroup">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="GroupName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="AccountId" Type="Int32" />
+          <NavigationProperty Name="Account" Relationship="SaGECorrespondenceModel.FK_TemplateGroup_Account" FromRole="TemplateGroup" ToRole="Account" />
+          <NavigationProperty Name="Templates" Relationship="SaGECorrespondenceModel.FK_Template_TemplateGroup" FromRole="TemplateGroup" ToRole="Template" />
+        </EntityType>
+        <EntityType Name="Transaction">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TransactionDefinitionId" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="JobId" Type="Int32" />
+          <Property Name="BatchId" Type="Int32" />
+          <Property Name="ChannelId" Type="Int32" />
+          <Property Name="Guid" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="ClientId" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="LOBId" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LOBKey" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="State" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Locked" Type="Boolean" />
+          <Property Name="LockDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Channel" Relationship="SaGECorrespondenceModel.FK_Transaction_Channel" FromRole="Transaction" ToRole="Channel" />
+          <NavigationProperty Name="Job" Relationship="SaGECorrespondenceModel.FK_Transaction_Job" FromRole="Transaction" ToRole="Job" />
+          <NavigationProperty Name="TransactionChannels" Relationship="SaGECorrespondenceModel.FK_ChannelData_Transaction" FromRole="Transaction" ToRole="TransactionChannel" />
+          <NavigationProperty Name="TransactionDefinition" Relationship="SaGECorrespondenceModel.FK_Transaction_Transaction" FromRole="Transaction" ToRole="TransactionDefinition" />
+          <NavigationProperty Name="TransactionDatas" Relationship="SaGECorrespondenceModel.FK_TransData_Transaction" FromRole="Transaction" ToRole="TransactionData" />
+          <NavigationProperty Name="TransactionContactPoints" Relationship="SaGECorrespondenceModel.FK_TransactionContactPoint_Transaction" FromRole="Transaction" ToRole="TransactionContactPoint" />
+          <NavigationProperty Name="TransactionEntities" Relationship="SaGECorrespondenceModel.FK_TransactionEntity_Transaction" FromRole="Transaction" ToRole="TransactionEntity" />
+          <NavigationProperty Name="ChannelBatchTransactions" Relationship="SaGECorrespondenceModel.FK_ChannelTransaction_Transaction" FromRole="Transaction" ToRole="ChannelBatchTransaction" />
+          <NavigationProperty Name="MergeBatchTransactions" Relationship="SaGECorrespondenceModel.FK_MergeBatchTransaction_Transaction" FromRole="Transaction" ToRole="MergeBatchTransaction" />
+          <Property Name="PostCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TransactionChannel">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TransactionId" Type="Int32" />
+          <Property Name="ChannelId" Type="Int32" />
+          <Property Name="AddressLine1" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="AddressLine2" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="AddressLine3" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="AddressLine4" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PostalCode" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ContactString" Type="String" MaxLength="132" Unicode="true" FixedLength="false" />
+          <Property Name="NumberBody" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Channel" Relationship="SaGECorrespondenceModel.FK_ChannelData_Channel" FromRole="TransactionChannel" ToRole="Channel" />
+          <NavigationProperty Name="Transaction" Relationship="SaGECorrespondenceModel.FK_ChannelData_Transaction" FromRole="TransactionChannel" ToRole="Transaction" />
+        </EntityType>
+        <EntityType Name="TransactionData">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TransactionId" Type="Int32" />
+          <Property Name="DataTypeId" Type="Int32" />
+          <Property Name="Data" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Transaction" Relationship="SaGECorrespondenceModel.FK_TransData_Transaction" FromRole="TransactionData" ToRole="Transaction" />
+          <NavigationProperty Name="TransDataType" Relationship="SaGECorrespondenceModel.FK_TransactionData_Transaction" FromRole="TransactionData" ToRole="TransDataType" />
+        </EntityType>
+        <EntityType Name="TransactionDefinition">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="AccountId" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Account" Relationship="SaGECorrespondenceModel.FK_TransactionDefinition_Account" FromRole="TransactionDefinition" ToRole="Account" />
+          <NavigationProperty Name="Transactions" Relationship="SaGECorrespondenceModel.FK_Transaction_Transaction" FromRole="TransactionDefinition" ToRole="Transaction" />
+        </EntityType>
+        <EntityType Name="TransDataType">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="TransactionDatas" Relationship="SaGECorrespondenceModel.FK_TransactionData_Transaction" FromRole="TransDataType" ToRole="TransactionData" />
+        </EntityType>
+        <Association Name="FK_Account_Account">
+          <End Role="Account" Type="SaGECorrespondenceModel.Account" Multiplicity="0..1" />
+          <End Role="Account1" Type="SaGECorrespondenceModel.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="Account1">
+              <PropertyRef Name="ParentKeyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StufferGroup_Account">
+          <End Role="Account" Type="SaGECorrespondenceModel.Account" Multiplicity="0..1" />
+          <End Role="StufferGroup" Type="SaGECorrespondenceModel.StufferGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="StufferGroup">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TemplateGroup_Account">
+          <End Role="Account" Type="SaGECorrespondenceModel.Account" Multiplicity="0..1" />
+          <End Role="TemplateGroup" Type="SaGECorrespondenceModel.TemplateGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="TemplateGroup">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionDefinition_Account">
+          <End Role="Account" Type="SaGECorrespondenceModel.Account" Multiplicity="0..1" />
+          <End Role="TransactionDefinition" Type="SaGECorrespondenceModel.TransactionDefinition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="TransactionDefinition">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Batch_Job">
+          <End Role="Job" Type="SaGECorrespondenceModel.Job" Multiplicity="0..1" />
+          <End Role="Batch" Type="SaGECorrespondenceModel.Batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="Batch">
+              <PropertyRef Name="JobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChannelData_Channel">
+          <End Role="Channel" Type="SaGECorrespondenceModel.Channel" Multiplicity="0..1" />
+          <End Role="TransactionChannel" Type="SaGECorrespondenceModel.TransactionChannel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Channel">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="TransactionChannel">
+              <PropertyRef Name="ChannelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChannelSequence_Channel">
+          <End Role="Channel" Type="SaGECorrespondenceModel.Channel" Multiplicity="0..1" />
+          <End Role="ChannelSequence" Type="SaGECorrespondenceModel.ChannelSequence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Channel">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="ChannelSequence">
+              <PropertyRef Name="CurrentChannelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChannelSequence_Channel1">
+          <End Role="Channel" Type="SaGECorrespondenceModel.Channel" Multiplicity="0..1" />
+          <End Role="ChannelSequence" Type="SaGECorrespondenceModel.ChannelSequence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Channel">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="ChannelSequence">
+              <PropertyRef Name="NextChannelIdFail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChannelSequence_Channel2">
+          <End Role="Channel" Type="SaGECorrespondenceModel.Channel" Multiplicity="0..1" />
+          <End Role="ChannelSequence" Type="SaGECorrespondenceModel.ChannelSequence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Channel">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="ChannelSequence">
+              <PropertyRef Name="NextChannelIdSuccess" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobDefChannels_Channel">
+          <End Role="Channel" Type="SaGECorrespondenceModel.Channel" Multiplicity="1" />
+          <End Role="JobDefChannels" Type="SaGECorrespondenceModel.JobDefChannel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Channel">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="JobDefChannels">
+              <PropertyRef Name="ChannelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transaction_Channel">
+          <End Role="Channel" Type="SaGECorrespondenceModel.Channel" Multiplicity="0..1" />
+          <End Role="Transaction" Type="SaGECorrespondenceModel.Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Channel">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="Transaction">
+              <PropertyRef Name="ChannelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrinterDetail_Job">
+          <End Role="Job" Type="SaGECorrespondenceModel.Job" Multiplicity="0..1" />
+          <End Role="PrinterDetail" Type="SaGECorrespondenceModel.PrinterDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="PrinterDetail">
+              <PropertyRef Name="JobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transaction_Job">
+          <End Role="Job" Type="SaGECorrespondenceModel.Job" Multiplicity="0..1" />
+          <End Role="Transaction" Type="SaGECorrespondenceModel.Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="Transaction">
+              <PropertyRef Name="JobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrinterDetail_PrintSupplier">
+          <End Role="PrintSupplier" Type="SaGECorrespondenceModel.PrintSupplier" Multiplicity="0..1" />
+          <End Role="PrinterDetail" Type="SaGECorrespondenceModel.PrinterDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrintSupplier">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="PrinterDetail">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrinterTray_PrinterDetail">
+          <End Role="PrinterDetail" Type="SaGECorrespondenceModel.PrinterDetail" Multiplicity="0..1" />
+          <End Role="PrinterTray" Type="SaGECorrespondenceModel.PrinterTray" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrinterDetail">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="PrinterTray">
+              <PropertyRef Name="PrinterDetailId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stuffer_StufferGroup">
+          <End Role="StufferGroup" Type="SaGECorrespondenceModel.StufferGroup" Multiplicity="0..1" />
+          <End Role="Stuffer" Type="SaGECorrespondenceModel.Stuffer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StufferGroup">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="Stuffer">
+              <PropertyRef Name="StufferGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Template_TemplateGroup">
+          <End Role="TemplateGroup" Type="SaGECorrespondenceModel.TemplateGroup" Multiplicity="0..1" />
+          <End Role="Template" Type="SaGECorrespondenceModel.Template" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TemplateGroup">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="Template">
+              <PropertyRef Name="TemplateGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChannelData_Transaction">
+          <End Role="Transaction" Type="SaGECorrespondenceModel.Transaction" Multiplicity="0..1" />
+          <End Role="TransactionChannel" Type="SaGECorrespondenceModel.TransactionChannel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transaction">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="TransactionChannel">
+              <PropertyRef Name="TransactionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transaction_Transaction">
+          <End Role="TransactionDefinition" Type="SaGECorrespondenceModel.TransactionDefinition" Multiplicity="0..1" />
+          <End Role="Transaction" Type="SaGECorrespondenceModel.Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransactionDefinition">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="Transaction">
+              <PropertyRef Name="TransactionDefinitionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransData_Transaction">
+          <End Role="Transaction" Type="SaGECorrespondenceModel.Transaction" Multiplicity="0..1" />
+          <End Role="TransactionData" Type="SaGECorrespondenceModel.TransactionData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transaction">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="TransactionData">
+              <PropertyRef Name="TransactionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionData_Transaction">
+          <End Role="TransDataType" Type="SaGECorrespondenceModel.TransDataType" Multiplicity="0..1" />
+          <End Role="TransactionData" Type="SaGECorrespondenceModel.TransactionData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransDataType">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="TransactionData">
+              <PropertyRef Name="DataTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TransactionContactPoint">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Type="Int32" Name="KeyId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ContactPointId" Nullable="false" />
+          <Property Type="Int32" Name="TransactionId" Nullable="false" />
+          <Property Type="String" Name="ContactType" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AddressLine1" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AddressLine2" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AddressLine3" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AddressLine4" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PostalCode" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ContactString" MaxLength="132" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="NumberBody" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Status" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Transaction" Relationship="SaGECorrespondenceModel.FK_TransactionContactPoint_Transaction" FromRole="TransactionContactPoint" ToRole="Transaction" />
+        </EntityType>
+        <EntityType Name="TransactionEntity">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Type="Int32" Name="KeyId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="TransactionId" />
+          <Property Type="String" Name="PartyType" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CompanyName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="StatPE" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Title" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Initials" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Surname" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Language" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Transaction" Relationship="SaGECorrespondenceModel.FK_TransactionEntity_Transaction" FromRole="TransactionEntity" ToRole="Transaction" />
+        </EntityType>
+        <Association Name="FK_TransactionContactPoint_Transaction">
+          <End Type="SaGECorrespondenceModel.Transaction" Role="Transaction" Multiplicity="1" />
+          <End Type="SaGECorrespondenceModel.TransactionContactPoint" Role="TransactionContactPoint" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transaction">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="TransactionContactPoint">
+              <PropertyRef Name="TransactionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionEntity_Transaction">
+          <End Type="SaGECorrespondenceModel.Transaction" Role="Transaction" Multiplicity="0..1" />
+          <End Type="SaGECorrespondenceModel.TransactionEntity" Role="TransactionEntity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transaction">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="TransactionEntity">
+              <PropertyRef Name="TransactionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Email">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="Int32" Nullable="false" />
+          <Property Name="JobDefId" Type="Int32" />
+          <Property Name="FromAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FriendlyName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="BCC" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SubjectEnglish" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SubjectAfrikaans" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="EngTemplateId" Type="Int32" />
+          <Property Name="AfrTemplateId" Type="Int32" />
+          <NavigationProperty Name="Template" Relationship="SaGECorrespondenceModel.FK_Email_Template" FromRole="Email" ToRole="Template" />
+          <NavigationProperty Name="Template1" Relationship="SaGECorrespondenceModel.FK_Email_Template1" FromRole="Email" ToRole="Template" />
+          <NavigationProperty Name="Stuffers" Relationship="SaGECorrespondenceModel.FK_Stuffer_Email" FromRole="Email" ToRole="Stuffer" />
+          <NavigationProperty Name="JobDefinition" Relationship="SaGECorrespondenceModel.FK_Email_JobDefinition" FromRole="Email" ToRole="JobDefinition" />
+          <Property Type="String" Name="AttachmentFriendlyName" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Email_Template">
+          <End Type="SaGECorrespondenceModel.Template" Role="Template" Multiplicity="0..1" />
+          <End Type="SaGECorrespondenceModel.Email" Role="Email" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Template">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="Email">
+              <PropertyRef Name="EngTemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Email_Template1">
+          <End Type="SaGECorrespondenceModel.Template" Role="Template" Multiplicity="0..1" />
+          <End Type="SaGECorrespondenceModel.Email" Role="Email" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Template">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="Email">
+              <PropertyRef Name="AfrTemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stuffer_Email">
+          <End Type="SaGECorrespondenceModel.Email" Role="Email" Multiplicity="0..1" />
+          <End Type="SaGECorrespondenceModel.Stuffer" Role="Stuffer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Email">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="Stuffer">
+              <PropertyRef Name="EmailId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ChannelBatch">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobId" Type="Int32" />
+          <Property Name="ChannelId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Enabled" Type="Boolean" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Channel" Relationship="SaGECorrespondenceModel.FK_ChannelBatch_Channel" FromRole="ChannelBatch" ToRole="Channel" />
+          <NavigationProperty Name="Job" Relationship="SaGECorrespondenceModel.FK_ChannelBatch_Job" FromRole="ChannelBatch" ToRole="Job" />
+          <NavigationProperty Name="ChannelBatchTransactions" Relationship="SaGECorrespondenceModel.FK_ChannelTransaction_ChannelBatch" FromRole="ChannelBatch" ToRole="ChannelBatchTransaction" />
+        </EntityType>
+        <EntityType Name="ChannelBatchTransaction">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChannelBatchId" Type="Int32" />
+          <Property Name="TransactionId" Type="Int32" />
+          <Property Name="Enabled" Type="Boolean" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ChannelBatch" Relationship="SaGECorrespondenceModel.FK_ChannelTransaction_ChannelBatch" FromRole="ChannelBatchTransaction" ToRole="ChannelBatch" />
+          <NavigationProperty Name="Transaction" Relationship="SaGECorrespondenceModel.FK_ChannelTransaction_Transaction" FromRole="ChannelBatchTransaction" ToRole="Transaction" />
+        </EntityType>
+        <Association Name="FK_ChannelBatch_Channel">
+          <End Type="SaGECorrespondenceModel.Channel" Role="Channel" Multiplicity="0..1" />
+          <End Type="SaGECorrespondenceModel.ChannelBatch" Role="ChannelBatch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Channel">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="ChannelBatch">
+              <PropertyRef Name="ChannelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChannelBatch_Job">
+          <End Type="SaGECorrespondenceModel.Job" Role="Job" Multiplicity="0..1" />
+          <End Type="SaGECorrespondenceModel.ChannelBatch" Role="ChannelBatch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="ChannelBatch">
+              <PropertyRef Name="JobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChannelTransaction_ChannelBatch">
+          <End Type="SaGECorrespondenceModel.ChannelBatch" Role="ChannelBatch" Multiplicity="0..1" />
+          <End Type="SaGECorrespondenceModel.ChannelBatchTransaction" Role="ChannelBatchTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChannelBatch">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="ChannelBatchTransaction">
+              <PropertyRef Name="ChannelBatchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChannelTransaction_Transaction">
+          <End Type="SaGECorrespondenceModel.Transaction" Role="Transaction" Multiplicity="0..1" />
+          <End Type="SaGECorrespondenceModel.ChannelBatchTransaction" Role="ChannelBatchTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transaction">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="ChannelBatchTransaction">
+              <PropertyRef Name="TransactionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MergeBatchTransaction">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MergeBatchId" Type="Int32" Nullable="false" />
+          <Property Name="TransactionId" Type="Int32" />
+          <Property Name="Enabled" Type="Boolean" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Transaction" Relationship="SaGECorrespondenceModel.FK_MergeBatchTransaction_Transaction" FromRole="MergeBatchTransaction" ToRole="Transaction" />
+          <NavigationProperty Name="MergeBatch" Relationship="SaGECorrespondenceModel.FK_MergeBatchTransaction_MergeBatch" FromRole="MergeBatchTransaction" ToRole="MergeBatch" />
+        </EntityType>
+        <Association Name="FK_MergeBatchTransaction_Transaction">
+          <End Type="SaGECorrespondenceModel.Transaction" Role="Transaction" Multiplicity="0..1" />
+          <End Type="SaGECorrespondenceModel.MergeBatchTransaction" Role="MergeBatchTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transaction">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="MergeBatchTransaction">
+              <PropertyRef Name="TransactionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="JobDefinition">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountId" Type="Int32" />
+          <Property Name="EngineId" Type="Int32" />
+          <Property Name="JobName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DataSource" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JobType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="132" FixedLength="false" Unicode="true" />
+          <Property Name="BatchItemCount" Type="Int32" />
+          <Property Name="Mode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Account" Relationship="SaGECorrespondenceModel.FK_JobDefinition_Account" FromRole="JobDefinition" ToRole="Account" />
+          <NavigationProperty Name="ChannelSequences" Relationship="SaGECorrespondenceModel.FK_ChannelSequence_JobDefinition" FromRole="JobDefinition" ToRole="ChannelSequence" />
+          <NavigationProperty Name="Emails" Relationship="SaGECorrespondenceModel.FK_Email_JobDefinition" FromRole="JobDefinition" ToRole="Email" />
+          <NavigationProperty Name="JobDefChannels" Relationship="SaGECorrespondenceModel.FK_JobDefChannels_JobDefinition" FromRole="JobDefinition" ToRole="JobDefChannel" />
+          <NavigationProperty Name="DocStores" Relationship="SaGECorrespondenceModel.FK_DocStore_JobDefinition" FromRole="JobDefinition" ToRole="DocStore" />
+          <NavigationProperty Name="Jobs" Relationship="SaGECorrespondenceModel.FK_Job_JobDefinition" FromRole="JobDefinition" ToRole="Job" />
+        </EntityType>
+        <Association Name="FK_JobDefinition_Account">
+          <End Type="SaGECorrespondenceModel.Account" Role="Account" Multiplicity="0..1" />
+          <End Type="SaGECorrespondenceModel.JobDefinition" Role="JobDefinition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="JobDefinition">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChannelSequence_JobDefinition">
+          <End Type="SaGECorrespondenceModel.JobDefinition" Role="JobDefinition" Multiplicity="0..1" />
+          <End Type="SaGECorrespondenceModel.ChannelSequence" Role="ChannelSequence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobDefinition">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="ChannelSequence">
+              <PropertyRef Name="JobDefId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Email_JobDefinition">
+          <End Type="SaGECorrespondenceModel.JobDefinition" Role="JobDefinition" Multiplicity="0..1" />
+          <End Type="SaGECorrespondenceModel.Email" Role="Email" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobDefinition">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="Email">
+              <PropertyRef Name="JobDefId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobDefChannels_JobDefinition">
+          <End Type="SaGECorrespondenceModel.JobDefinition" Role="JobDefinition" Multiplicity="1" />
+          <End Type="SaGECorrespondenceModel.JobDefChannel" Role="JobDefChannel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobDefinition">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="JobDefChannel">
+              <PropertyRef Name="JobDefId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DocStore_JobDefinition">
+          <End Type="SaGECorrespondenceModel.JobDefinition" Role="JobDefinition" Multiplicity="0..1" />
+          <End Type="SaGECorrespondenceModel.DocStore" Role="DocStore" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobDefinition">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="DocStore">
+              <PropertyRef Name="JobDefId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Job_JobDefinition">
+          <End Type="SaGECorrespondenceModel.JobDefinition" Role="JobDefinition" Multiplicity="0..1" />
+          <End Type="SaGECorrespondenceModel.Job" Role="Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobDefinition">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="JobDefId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="BouncedMail">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Type="Int32" Name="KeyId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="MailAddress" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Processed" />
+        </EntityType>
+        <EntityType Name="Audit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ClientId" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Filename" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="DateCreated" Precision="3" />
+          <Property Type="DateTime" Name="DateSent" Precision="3" />
+          <Property Type="String" Name="Channel" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MergeBatch">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobId" Type="Int32" Nullable="false" />
+          <Property Name="ChannelId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Engine" Type="Int32" />
+          <Property Name="Enabled" Type="Boolean" />
+          <Property Name="State" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MergeBatchTransactions" Relationship="SaGECorrespondenceModel.FK_MergeBatchTransaction_MergeBatch" FromRole="MergeBatch" ToRole="MergeBatchTransaction" />
+          <NavigationProperty Name="MergeBatchState" Relationship="SaGECorrespondenceModel.FK_MergeBatch_MergeBatchState" FromRole="MergeBatch" ToRole="MergeBatchState" />
+        </EntityType>
+        <Association Name="FK_MergeBatchTransaction_MergeBatch">
+          <End Type="SaGECorrespondenceModel.MergeBatch" Role="MergeBatch" Multiplicity="1" />
+          <End Type="SaGECorrespondenceModel.MergeBatchTransaction" Role="MergeBatchTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MergeBatch">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="MergeBatchTransaction">
+              <PropertyRef Name="MergeBatchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MergeBatchState">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MergeBatches" Relationship="SaGECorrespondenceModel.FK_MergeBatch_MergeBatchState" FromRole="MergeBatchState" ToRole="MergeBatch" />
+          <NavigationProperty Name="MergeBatchState1" Relationship="SaGECorrespondenceModel.FK_MergeBatchState_MergeBatchState" FromRole="MergeBatchState" ToRole="MergeBatchState1" />
+          <NavigationProperty Name="MergeBatchState2" Relationship="SaGECorrespondenceModel.FK_MergeBatchState_MergeBatchState" FromRole="MergeBatchState1" ToRole="MergeBatchState" />
+        </EntityType>
+        <Association Name="FK_MergeBatch_MergeBatchState">
+          <End Type="SaGECorrespondenceModel.MergeBatchState" Role="MergeBatchState" Multiplicity="1" />
+          <End Type="SaGECorrespondenceModel.MergeBatch" Role="MergeBatch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MergeBatchState">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="MergeBatch">
+              <PropertyRef Name="State" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MergeBatchState_MergeBatchState">
+          <End Type="SaGECorrespondenceModel.MergeBatchState" Role="MergeBatchState" Multiplicity="1" />
+          <End Type="SaGECorrespondenceModel.MergeBatchState" Role="MergeBatchState1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="MergeBatchState">
+              <PropertyRef Name="KeyId" />
+            </Principal>
+            <Dependent Role="MergeBatchState1">
+              <PropertyRef Name="KeyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SaGECorrespondenceModelStoreContainer" CdmEntityContainer="SaGECorrespondenceEntities">
+          <EntitySetMapping Name="Accounts"><EntityTypeMapping TypeName="SaGECorrespondenceModel.Account"><MappingFragment StoreEntitySet="Account">
+            <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+            <ScalarProperty Name="ParentKeyId" ColumnName="ParentKeyId" />
+            <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+            <ScalarProperty Name="LineOfBusiness" ColumnName="LineOfBusiness" />
+            <ScalarProperty Name="BusinessArea" ColumnName="BusinessArea" />
+            <ScalarProperty Name="RequestPath" ColumnName="RequestPath" />
+            <ScalarProperty Name="DocumentPath" ColumnName="DocumentPath" />
+            <ScalarProperty Name="RejectPath" ColumnName="RejectPath" />
+            <ScalarProperty Name="TemplatePath" ColumnName="TemplatePath" />
+            <ScalarProperty Name="OutPath" ColumnName="OutPath" />
+            <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+            <ScalarProperty Name="Counter" ColumnName="Counter" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Batches"><EntityTypeMapping TypeName="SaGECorrespondenceModel.Batch"><MappingFragment StoreEntitySet="Batch">
+            <ScalarProperty Name="JobType" ColumnName="JobType" />
+                <ScalarProperty Name="Engine" ColumnName="Engine" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+            <ScalarProperty Name="JobId" ColumnName="JobId" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+            <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+            <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Channels"><EntityTypeMapping TypeName="SaGECorrespondenceModel.Channel"><MappingFragment StoreEntitySet="Channel">
+            <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ChannelSequences"><EntityTypeMapping TypeName="SaGECorrespondenceModel.ChannelSequence"><MappingFragment StoreEntitySet="ChannelSequence">
+            <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+            <ScalarProperty Name="JobDefId" ColumnName="JobDefId" />
+            <ScalarProperty Name="CurrentChannelId" ColumnName="CurrentChannelId" />
+            <ScalarProperty Name="NextChannelIdSuccess" ColumnName="NextChannelIdSuccess" />
+            <ScalarProperty Name="NextChannelIdFail" ColumnName="NextChannelIdFail" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="DocStores"><EntityTypeMapping TypeName="SaGECorrespondenceModel.DocStore"><MappingFragment StoreEntitySet="DocStore">
+            <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+            <ScalarProperty Name="JobDefId" ColumnName="JobDefId" />
+            <ScalarProperty Name="Format" ColumnName="Format" />
+            <ScalarProperty Name="LineOfBusiness" ColumnName="LineOfBusiness" />
+            <ScalarProperty Name="Process" ColumnName="Process" />
+            <ScalarProperty Name="Permission" ColumnName="Permission" />
+            <ScalarProperty Name="Category" ColumnName="Category" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Engines"><EntityTypeMapping TypeName="SaGECorrespondenceModel.Engine"><MappingFragment StoreEntitySet="Engine">
+            <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+            <ScalarProperty Name="EngineType" ColumnName="EngineType" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Jobs"><EntityTypeMapping TypeName="SaGECorrespondenceModel.Job"><MappingFragment StoreEntitySet="Job">
+            <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+            <ScalarProperty Name="JobDefId" ColumnName="JobDefId" />
+            <ScalarProperty Name="JobName" ColumnName="JobName" />
+            <ScalarProperty Name="SourcePath" ColumnName="SourcePath" />
+            <ScalarProperty Name="LoadDate" ColumnName="LoadDate" />
+            <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+            <ScalarProperty Name="Process" ColumnName="Process" />
+            <ScalarProperty Name="State" ColumnName="State" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="JobDefChannels"><EntityTypeMapping TypeName="SaGECorrespondenceModel.JobDefChannel"><MappingFragment StoreEntitySet="JobDefChannels">
+            <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+            <ScalarProperty Name="JobDefId" ColumnName="JobDefId" />
+            <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Packages"><EntityTypeMapping TypeName="SaGECorrespondenceModel.Package"><MappingFragment StoreEntitySet="Package">
+            <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+            <ScalarProperty Name="JobDefId" ColumnName="JobDefId" />
+            <ScalarProperty Name="LOBId" ColumnName="LOBId" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="PrinterDetails"><EntityTypeMapping TypeName="SaGECorrespondenceModel.PrinterDetail"><MappingFragment StoreEntitySet="PrinterDetail">
+            <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+            <ScalarProperty Name="JobId" ColumnName="JobId" />
+            <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="PrintType" ColumnName="PrintType" />
+            <ScalarProperty Name="Default" ColumnName="Default" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="PrinterTrays"><EntityTypeMapping TypeName="SaGECorrespondenceModel.PrinterTray"><MappingFragment StoreEntitySet="PrinterTray">
+            <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+            <ScalarProperty Name="PrinterDetailId" ColumnName="PrinterDetailId" />
+            <ScalarProperty Name="Tray" ColumnName="Tray" />
+            <ScalarProperty Name="Stationery" ColumnName="Stationery" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="PrintSuppliers"><EntityTypeMapping TypeName="SaGECorrespondenceModel.PrintSupplier"><MappingFragment StoreEntitySet="PrintSupplier">
+            <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+            <ScalarProperty Name="ContactInfo" ColumnName="ContactInfo" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Stuffers"><EntityTypeMapping TypeName="SaGECorrespondenceModel.Stuffer"><MappingFragment StoreEntitySet="Stuffer">
+            <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+            <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+            <ScalarProperty Name="StufferGroupId" ColumnName="StufferGroupId" />
+            <ScalarProperty Name="StufferPath" ColumnName="StufferPath" />
+            <ScalarProperty Name="StufferName" ColumnName="StufferName" />
+            <ScalarProperty Name="EffectiveDate" ColumnName="EffectiveDate" />
+            <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="StufferGroups"><EntityTypeMapping TypeName="SaGECorrespondenceModel.StufferGroup"><MappingFragment StoreEntitySet="StufferGroup">
+            <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+            <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+            <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+            <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Templates"><EntityTypeMapping TypeName="SaGECorrespondenceModel.Template"><MappingFragment StoreEntitySet="Template">
+            <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+            <ScalarProperty Name="TemplateGroupId" ColumnName="TemplateGroupId" />
+            <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+            <ScalarProperty Name="Format" ColumnName="Format" />
+            <ScalarProperty Name="EffectiveDate" ColumnName="EffectiveDate" />
+            <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TemplateGroups"><EntityTypeMapping TypeName="SaGECorrespondenceModel.TemplateGroup"><MappingFragment StoreEntitySet="TemplateGroup">
+            <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+            <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+            <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+            <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Transactions"><EntityTypeMapping TypeName="SaGECorrespondenceModel.Transaction"><MappingFragment StoreEntitySet="Transaction">
+            <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+                <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+            <ScalarProperty Name="TransactionDefinitionId" ColumnName="TransactionDefinitionId" />
+            <ScalarProperty Name="JobId" ColumnName="JobId" />
+            <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+            <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+            <ScalarProperty Name="Guid" ColumnName="Guid" />
+            <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+            <ScalarProperty Name="LOBId" ColumnName="LOBId" />
+            <ScalarProperty Name="LOBKey" ColumnName="LOBKey" />
+            <ScalarProperty Name="State" ColumnName="State" />
+            <ScalarProperty Name="Locked" ColumnName="Locked" />
+            <ScalarProperty Name="LockDate" ColumnName="LockDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TransactionChannels"><EntityTypeMapping TypeName="SaGECorrespondenceModel.TransactionChannel"><MappingFragment StoreEntitySet="TransactionChannel">
+            <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+            <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+            <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+            <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+            <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+            <ScalarProperty Name="AddressLine3" ColumnName="AddressLine3" />
+            <ScalarProperty Name="AddressLine4" ColumnName="AddressLine4" />
+            <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+            <ScalarProperty Name="ContactString" ColumnName="ContactString" />
+            <ScalarProperty Name="NumberBody" ColumnName="NumberBody" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TransactionDatas"><EntityTypeMapping TypeName="SaGECorrespondenceModel.TransactionData"><MappingFragment StoreEntitySet="TransactionData">
+            <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+            <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+            <ScalarProperty Name="DataTypeId" ColumnName="DataTypeId" />
+            <ScalarProperty Name="Data" ColumnName="Data" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TransactionDefinitions"><EntityTypeMapping TypeName="SaGECorrespondenceModel.TransactionDefinition"><MappingFragment StoreEntitySet="TransactionDefinition">
+            <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+            <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TransDataTypes"><EntityTypeMapping TypeName="SaGECorrespondenceModel.TransDataType"><MappingFragment StoreEntitySet="TransDataType">
+            <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TransactionContactPoints">
+            <EntityTypeMapping TypeName="SaGECorrespondenceModel.TransactionContactPoint">
+              <MappingFragment StoreEntitySet="TransactionContactPoint">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="NumberBody" ColumnName="NumberBody" />
+                <ScalarProperty Name="ContactString" ColumnName="ContactString" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="AddressLine4" ColumnName="AddressLine4" />
+                <ScalarProperty Name="AddressLine3" ColumnName="AddressLine3" />
+                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+                <ScalarProperty Name="ContactType" ColumnName="ContactType" />
+                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+                <ScalarProperty Name="ContactPointId" ColumnName="ContactPointId" />
+                <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransactionEntities">
+            <EntityTypeMapping TypeName="SaGECorrespondenceModel.TransactionEntity">
+              <MappingFragment StoreEntitySet="TransactionEntity">
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Initials" ColumnName="Initials" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="StatPE" ColumnName="StatPE" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="PartyType" ColumnName="PartyType" />
+                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+                <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Emails">
+            <EntityTypeMapping TypeName="SaGECorrespondenceModel.Email">
+              <MappingFragment StoreEntitySet="Email">
+                <ScalarProperty Name="AttachmentFriendlyName" ColumnName="AttachmentFriendlyName" />
+                <ScalarProperty Name="AfrTemplateId" ColumnName="AfrTemplateId" />
+                <ScalarProperty Name="EngTemplateId" ColumnName="EngTemplateId" />
+                <ScalarProperty Name="SubjectAfrikaans" ColumnName="SubjectAfrikaans" />
+                <ScalarProperty Name="SubjectEnglish" ColumnName="SubjectEnglish" />
+                <ScalarProperty Name="BCC" ColumnName="BCC" />
+                <ScalarProperty Name="FriendlyName" ColumnName="FriendlyName" />
+                <ScalarProperty Name="FromAddress" ColumnName="FromAddress" />
+                <ScalarProperty Name="JobDefId" ColumnName="JobDefId" />
+                <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChannelBatches">
+            <EntityTypeMapping TypeName="SaGECorrespondenceModel.ChannelBatch">
+              <MappingFragment StoreEntitySet="ChannelBatch">
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+                <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChannelBatchTransactions">
+            <EntityTypeMapping TypeName="SaGECorrespondenceModel.ChannelBatchTransaction">
+              <MappingFragment StoreEntitySet="ChannelBatchTransaction">
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+                <ScalarProperty Name="ChannelBatchId" ColumnName="ChannelBatchId" />
+                <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MergeBatchTransactions">
+            <EntityTypeMapping TypeName="SaGECorrespondenceModel.MergeBatchTransaction">
+              <MappingFragment StoreEntitySet="MergeBatchTransaction">
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+                <ScalarProperty Name="MergeBatchId" ColumnName="MergeBatchId" />
+                <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobDefinitions">
+            <EntityTypeMapping TypeName="SaGECorrespondenceModel.JobDefinition">
+              <MappingFragment StoreEntitySet="JobDefinition">
+                <ScalarProperty Name="Mode" ColumnName="Mode" />
+                <ScalarProperty Name="BatchItemCount" ColumnName="BatchItemCount" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="JobType" ColumnName="JobType" />
+                <ScalarProperty Name="DataSource" ColumnName="DataSource" />
+                <ScalarProperty Name="JobName" ColumnName="JobName" />
+                <ScalarProperty Name="EngineId" ColumnName="EngineId" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BouncedMails">
+            <EntityTypeMapping TypeName="SaGECorrespondenceModel.BouncedMail">
+              <MappingFragment StoreEntitySet="BouncedMail">
+                <ScalarProperty Name="Processed" ColumnName="Processed" />
+                <ScalarProperty Name="MailAddress" ColumnName="MailAddress" />
+                <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Audits">
+            <EntityTypeMapping TypeName="SaGECorrespondenceModel.Audit">
+              <MappingFragment StoreEntitySet="Audit">
+                <ScalarProperty Name="Channel" ColumnName="Channel" />
+                <ScalarProperty Name="DateSent" ColumnName="DateSent" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Filename" ColumnName="Filename" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MergeBatches">
+            <EntityTypeMapping TypeName="SaGECorrespondenceModel.MergeBatch">
+              <MappingFragment StoreEntitySet="MergeBatch">
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="Engine" ColumnName="Engine" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+                <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MergeBatchStates">
+            <EntityTypeMapping TypeName="SaGECorrespondenceModel.MergeBatchState">
+              <MappingFragment StoreEntitySet="MergeBatchState">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SaGECorrespondenceModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="SaGECorrespondenceModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="SaGECorrespondenceModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="SaGECorrespondenceModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="SaGECorrespondenceModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SaGECorrespondenceModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="SaGECorrespondenceModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SaGECorrespondenceModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="SaGECorrespondenceModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="SaGECorrespondenceModel.Store.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="SaGE_Correspondence" ZoomLevel="80">
+        <EntityTypeShape EntityType="SaGECorrespondenceModel.Account" Width="1.5" PointX="1.5" PointY="12" Height="4.4802050781249978" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaGECorrespondenceModel.Batch" Width="1.5" PointX="6" PointY="12" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaGECorrespondenceModel.Channel" Width="1.5" PointX="0.75" PointY="8.25" Height="2.5571907552083335" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaGECorrespondenceModel.ChannelSequence" Width="1.5" PointX="3" PointY="8.125" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaGECorrespondenceModel.DocStore" Width="1.5" PointX="3.75" PointY="15.25" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaGECorrespondenceModel.Engine" Width="1.5" PointX="12.25" PointY="1.25" Height="1.4033821614583317" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaGECorrespondenceModel.Job" Width="1.5" PointX="3.75" PointY="2.5" Height="3.3263964843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaGECorrespondenceModel.JobDefChannel" Width="1.5" PointX="6.125" PointY="9.125" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaGECorrespondenceModel.Package" Width="1.5" PointX="1.5" PointY="26.875" Height="1.9802864583333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaGECorrespondenceModel.PrinterDetail" Width="1.5" PointX="11" PointY="6.375" Height="2.7494921875000031" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaGECorrespondenceModel.PrinterTray" Width="1.5" PointX="13.25" PointY="6.75" Height="1.9802864583333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaGECorrespondenceModel.PrintSupplier" Width="1.5" PointX="8.75" PointY="11" Height="1.9802864583333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaGECorrespondenceModel.Stuffer" Width="1.5" PointX="6" PointY="18" Height="2.749492187499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaGECorrespondenceModel.StufferGroup" Width="1.5" PointX="3.75" PointY="19.25" Height="2.172587890624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaGECorrespondenceModel.Template" Width="1.5" PointX="6" PointY="22.125" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaGECorrespondenceModel.TemplateGroup" Width="1.5" PointX="3.75" PointY="22.25" Height="2.172587890624996" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaGECorrespondenceModel.Transaction" Width="1.5" PointX="6" PointY="3.375" Height="4.2879036458333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaGECorrespondenceModel.TransactionChannel" Width="1.5" PointX="8.25" PointY="5.5" Height="3.3263964843749951" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaGECorrespondenceModel.TransactionData" Width="1.5" PointX="8.25" PointY="2.5" Height="2.1725878906250031" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaGECorrespondenceModel.TransactionDefinition" Width="1.5" PointX="3.75" PointY="12.125" Height="1.9802864583333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaGECorrespondenceModel.TransDataType" Width="1.5" PointX="6" PointY="0.75" Height="1.595683593749996" IsExpanded="true" />
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_Account_Account" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.0319230769230767" PointY="16.480205078124996" />
+          <ConnectorPoint PointX="2.0319230769230767" PointY="16.730205078124996" />
+          <ConnectorPoint PointX="2.4784615384615383" PointY="16.730205078124996" />
+          <ConnectorPoint PointX="2.4784615384615383" PointY="16.480205078124996" />
+        </AssociationConnector>
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_StufferGroup_Account" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.7347090384615385" PointY="16.480205078124996" />
+          <ConnectorPoint PointX="1.7347090384615385" PointY="20.336293945312498" />
+          <ConnectorPoint PointX="2.6871499358974358" PointY="20.336293945312498" />
+          <ConnectorPoint PointX="2.8538166025641027" PointY="20.336293945312498" />
+          <ConnectorPoint PointX="3.75" PointY="20.336293945312498" />
+        </AssociationConnector>
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_TemplateGroup_Account" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.7704832692307693" PointY="16.480205078124996" />
+          <ConnectorPoint PointX="2.7704832692307693" PointY="23.336293945312498" />
+          <ConnectorPoint PointX="3.75" PointY="23.336293945312498" />
+        </AssociationConnector>
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_TransactionDefinition_Account" ManuallyRouted="false">
+          <ConnectorPoint PointX="3" PointY="13.115143229166669" />
+          <ConnectorPoint PointX="3.1666666666666665" PointY="13.115143229166669" />
+          <ConnectorPoint PointX="3.3333333333333335" PointY="13.115143229166669" />
+          <ConnectorPoint PointX="3.75" PointY="13.115143229166669" />
+        </AssociationConnector>
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_Batch_Job" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.25" PointY="6.1856137335737165" />
+          <ConnectorPoint PointX="5.625" PointY="6.5606137335737165" />
+          <ConnectorPoint PointX="5.625" PointY="13.470896809895834" />
+          <ConnectorPoint PointX="5.635416666666667" PointY="13.470896809895834" />
+          <ConnectorPoint PointX="5.802083333333333" PointY="13.470896809895834" />
+          <ConnectorPoint PointX="6" PointY="13.470896809895834" />
+        </AssociationConnector>
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_ChannelData_Channel" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.09375" PointY="8.25" />
+          <ConnectorPoint PointX="1.09375" PointY="7.8939518229166694" />
+          <ConnectorPoint PointX="1.2135441666666667" PointY="7.8939518229166685" />
+          <ConnectorPoint PointX="1.3802108333333332" PointY="7.8939518229166694" />
+          <ConnectorPoint PointX="2.3541641666666666" PointY="7.8939518229166685" />
+          <ConnectorPoint PointX="2.5208308333333336" PointY="7.8939518229166694" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="7.8939518229166685" />
+          <ConnectorPoint PointX="2.8333333333333335" PointY="7.8939518229166694" />
+          <ConnectorPoint PointX="3.4166666666666665" PointY="7.8939518229166685" />
+          <ConnectorPoint PointX="3.5833333333333335" PointY="7.8939518229166694" />
+          <ConnectorPoint PointX="5.541666666666667" PointY="7.8939518229166685" />
+          <ConnectorPoint PointX="5.770833333333333" PointY="7.8939518229166694" />
+          <ConnectorPoint PointX="8.25" PointY="7.8939518229166694" />
+        </AssociationConnector>
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_ChannelSequence_Channel" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="9.5285953776041659" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="9.5285953776041641" />
+          <ConnectorPoint PointX="2.8333333333333335" PointY="9.5285953776041659" />
+          <ConnectorPoint PointX="3" PointY="9.5285953776041659" />
+        </AssociationConnector>
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_ChannelSequence_Channel1" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="8.8267976888020829" />
+          <ConnectorPoint PointX="2.6041666666666665" PointY="8.8267976888020829" />
+          <ConnectorPoint PointX="2.8333333333333335" PointY="8.8267976888020829" />
+          <ConnectorPoint PointX="3" PointY="8.8267976888020829" />
+        </AssociationConnector>
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_ChannelSequence_Channel2" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="10.230393066406249" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="10.230393066406247" />
+          <ConnectorPoint PointX="2.8333333333333335" PointY="10.230393066406249" />
+          <ConnectorPoint PointX="3" PointY="10.230393066406249" />
+        </AssociationConnector>
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_JobDefChannels_Channel" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="10.807190755208334" />
+          <ConnectorPoint PointX="1.5" PointY="11.057190755208332" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="11.05719075520833" />
+          <ConnectorPoint PointX="2.8333333333333335" PointY="11.057190755208332" />
+          <ConnectorPoint PointX="5.375" PointY="11.057190755208332" />
+          <ConnectorPoint PointX="5.375" PointY="9.4901432291666659" />
+          <ConnectorPoint PointX="5.541666666666667" PointY="9.4901432291666659" />
+          <ConnectorPoint PointX="5.770833333333333" PointY="9.4901432291666659" />
+          <ConnectorPoint PointX="6" PointY="9.4901432291666659" />
+        </AssociationConnector>
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_Transaction_Channel" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="8.25" />
+          <ConnectorPoint PointX="1.5" PointY="6.9492496744791659" />
+          <ConnectorPoint PointX="1.8229186666666666" PointY="6.949249674479165" />
+          <ConnectorPoint PointX="1.9895853333333331" PointY="6.9492496744791659" />
+          <ConnectorPoint PointX="4.3854146666666676" PointY="6.949249674479165" />
+          <ConnectorPoint PointX="4.5520813333333336" PointY="6.9492496744791659" />
+          <ConnectorPoint PointX="5.541666666666667" PointY="6.949249674479165" />
+          <ConnectorPoint PointX="5.864583333333333" PointY="6.9492496744791659" />
+          <ConnectorPoint PointX="6" PointY="6.9492496744791659" />
+        </AssociationConnector>
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_PrinterDetail_Job" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.4687480000000006" PointY="6.2109993489583326" />
+          <ConnectorPoint PointX="4.4687480000000006" PointY="7.7497460937500016" />
+          <ConnectorPoint PointX="5.541666666666667" PointY="7.7497460937500007" />
+          <ConnectorPoint PointX="5.864583333333333" PointY="7.7497460937500016" />
+          <ConnectorPoint PointX="5.9375" PointY="7.7497460937500016" />
+          <ConnectorPoint PointX="5.9375" PointY="8.4375" />
+          <ConnectorPoint PointX="7.478596753205129" PointY="8.4375" />
+          <ConnectorPoint PointX="7.645263419871795" PointY="8.4375" />
+          <ConnectorPoint PointX="8.1875" PointY="8.4375" />
+          <ConnectorPoint PointX="8.1875" PointY="8.888896484374996" />
+          <ConnectorPoint PointX="9.9479166666666661" PointY="8.888896484374996" />
+          <ConnectorPoint PointX="10.114583333333334" PointY="8.888896484374996" />
+          <ConnectorPoint PointX="10.90625" PointY="8.888896484374996" />
+          <ConnectorPoint PointX="10.90625" PointY="7.7497460937500016" />
+          <ConnectorPoint PointX="11" PointY="7.7497460937500016" />
+        </AssociationConnector>
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_Transaction_Job" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.25" PointY="4.5241921908016538" />
+          <ConnectorPoint PointX="5.666666666666667" PointY="4.5241921908016529" />
+          <ConnectorPoint PointX="5.864583333333333" PointY="4.5241921908016538" />
+          <ConnectorPoint PointX="6" PointY="4.5241921908016538" />
+        </AssociationConnector>
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_PrinterDetail_PrintSupplier" ManuallyRouted="false">
+          <ConnectorPoint PointX="10.03125" PointY="11" />
+          <ConnectorPoint PointX="10.03125" PointY="8.982646484374996" />
+          <ConnectorPoint PointX="10.541666666666666" PointY="8.982646484374996" />
+          <ConnectorPoint PointX="10.708333333333334" PointY="8.982646484374996" />
+          <ConnectorPoint PointX="11" PointY="8.982646484374996" />
+        </AssociationConnector>
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_PrinterTray_PrinterDetail" ManuallyRouted="false">
+          <ConnectorPoint PointX="12.5" PointY="7.7401432291666694" />
+          <ConnectorPoint PointX="13.25" PointY="7.7401432291666694" />
+        </AssociationConnector>
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_Stuffer_StufferGroup" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.25" PointY="20.124619140624997" />
+          <ConnectorPoint PointX="5.541666666666667" PointY="20.124619140624997" />
+          <ConnectorPoint PointX="5.708333333333333" PointY="20.124619140624997" />
+          <ConnectorPoint PointX="6" PointY="20.124619140624997" />
+        </AssociationConnector>
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_Template_TemplateGroup" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.25" PointY="23.336293945312498" />
+          <ConnectorPoint PointX="5.541666666666667" PointY="23.336293945312498" />
+          <ConnectorPoint PointX="5.708333333333333" PointY="23.336293945312498" />
+          <ConnectorPoint PointX="6" PointY="23.336293945312498" />
+        </AssociationConnector>
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_ChannelData_Transaction" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.5" PointY="6.6344759114583347" />
+          <ConnectorPoint PointX="8.25" PointY="6.6344759114583347" />
+        </AssociationConnector>
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_Transaction_Transaction" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.25" PointY="12.188460538461539" />
+          <ConnectorPoint PointX="5.5660744349011209" PointY="11.872386103560421" />
+          <ConnectorPoint PointX="5.6839255650988791" PointY="11.754534973362665" />
+          <ConnectorPoint PointX="5.6875" PointY="11.750960538461541" />
+          <ConnectorPoint PointX="5.6875" PointY="5.7367209326404094" />
+          <ConnectorPoint PointX="5.697916666666667" PointY="5.7367209326404085" />
+          <ConnectorPoint PointX="5.864583333333333" PointY="5.7367209326404094" />
+          <ConnectorPoint PointX="6" PointY="5.7367209326404094" />
+        </AssociationConnector>
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_TransData_Transaction" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.5" PointY="4.0237939453125016" />
+          <ConnectorPoint PointX="7.854166666666667" PointY="4.0237939453125007" />
+          <ConnectorPoint PointX="8.0833333333333339" PointY="4.0237939453125016" />
+          <ConnectorPoint PointX="8.25" PointY="4.0237939453125016" />
+        </AssociationConnector>
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_TransactionData_Transaction" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.5" PointY="2.345683593749996" />
+          <ConnectorPoint PointX="7.875" PointY="2.720683593749996" />
+          <ConnectorPoint PointX="7.875" PointY="2.125" />
+          <ConnectorPoint PointX="7.9410744349011217" PointY="2.1910744349011204" />
+          <ConnectorPoint PointX="8.0589255650988783" PointY="2.3089255650988791" />
+          <ConnectorPoint PointX="8.25" PointY="2.5" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="SaGECorrespondenceModel.TransactionContactPoint" Width="1.5" PointX="8.25" PointY="14" Height="3.5186979166666674" />
+        <EntityTypeShape EntityType="SaGECorrespondenceModel.TransactionEntity" Width="1.5" PointX="9.625" PointY="18.375" Height="3.1340950520833317" />
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_TransactionContactPoint_Transaction" >
+          <ConnectorPoint PointX="7.5" PointY="7.9909670488782041" />
+          <ConnectorPoint PointX="7.9410744349011217" PointY="8.4320414837793241" />
+          <ConnectorPoint PointX="8.0589255650988783" PointY="8.5498926139770823" />
+          <ConnectorPoint PointX="8.09375" PointY="8.5847170488782041" />
+          <ConnectorPoint PointX="8.09375" PointY="15.759348958333334" />
+          <ConnectorPoint PointX="8.25" PointY="15.759348958333334" />
+        </AssociationConnector>
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_TransactionEntity_Transaction" >
+          <ConnectorPoint PointX="7.4757692307692309" PointY="8.0475065104166656" />
+          <ConnectorPoint PointX="7.875" PointY="8.4467372796474347" />
+          <ConnectorPoint PointX="7.875" PointY="19.817047526041666" />
+          <ConnectorPoint PointX="8.25" PointY="19.817047526041666" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="SaGECorrespondenceModel.Email" Width="1.5" PointX="12.875" PointY="11.75" />
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_Email_Template" />
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_Email_Template1" />
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_Stuffer_Email" />
+        <EntityTypeShape EntityType="SaGECorrespondenceModel.ChannelBatch" Width="1.5" PointX="14.625" PointY="0.875" />
+        <EntityTypeShape EntityType="SaGECorrespondenceModel.ChannelBatchTransaction" Width="1.5" PointX="13.25" PointY="5.125" />
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_ChannelBatch_Channel" >
+          <ConnectorPoint PointX="2.25" PointY="9.1776965332031253" />
+          <ConnectorPoint PointX="2.6875" PointY="9.1776965332031253" />
+          <ConnectorPoint PointX="2.6875" PointY="7.875" />
+          <ConnectorPoint PointX="5.541666666666667" PointY="7.8749999999999991" />
+          <ConnectorPoint PointX="5.770833333333333" PointY="7.875" />
+          <ConnectorPoint PointX="5.78125" PointY="7.875" />
+          <ConnectorPoint PointX="5.78125" PointY="2.875" />
+          <ConnectorPoint PointX="7.9375" PointY="2.875" />
+          <ConnectorPoint PointX="7.9375" PointY="5" />
+          <ConnectorPoint PointX="13.406248" PointY="5" />
+          <ConnectorPoint PointX="13.406248" PointY="3.6917936197916665" />
+        </AssociationConnector>
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_ChannelBatch_Job" >
+          <ConnectorPoint PointX="5.25" PointY="2.5069220769230767" />
+          <ConnectorPoint PointX="5.40625" PointY="2.3506720769230771" />
+          <ConnectorPoint PointX="5.40625" PointY="0.125" />
+          <ConnectorPoint PointX="12.375" PointY="0.125" />
+          <ConnectorPoint PointX="13" PointY="0.75" />
+        </AssociationConnector>
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_ChannelTransaction_ChannelBatch" />
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_ChannelTransaction_Transaction" />
+        <EntityTypeShape EntityType="SaGECorrespondenceModel.MergeBatchTransaction" Width="1.5" PointX="15.75" PointY="5.125" />
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_MergeBatchTransaction_Transaction" >
+          <ConnectorPoint PointX="7.5" PointY="6.18615234375" />
+          <ConnectorPoint PointX="7.75" PointY="6.18615234375" />
+          <ConnectorPoint PointX="7.75" PointY="4.875" />
+          <ConnectorPoint PointX="7.854166666666667" PointY="4.8749999999999991" />
+          <ConnectorPoint PointX="8.0833333333333339" PointY="4.875" />
+          <ConnectorPoint PointX="13.322914666666666" PointY="4.8749999999999991" />
+          <ConnectorPoint PointX="13.489581333333334" PointY="4.875" />
+          <ConnectorPoint PointX="13.791666666666666" PointY="4.8749999999999991" />
+          <ConnectorPoint PointX="13.958333333333334" PointY="4.875" />
+          <ConnectorPoint PointX="15.593747999999998" PointY="4.875" />
+          <ConnectorPoint PointX="15.593747999999998" PointY="5.125" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="SaGECorrespondenceModel.JobDefinition" Width="1.5" PointX="3.75" PointY="25.75" />
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_JobDefinition_Account" />
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_ChannelSequence_JobDefinition" />
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_Email_JobDefinition" />
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_JobDefChannels_JobDefinition" />
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_DocStore_JobDefinition" />
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_Job_JobDefinition" >
+          <ConnectorPoint PointX="5.25" PointY="25.75807592307692" />
+          <ConnectorPoint PointX="5.65625" PointY="25.35182592307692" />
+          <ConnectorPoint PointX="5.65625" PointY="6.6414801181891008" />
+          <ConnectorPoint PointX="5.2257692307692318" PointY="6.2109993489583326" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="SaGECorrespondenceModel.BouncedMail" Width="1.5" PointX="0.75" PointY="0.75" Height="1.5956835937500102" />
+        <EntityTypeShape EntityType="SaGECorrespondenceModel.Audit" Width="1.5" PointX="11" PointY="13.5" />
+        <EntityTypeShape EntityType="SaGECorrespondenceModel.MergeBatch" Width="1.5" PointX="10.125" PointY="0.5" />
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_MergeBatchTransaction_MergeBatch" />
+        <EntityTypeShape EntityType="SaGECorrespondenceModel.MergeBatchState" Width="1.5" PointX="14.875" PointY="9.125" />
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_MergeBatch_MergeBatchState" />
+        <AssociationConnector Association="SaGECorrespondenceModel.FK_MergeBatchState_MergeBatchState" />
+        <EntityTypeShape EntityType="SaGECorrespondenceModel.sysdiagram" Width="1.5" PointX="0.75" PointY="3.75" />
+        </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

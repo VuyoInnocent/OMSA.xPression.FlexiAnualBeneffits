@@ -1,0 +1,1196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="GenCorrLayouts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="GENCORR">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ENGINE_TYPE" type="xs:string" />
+              <xs:element name="JOBNAME" type="xs:string" />
+              <xs:element name="ACCOUNT" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element maxOccurs="unbounded" name ="PACKAGE">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PACKAGEID" type="xs:string" />
+              <xs:element name="LOGGING">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="DOC_SET_CODE" type="xs:string" />
+                    <xs:element name="CS_CODE2" type="xs:string" />
+                    <xs:element name="CS_CODE3" type="xs:string" />
+                    <xs:element name="SOURCE_STATE" type="xs:string" />
+                    
+                    <xs:element name="EFFECTIVE_DATE" type="xs:date" />
+                    <xs:element name="GCS_ID" type="xs:string" />
+                    <xs:element name="LOB_ID" type="xs:string" />
+                    <xs:element name="AGREEMENT_CLIENT_ID" type="xs:string" />
+                    <xs:element name="AGREEMENT_CLIENT_TYPE" type="xs:string" />
+
+                    <xs:element name="TITLE" type="xs:string" />
+                    <xs:element name="SURNAME" type="xs:string" />
+                    <xs:element name="FIRSTNAME" type="xs:string" />
+                    <xs:element name="DATE_OF_BIRTH" type="xs:date" />
+                    <xs:element name="ID_NO" type="xs:string" />
+                    <xs:element name="CLIENT_STATUS" type="xs:string" />
+                    <xs:element name="GCS_CALL" type="xs:string" />
+                    <xs:element name="CONTACT_DETAIL" type="xs:string" />
+                    <xs:element name="BUSINESS_AREA" type="xs:string" />
+                    <xs:element name="PDF_NAME" type="xs:string" />
+                    <xs:element name="DESCRIPTION" type="xs:string" />
+                    <xs:element name="CHANNEL" type="xs:string" />
+                    <xs:element name="ARCHIVE" type="xs:string" />
+                    <xs:element name="AGENT_NO" type="xs:string" />
+                                        
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="LANGUAGE" type="xs:string" />
+              <xs:element name="EFFECTIVE_DATE" type="xs:date" />
+              <xs:element name="JURISDICTION" type="xs:string" />
+              <xs:element name="JOBNAME" type="xs:string" />
+              <xs:element name="ACCOUNT" type="xs:string" />
+              <xs:element name="CH_PRINT" type="xs:string" />
+              <xs:element name="CH_ARCHIVE" type="xs:string" />
+              <xs:element name="CH_EMAIL" type="xs:string" />
+              <xs:element name="DS_PDF_ID" type="xs:string" />
+              <xs:element name="DS_PDF_PATH" type="xs:string" />
+              <xs:element name="DS_PRINT_ACCOUNT" type="xs:string" />
+              <xs:element name="DS_DCTM_PDF_ID" type="xs:string" />
+              <xs:element name="DS_DCTM_LOB" type="xs:string" />
+              <xs:element name="DS_DCTM_BUS_AREA" type="xs:string" />
+              <xs:element name="DS_DCTM_DOC_PACK_CODE" type="xs:string" />
+              <xs:element name="DS_DCTM_PROCESS" type="xs:string" />
+              <xs:element name="DS_DCTM_NUM_FLAG" type="xs:string" />
+              <xs:element name="DS_DCTM_NUMBER" type="xs:string" />
+              <xs:element name="DS_DCTM_DATE" type="xs:string" />
+              <xs:element name="DS_DCTM_FORMAT" type="xs:string" />
+              <xs:element name="DS_DCTM_PERMISSION" type="xs:string" />
+              <xs:element name="DS_DCTM_CATEGORY" type="xs:string" />
+              <xs:element name="DS_DCTM_DESCRIPTION" type="xs:string" />
+              <xs:element name="DS_EMAIL_TO_ADDRESS" type="xs:string" />
+              <xs:element name="DS_EMAIL_FROM_ADDRESS" type="xs:string" />
+              <xs:element name="DS_EMAIL_SUBJECT" type="xs:string" />
+              <xs:element name="DS_EMAIL_PASSWORD" type="xs:string" />
+              <xs:element name="DS_EMAIL_NPS" type="xs:string" />
+              <xs:element name="DS_EMAIL_SSA_REGISTERED" type="xs:string" />
+              <xs:element name="DS_TMPLT_TEMPLATEID" type="xs:string" />
+              <xs:element name="DS_TMPLT_LANGUAGE" type="xs:string" />
+              <xs:element name="DS_TMPLT_TITLE" type="xs:string" />
+              <xs:element name="DS_TMPLT_INIT" type="xs:string" />
+              <xs:element name="DS_TMPLT_FNAME" type="xs:string" />
+              <xs:element name="DS_TMPLT_SURNAME" type="xs:string" />
+              <xs:element name="DS_TMPLT_SUFFX" type="xs:string" />
+              <xs:element name="DS_TMPLT_ID_NO" type="xs:string" />
+              <xs:element name="DS_TMPLT_AGENT_NO" type="xs:string" />
+              <xs:element name="DS_TMPLT_TYPE" type="xs:string" />
+              <xs:element name="DS_TMPLT_GUID" type="xs:string" />
+              <xs:element name="DS_SFTP_ACCOUNT" type="xs:string" />
+              <xs:element name="DS_SMS_NUMBER" type="xs:string" />
+              <xs:element name="DS_AWD_ACCOUNT" type="xs:string" />
+              <xs:element maxOccurs="unbounded" name="DOCUMENT">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="PACKAGEID" type="xs:string" />
+                    <xs:element name="P_DOC_SET" type="xs:string" />
+                    <xs:element name="DLSCUSTOMER">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="CS_DOC_PACK_CODE" type="xs:string" />
+                          <xs:element name="CS_DOC_SET_CODE" type="xs:string" />
+                          <xs:element name="CS_KEYID" type="xs:string" />
+                          <xs:element name="CS_LINK1" type="xs:string" />
+                          <xs:element name="CS_LINK2" type="xs:string" />
+                          <xs:element name="CS_LINK3" type="xs:string" />
+                          <xs:element name="LANGUAGE" type="xs:string" />
+                          <xs:element name="EFFECTIVE_DATE" type="xs:date" />
+                          <xs:element name="JURISDICTION" type="xs:string" />
+                          <xs:element name="CS_NOTICE_DATE" type="xs:string" />
+                          <xs:element name="CS_LETTERH_TYPE" type="xs:string" />
+                          <xs:element name="CS_CURRENCY" type="xs:string" />
+                          <xs:element name="CS_VALUE1" type="xs:string" />
+                          <xs:element name="CS_VALUE2" type="xs:string" />
+                          <xs:element name="CS_VALUE3" type="xs:string" />
+                          <xs:element name="CS_VALUE4" type="xs:string" />
+                          <xs:element name="CS_VALUE5" type="xs:string" />
+                          <xs:element name="CS_VALUE6" type="xs:string" />
+                          <xs:element name="CS_VALUE7" type="xs:string" />
+                          <xs:element name="CS_VALUE8" type="xs:string" />
+                          <xs:element name="CS_VALUE9" type="xs:string" />
+                          <xs:element name="CS_VALUE10" type="xs:string" />
+                          <xs:element name="CS_VALUE11" type="xs:string" />
+                          <xs:element name="CS_VALUE12" type="xs:string" />
+                          <xs:element name="CS_VALUE13" type="xs:string" />
+                          <xs:element name="CS_VALUE14" type="xs:string" />
+                          <xs:element name="CS_VALUE15" type="xs:string" />
+                          <xs:element name="CS_VALUE16" type="xs:string" />
+                          <xs:element name="CS_VALUE17" type="xs:string" />
+                          <xs:element name="CS_VALUE18" type="xs:string" />
+                          <xs:element name="CS_VALUE19" type="xs:string" />
+                          <xs:element name="CS_VALUE20" type="xs:string" />
+                          <xs:element name="CS_VALUE21" type="xs:string" />
+                          <xs:element name="CS_VALUE22" type="xs:string" />
+                          <xs:element name="CS_VALUE23" type="xs:string" />
+                          <xs:element name="CS_VALUE24" type="xs:string" />
+                          <xs:element name="CS_VALUE25" type="xs:string" />
+                          <xs:element name="CS_VALUE26" type="xs:string" />
+                          <xs:element name="CS_VALUE27" type="xs:string" />
+                          <xs:element name="CS_VALUE28" type="xs:string" />
+                          <xs:element name="CS_VALUE29" type="xs:string" />
+                          <xs:element name="CS_VALUE30" type="xs:string" />
+                          <xs:element name="CS_VALUE31" type="xs:string" />
+                          <xs:element name="CS_VALUE32" type="xs:string" />
+                          <xs:element name="CS_VALUE33" type="xs:string" />
+                          <xs:element name="CS_VALUE34" type="xs:string" />
+                          <xs:element name="CS_VALUE35" type="xs:string" />
+                          <xs:element name="CS_VALUE36" type="xs:string" />
+                          <xs:element name="CS_VALUE37" type="xs:string" />
+                          <xs:element name="CS_VALUE38" type="xs:string" />
+                          <xs:element name="CS_VALUE39" type="xs:string" />
+                          <xs:element name="CS_VALUE40" type="xs:string" />
+                          <xs:element name="CS_VALUE41" type="xs:string" />
+                          <xs:element name="CS_VALUE42" type="xs:string" />
+                          <xs:element name="CS_VALUE43" type="xs:string" />
+                          <xs:element name="CS_VALUE44" type="xs:string" />
+                          <xs:element name="CS_VALUE45" type="xs:string" />
+                          <xs:element name="CS_VALUE46" type="xs:string" />
+                          <xs:element name="CS_VALUE47" type="xs:string" />
+                          <xs:element name="CS_VALUE48" type="xs:string" />
+                          <xs:element name="CS_VALUE49" type="xs:string" />
+                          <xs:element name="CS_VALUE50" type="xs:string" />
+                          <xs:element name="CS_VALUE51" type="xs:string" />
+                          <xs:element name="CS_VALUE52" type="xs:string" />
+                          <xs:element name="CS_VALUE53" type="xs:string" />
+                          <xs:element name="CS_VALUE54" type="xs:string" />
+                          <xs:element name="CS_VALUE55" type="xs:string" />
+                          <xs:element name="CS_VALUE56" type="xs:string" />
+                          <xs:element name="CS_VALUE57" type="xs:string" />
+                          <xs:element name="CS_VALUE58" type="xs:string" />
+                          <xs:element name="CS_VALUE59" type="xs:string" />
+                          <xs:element name="CS_VALUE60" type="xs:string" />
+                          <xs:element name="CS_VALUE61" type="xs:string" />
+                          <xs:element name="CS_VALUE62" type="xs:string" />
+                          <xs:element name="CS_VALUE63" type="xs:string" />
+                          <xs:element name="CS_VALUE64" type="xs:string" />
+                          <xs:element name="CS_VALUE65" type="xs:string" />
+                          <xs:element name="CS_VALUE66" type="xs:string" />
+                          <xs:element name="CS_VALUE67" type="xs:string" />
+                          <xs:element name="CS_VALUE68" type="xs:string" />
+                          <xs:element name="CS_VALUE69" type="xs:string" />
+                          <xs:element name="CS_VALUE70" type="xs:string" />
+                          <xs:element name="CS_VALUE71" type="xs:string" />
+                          <xs:element name="CS_VALUE72" type="xs:string" />
+                          <xs:element name="CS_VALUE73" type="xs:string" />
+                          <xs:element name="CS_VALUE74" type="xs:string" />
+                          <xs:element name="CS_VALUE75" type="xs:string" />
+                          <xs:element name="CS_VALUE76" type="xs:string" />
+                          <xs:element name="CS_VALUE77" type="xs:string" />
+                          <xs:element name="CS_VALUE78" type="xs:string" />
+                          <xs:element name="CS_VALUE79" type="xs:string" />
+                          <xs:element name="CS_VALUE80" type="xs:string" />
+                          <xs:element name="CS_VALUE81" type="xs:string" />
+                          <xs:element name="CS_VALUE82" type="xs:string" />
+                          <xs:element name="CS_VALUE83" type="xs:string" />
+                          <xs:element name="CS_VALUE84" type="xs:string" />
+                          <xs:element name="CS_VALUE85" type="xs:string" />
+                          <xs:element name="CS_VALUE86" type="xs:string" />
+                          <xs:element name="CS_VALUE87" type="xs:string" />
+                          <xs:element name="CS_VALUE88" type="xs:string" />
+                          <xs:element name="CS_VALUE89" type="xs:string" />
+                          <xs:element name="CS_VALUE90" type="xs:string" />
+                          <xs:element name="CS_VALUE91" type="xs:string" />
+                          <xs:element name="CS_VALUE92" type="xs:string" />
+                          <xs:element name="CS_VALUE93" type="xs:string" />
+                          <xs:element name="CS_VALUE94" type="xs:string" />
+                          <xs:element name="CS_VALUE95" type="xs:string" />
+                          <xs:element name="CS_VALUE96" type="xs:string" />
+                          <xs:element name="CS_VALUE97" type="xs:string" />
+                          <xs:element name="CS_VALUE98" type="xs:string" />
+                          <xs:element name="CS_VALUE99" type="xs:string" />
+                          <xs:element name="CS_VALUE100" type="xs:string" />
+                          <xs:element name="CS_VALUE101" type="xs:string" />
+                          <xs:element name="CS_VALUE102" type="xs:string" />
+                          <xs:element name="CS_VALUE103" type="xs:string" />
+                          <xs:element name="CS_VALUE104" type="xs:string" />
+                          <xs:element name="CS_VALUE105" type="xs:string" />
+                          <xs:element name="CS_VALUE106" type="xs:string" />
+                          <xs:element name="CS_VALUE107" type="xs:string" />
+                          <xs:element name="CS_VALUE108" type="xs:string" />
+                          <xs:element name="CS_VALUE109" type="xs:string" />
+                          <xs:element name="CS_VALUE110" type="xs:string" />
+                          <xs:element name="CS_ACC1" type="xs:string" />
+                          <xs:element name="CS_ACC2" type="xs:string" />
+                          <xs:element name="CS_ACC3" type="xs:string" />
+                          <xs:element name="CS_ACC4" type="xs:string" />
+                          <xs:element name="CS_ACC5" type="xs:string" />
+                          <xs:element name="CS_ACC6" type="xs:string" />
+                          <xs:element name="CS_ACC7" type="xs:string" />
+                          <xs:element name="CS_ACC8" type="xs:string" />
+                          <xs:element name="CS_ACC9" type="xs:string" />
+                          <xs:element name="CS_ACC10" type="xs:string" />
+                          <xs:element name="CS_ACC11" type="xs:string" />
+                          <xs:element name="CS_ACC12" type="xs:string" />
+                          <xs:element name="CS_ACC13" type="xs:string" />
+                          <xs:element name="CS_ACC14" type="xs:string" />
+                          <xs:element name="CS_ACC15" type="xs:string" />
+                          <xs:element name="CS_ACC16" type="xs:string" />
+                          <xs:element name="CS_ACC17" type="xs:string" />
+                          <xs:element name="CS_ACC18" type="xs:string" />
+                          <xs:element name="CS_ACC19" type="xs:string" />
+                          <xs:element name="CS_ACC20" type="xs:string" />
+                          <xs:element name="CS_ACC21" type="xs:string" />
+                          <xs:element name="CS_ACC22" type="xs:string" />
+                          <xs:element name="CS_ACC23" type="xs:string" />
+                          <xs:element name="CS_ACC24" type="xs:string" />
+                          <xs:element name="CS_ACC25" type="xs:string" />
+                          <xs:element name="CS_ACC26" type="xs:string" />
+                          <xs:element name="CS_ACC27" type="xs:string" />
+                          <xs:element name="CS_ACC28" type="xs:string" />
+                          <xs:element name="CS_ACC29" type="xs:string" />
+                          <xs:element name="CS_ACC30" type="xs:string" />
+                          <xs:element name="CS_ACC31" type="xs:string" />
+                          <xs:element name="CS_ACC32" type="xs:string" />
+                          <xs:element name="CS_ACC33" type="xs:string" />
+                          <xs:element name="CS_ACC34" type="xs:string" />
+                          <xs:element name="CS_ACC35" type="xs:string" />
+                          <xs:element name="CS_ACC36" type="xs:string" />
+                          <xs:element name="CS_ACC37" type="xs:string" />
+                          <xs:element name="CS_ACC38" type="xs:string" />
+                          <xs:element name="CS_ACC39" type="xs:string" />
+                          <xs:element name="CS_ACC40" type="xs:string" />
+                          <xs:element name="CS_ACC41" type="xs:string" />
+                          <xs:element name="CS_ACC42" type="xs:string" />
+                          <xs:element name="CS_ACC43" type="xs:string" />
+                          <xs:element name="CS_ACC44" type="xs:string" />
+                          <xs:element name="CS_ACC45" type="xs:string" />
+                          <xs:element name="CS_ACC46" type="xs:string" />
+                          <xs:element name="CS_ACC47" type="xs:string" />
+                          <xs:element name="CS_ACC48" type="xs:string" />
+                          <xs:element name="CS_ACC49" type="xs:string" />
+                          <xs:element name="CS_ACC50" type="xs:string" />
+                          <xs:element name="CS_ACC51" type="xs:string" />
+                          <xs:element name="CS_ACC52" type="xs:string" />
+                          <xs:element name="CS_ACC53" type="xs:string" />
+                          <xs:element name="CS_ACC54" type="xs:string" />
+                          <xs:element name="CS_ACC55" type="xs:string" />
+                          <xs:element name="CS_ACC56" type="xs:string" />
+                          <xs:element name="CS_ACC57" type="xs:string" />
+                          <xs:element name="CS_ACC58" type="xs:string" />
+                          <xs:element name="CS_ACC59" type="xs:string" />
+                          <xs:element name="CS_ACC60" type="xs:string" />
+                          <xs:element name="CS_ACC61" type="xs:string" />
+                          <xs:element name="CS_ACC62" type="xs:string" />
+                          <xs:element name="CS_ACC63" type="xs:string" />
+                          <xs:element name="CS_ACC64" type="xs:string" />
+                          <xs:element name="CS_ACC65" type="xs:string" />
+                          <xs:element name="CS_ACC66" type="xs:string" />
+                          <xs:element name="CS_ACC67" type="xs:string" />
+                          <xs:element name="CS_ACC68" type="xs:string" />
+                          <xs:element name="CS_ACC69" type="xs:string" />
+                          <xs:element name="CS_ACC70" type="xs:string" />
+                          <xs:element name="CS_ACC71" type="xs:string" />
+                          <xs:element name="CS_ACC72" type="xs:string" />
+                          <xs:element name="CS_ACC73" type="xs:string" />
+                          <xs:element name="CS_ACC74" type="xs:string" />
+                          <xs:element name="CS_ACC75" type="xs:string" />
+                          <xs:element name="CS_ACC76" type="xs:string" />
+                          <xs:element name="CS_ACC77" type="xs:string" />
+                          <xs:element name="CS_ACC78" type="xs:string" />
+                          <xs:element name="CS_ACC79" type="xs:string" />
+                          <xs:element name="CS_ACC80" type="xs:string" />
+                          <xs:element name="CS_ACC81" type="xs:string" />
+                          <xs:element name="CS_ACC82" type="xs:string" />
+                          <xs:element name="CS_ACC83" type="xs:string" />
+                          <xs:element name="CS_ACC84" type="xs:string" />
+                          <xs:element name="CS_ACC85" type="xs:string" />
+                          <xs:element name="CS_ACC86" type="xs:string" />
+                          <xs:element name="CS_ACC87" type="xs:string" />
+                          <xs:element name="CS_ACC88" type="xs:string" />
+                          <xs:element name="CS_ACC89" type="xs:string" />
+                          <xs:element name="CS_ACC90" type="xs:string" />
+                          <xs:element name="CS_ACC91" type="xs:string" />
+                          <xs:element name="CS_ACC92" type="xs:string" />
+                          <xs:element name="CS_ACC93" type="xs:string" />
+                          <xs:element name="CS_ACC94" type="xs:string" />
+                          <xs:element name="CS_ACC95" type="xs:string" />
+                          <xs:element name="CS_ACC96" type="xs:string" />
+                          <xs:element name="CS_ACC97" type="xs:string" />
+                          <xs:element name="CS_ACC98" type="xs:string" />
+                          <xs:element name="CS_ACC99" type="xs:string" />
+                          <xs:element name="CS_CODE1" type="xs:string" />
+                          <xs:element name="CS_CODE2" type="xs:string" />
+                          <xs:element name="CS_CODE3" type="xs:string" />
+                          <xs:element name="CS_CODE4" type="xs:string" />
+                          <xs:element name="CS_CODE5" type="xs:string" />
+                          <xs:element name="CS_CODE6" type="xs:string" />
+                          <xs:element name="CS_CODE7" type="xs:string" />
+                          <xs:element name="CS_CODE8" type="xs:string" />
+                          <xs:element name="CS_CODE9" type="xs:string" />
+                          <xs:element name="CS_CODE10" type="xs:string" />
+                          <xs:element name="CS_CODE11" type="xs:string" />
+                          <xs:element name="CS_CODE12" type="xs:string" />
+                          <xs:element name="CS_CODE13" type="xs:string" />
+                          <xs:element name="CS_CODE14" type="xs:string" />
+                          <xs:element name="CS_CODE18" type="xs:string" />
+                          <xs:element name="CS_CODE15" type="xs:string" />
+                          <xs:element name="CS_CODE16" type="xs:string" />
+                          <xs:element name="CS_CODE17" type="xs:string" />
+                          <xs:element name="CS_CODE19" type="xs:string" />
+                          <xs:element name="CS_CODE20" type="xs:string" />
+                          <xs:element name="CS_CODE22" type="xs:string" />
+                          <xs:element name="CS_CODE21" type="xs:string" />
+                          <xs:element name="CS_CODE23" type="xs:string" />
+                          <xs:element name="CS_CODE24" type="xs:string" />
+                          <xs:element name="CS_CODE25" type="xs:string" />
+                          <xs:element name="CS_CODE26" type="xs:string" />
+                          <xs:element name="CS_CODE27" type="xs:string" />
+                          <xs:element name="CS_CODE28" type="xs:string" />
+                          <xs:element name="CS_CODE29" type="xs:string" />
+                          <xs:element name="CS_CODE30" type="xs:string" />
+                          <xs:element name="CS_CODE31" type="xs:string" />
+                          <xs:element name="CS_CODE32" type="xs:string" />
+                          <xs:element name="CS_CODE33" type="xs:string" />
+                          <xs:element name="CS_CODE34" type="xs:string" />
+                          <xs:element name="CS_CODE35" type="xs:string" />
+                          <xs:element name="CS_CODE36" type="xs:string" />
+                          <xs:element name="CS_CODE37" type="xs:string" />
+                          <xs:element name="CS_CODE38" type="xs:string" />
+                          <xs:element name="CS_CODE39" type="xs:string" />
+                          <xs:element name="CS_CODE40" type="xs:string" />
+                          <xs:element name="CS_CODE41" type="xs:string" />
+                          <xs:element name="CS_CODE42" type="xs:string" />
+                          <xs:element name="CS_CODE43" type="xs:string" />
+                          <xs:element name="CS_CODE44" type="xs:string" />
+                          <xs:element name="CS_CODE45" type="xs:string" />
+                          <xs:element name="CS_CODE46" type="xs:string" />
+                          <xs:element name="CS_CODE47" type="xs:string" />
+                          <xs:element name="CS_CODE48" type="xs:string" />
+                          <xs:element name="CS_CODE49" type="xs:string" />
+                          <xs:element name="CS_CODE50" type="xs:string" />
+                          <xs:element name="CS_CODE51" type="xs:string" />
+                          <xs:element name="CS_CODE52" type="xs:string" />
+                          <xs:element name="CS_CODE53" type="xs:string" />
+                          <xs:element name="CS_CODE54" type="xs:string" />
+                          <xs:element name="CS_CODE55" type="xs:string" />
+                          <xs:element name="CS_CODE56" type="xs:string" />
+                          <xs:element name="CS_CODE57" type="xs:string" />
+                          <xs:element name="CS_CODE58" type="xs:string" />
+                          <xs:element name="CS_CODE59" type="xs:string" />
+                          <xs:element name="CS_CODE60" type="xs:string" />
+                          <xs:element name="CS_CODE61" type="xs:string" />
+                          <xs:element name="CS_CODE62" type="xs:string" />
+                          <xs:element name="CS_CODE63" type="xs:string" />
+                          <xs:element name="CS_CODE64" type="xs:string" />
+                          <xs:element name="CS_CODE65" type="xs:string" />
+                          <xs:element name="CS_CODE66" type="xs:string" />
+                          <xs:element name="CS_CODE67" type="xs:string" />
+                          <xs:element name="CS_CODE68" type="xs:string" />
+                          <xs:element name="CS_CODE69" type="xs:string" />
+                          <xs:element name="CS_CODE70" type="xs:string" />
+                          <xs:element name="CS_CODE71" type="xs:string" />
+                          <xs:element name="CS_CODE72" type="xs:string" />
+                          <xs:element name="CS_CODE73" type="xs:string" />
+                          <xs:element name="CS_CODE74" type="xs:string" />
+                          <xs:element name="CS_CODE75" type="xs:string" />
+                          <xs:element name="CS_CODE76" type="xs:string" />
+                          <xs:element name="CS_CODE77" type="xs:string" />
+                          <xs:element name="CS_CODE78" type="xs:string" />
+                          <xs:element name="CS_CODE79" type="xs:string" />
+                          <xs:element name="CS_CODE80" type="xs:string" />
+                          <xs:element name="CS_CODE81" type="xs:string" />
+                          <xs:element name="CS_CODE82" type="xs:string" />
+                          <xs:element name="CS_CODE83" type="xs:string" />
+                          <xs:element name="CS_CODE84" type="xs:string" />
+                          <xs:element name="CS_CODE85" type="xs:string" />
+                          <xs:element name="CS_CODE86" type="xs:string" />
+                          <xs:element name="CS_CODE87" type="xs:string" />
+                          <xs:element name="CS_CODE88" type="xs:string" />
+                          <xs:element name="CS_CODE89" type="xs:string" />
+                          <xs:element name="CS_CODE90" type="xs:string" />
+                          <xs:element name="CS_CODE91" type="xs:string" />
+                          <xs:element name="CS_CODE92" type="xs:string" />
+                          <xs:element name="CS_CODE93" type="xs:string" />
+                          <xs:element name="CS_CODE94" type="xs:string" />
+                          <xs:element name="CS_CODE95" type="xs:string" />
+                          <xs:element name="CS_CODE96" type="xs:string" />
+                          <xs:element name="CS_CODE97" type="xs:string" />
+                          <xs:element name="CS_CODE98" type="xs:string" />
+                          <xs:element name="CS_CODE99" type="xs:string" />
+                          <xs:element name="CS_DATE1" type="xs:string" />
+                          <xs:element name="CS_DATE2" type="xs:string" />
+                          <xs:element name="CS_DATE3" type="xs:string" />
+                          <xs:element name="CS_DATE4" type="xs:string" />
+                          <xs:element name="CS_DATE5" type="xs:string" />
+                          <xs:element name="CS_DATE6" type="xs:string" />
+                          <xs:element name="CS_DATE7" type="xs:string" />
+                          <xs:element name="CS_DATE8" type="xs:string" />
+                          <xs:element name="CS_DATE9" type="xs:string" />
+                          <xs:element name="CS_DATE10" type="xs:string" />
+                          <xs:element name="CS_DATE11" type="xs:string" />
+                          <xs:element name="CS_DATE12" type="xs:string" />
+                          <xs:element name="CS_DATE13" type="xs:string" />
+                          <xs:element name="CS_DATE14" type="xs:string" />
+                          <xs:element name="CS_DATE15" type="xs:string" />
+                          <xs:element name="CS_DATE16" type="xs:string" />
+                          <xs:element name="CS_DATE17" type="xs:string" />
+                          <xs:element name="CS_DATE18" type="xs:string" />
+                          <xs:element name="CS_DATE19" type="xs:string" />
+                          <xs:element name="CS_DATE20" type="xs:string" />
+                          <xs:element name="CS_DATE21" type="xs:string" />
+                          <xs:element name="CS_DATE22" type="xs:string" />
+                          <xs:element name="CS_DATE23" type="xs:string" />
+                          <xs:element name="CS_DATE24" type="xs:string" />
+                          <xs:element name="CS_DATE25" type="xs:string" />
+                          <xs:element name="CS_DATE26" type="xs:string" />
+                          <xs:element name="CS_DATE27" type="xs:string" />
+                          <xs:element name="CS_DATE28" type="xs:string" />
+                          <xs:element name="CS_DATE29" type="xs:string" />
+                          <xs:element name="CS_DATE30" type="xs:string" />
+                          <xs:element name="CS_DATE31" type="xs:string" />
+                          <xs:element name="CS_DATE32" type="xs:string" />
+                          <xs:element name="CS_DATE33" type="xs:string" />
+                          <xs:element name="CS_DATE34" type="xs:string" />
+                          <xs:element name="CS_DATE35" type="xs:string" />
+                          <xs:element name="CS_DATE36" type="xs:string" />
+                          <xs:element name="CS_DATE37" type="xs:string" />
+                          <xs:element name="CS_DATE38" type="xs:string" />
+                          <xs:element name="CS_DATE39" type="xs:string" />
+                          <xs:element name="CS_DATE40" type="xs:string" />
+                          <xs:element name="CS_DATE41" type="xs:string" />
+                          <xs:element name="CS_DATE42" type="xs:string" />
+                          <xs:element name="CS_DATE43" type="xs:string" />
+                          <xs:element name="CS_DATE44" type="xs:string" />
+                          <xs:element name="CS_DATE45" type="xs:string" />
+                          <xs:element name="CS_DATE46" type="xs:string" />
+                          <xs:element name="CS_DATE47" type="xs:string" />
+                          <xs:element name="CS_DATE48" type="xs:string" />
+                          <xs:element name="CS_DATE49" type="xs:string" />
+                          <xs:element name="CS_DATE50" type="xs:string" />
+                          <xs:element name="CS_DATE51" type="xs:string" />
+                          <xs:element name="CS_DATE52" type="xs:string" />
+                          <xs:element name="CS_DATE53" type="xs:string" />
+                          <xs:element name="CS_DATE54" type="xs:string" />
+                          <xs:element name="CS_DATE55" type="xs:string" />
+                          <xs:element name="CS_DATE56" type="xs:string" />
+                          <xs:element name="CS_DATE57" type="xs:string" />
+                          <xs:element name="CS_DATE58" type="xs:string" />
+                          <xs:element name="CS_DATE59" type="xs:string" />
+                          <xs:element name="CS_DATE60" type="xs:string" />
+                          <xs:element name="CS_DATE61" type="xs:string" />
+                          <xs:element name="CS_DATE62" type="xs:string" />
+                          <xs:element name="CS_DATE63" type="xs:string" />
+                          <xs:element name="CS_DATE64" type="xs:string" />
+                          <xs:element name="CS_DATE65" type="xs:string" />
+                          <xs:element name="CS_DATE66" type="xs:string" />
+                          <xs:element name="CS_DATE67" type="xs:string" />
+                          <xs:element name="CS_DATE68" type="xs:string" />
+                          <xs:element name="CS_DATE69" type="xs:string" />
+                          <xs:element name="CS_DATE70" type="xs:string" />
+                          <xs:element name="CS_DATE71" type="xs:string" />
+                          <xs:element name="CS_DATE72" type="xs:string" />
+                          <xs:element name="CS_DATE73" type="xs:string" />
+                          <xs:element name="CS_DATE74" type="xs:string" />
+                          <xs:element name="CS_DATE75" type="xs:string" />
+                          <xs:element name="CS_DATE76" type="xs:string" />
+                          <xs:element name="CS_DATE77" type="xs:string" />
+                          <xs:element name="CS_DATE78" type="xs:string" />
+                          <xs:element name="CS_DATE79" type="xs:string" />
+                          <xs:element name="CS_DATE80" type="xs:string" />
+                          <xs:element name="CS_DATE81" type="xs:string" />
+                          <xs:element name="CS_DATE82" type="xs:string" />
+                          <xs:element name="CS_DATE83" type="xs:string" />
+                          <xs:element name="CS_DATE84" type="xs:string" />
+                          <xs:element name="CS_DATE85" type="xs:string" />
+                          <xs:element name="CS_DATE86" type="xs:string" />
+                          <xs:element name="CS_DATE87" type="xs:string" />
+                          <xs:element name="CS_DATE88" type="xs:string" />
+                          <xs:element name="CS_DATE89" type="xs:string" />
+                          <xs:element name="CS_DATE90" type="xs:string" />
+                          <xs:element name="CS_DATE91" type="xs:string" />
+                          <xs:element name="CS_DATE92" type="xs:string" />
+                          <xs:element name="CS_DATE93" type="xs:string" />
+                          <xs:element name="CS_DATE94" type="xs:string" />
+                          <xs:element name="CS_DATE95" type="xs:string" />
+                          <xs:element name="CS_DATE96" type="xs:string" />
+                          <xs:element name="CS_DATE97" type="xs:string" />
+                          <xs:element name="CS_DATE98" type="xs:string" />
+                          <xs:element name="CS_DATE99" type="xs:string" />
+                          <xs:element name="CS_TIME1" type="xs:string" />
+                          <xs:element name="CS_TIME2" type="xs:string" />
+                          <xs:element name="CS_TIME3" type="xs:string" />
+                          <xs:element name="CS_TIME4" type="xs:string" />
+                          <xs:element name="CS_TIME5" type="xs:string" />
+                          <xs:element name="CS_TIME6" type="xs:string" />
+                          <xs:element name="CS_TIME7" type="xs:string" />
+                          <xs:element name="CS_TIME8" type="xs:string" />
+                          <xs:element name="CS_TIME9" type="xs:string" />
+                          <xs:element name="CS_TIME10" type="xs:string" />
+                          <xs:element name="CS_TIME11" type="xs:string" />
+                          <xs:element name="CS_TIME12" type="xs:string" />
+                          <xs:element name="CS_TIME13" type="xs:string" />
+                          <xs:element name="CS_TIME14" type="xs:string" />
+                          <xs:element name="CS_TIME15" type="xs:string" />
+                          <xs:element name="CS_TIME16" type="xs:string" />
+                          <xs:element name="CS_TIME17" type="xs:string" />
+                          <xs:element name="CS_TIME18" type="xs:string" />
+                          <xs:element name="CS_TIME19" type="xs:string" />
+                          <xs:element name="CS_TIME20" type="xs:string" />
+                          <xs:element name="CS_TIME21" type="xs:string" />
+                          <xs:element name="CS_TIME22" type="xs:string" />
+                          <xs:element name="CS_TIME23" type="xs:string" />
+                          <xs:element name="CS_TIME24" type="xs:string" />
+                          <xs:element name="CS_TIME25" type="xs:string" />
+                          <xs:element name="CS_TIME26" type="xs:string" />
+                          <xs:element name="CS_TIME27" type="xs:string" />
+                          <xs:element name="CS_TIME28" type="xs:string" />
+                          <xs:element name="CS_TIME29" type="xs:string" />
+                          <xs:element name="CS_TIME30" type="xs:string" />
+                          <xs:element name="CS_TIME31" type="xs:string" />
+                          <xs:element name="CS_TIME32" type="xs:string" />
+                          <xs:element name="CS_TIME33" type="xs:string" />
+                          <xs:element name="CS_TIME34" type="xs:string" />
+                          <xs:element name="CS_TIME35" type="xs:string" />
+                          <xs:element name="CS_TIME36" type="xs:string" />
+                          <xs:element name="CS_TIME37" type="xs:string" />
+                          <xs:element name="CS_TIME38" type="xs:string" />
+                          <xs:element name="CS_TIME39" type="xs:string" />
+                          <xs:element name="CS_TIME40" type="xs:string" />
+                          <xs:element name="CS_TIME41" type="xs:string" />
+                          <xs:element name="CS_TIME42" type="xs:string" />
+                          <xs:element name="CS_TIME43" type="xs:string" />
+                          <xs:element name="CS_TIME44" type="xs:string" />
+                          <xs:element name="CS_TIME45" type="xs:string" />
+                          <xs:element name="CS_TIME46" type="xs:string" />
+                          <xs:element name="CS_TIME47" type="xs:string" />
+                          <xs:element name="CS_TIME48" type="xs:string" />
+                          <xs:element name="CS_TIME49" type="xs:string" />
+                          <xs:element name="CS_TIME50" type="xs:string" />
+                          <xs:element name="CS_DCTM_PDF_ID" type="xs:string" />
+                          <xs:element name="CS_DCTM_LOB" type="xs:string" />
+                          <xs:element name="CS_DCTM_BUS_AREA" type="xs:string" />
+                          <xs:element name="CS_DCTM_DOC_PACK_CODE" type="xs:string" />
+                          <xs:element name="CS_DCTM_PROCESS" type="xs:string" />
+                          <xs:element name="CS_DCTM_NUM_FLAG" type="xs:string" />
+                          <xs:element name="CS_DCTM_NUMBER" type="xs:string" />
+                          <xs:element name="CS_DCTM_DATE" type="xs:string" />
+                          <xs:element name="CS_DCTM_FORMAT" type="xs:string" />
+                          <xs:element name="CS_TEXT1" type="xs:string" />
+                          <xs:element name="CS_TEXT2" type="xs:string" />
+                          <xs:element name="CS_TEXT3" type="xs:string" />
+                          <xs:element name="CS_TEXT4" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element maxOccurs="unbounded" name="DLSCLIENT">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="CL_DOC_PACK_CODE" type="xs:string" />
+                          <xs:element name="CL_DOC_SET_CODE" type="xs:string" />
+                          <xs:element name="CL_KEYID" type="xs:string" />
+                          <xs:element name="CL_LINK1" type="xs:string" />
+                          <xs:element name="CL_LINK2" type="xs:string" />
+                          <xs:element name="CL_LINK3" type="xs:string" />
+                          <xs:element name="CL_ROLE" type="xs:string" />
+                          <xs:element name="CL_NUMBER" type="xs:string" />
+                          <xs:element name="CL_TYPE" type="xs:string" />
+                          <xs:element name="CL_LANGUAGE" type="xs:string" />
+                          <xs:element name="CL_TITLE" type="xs:string" />
+                          <xs:element name="CL_INIT" type="xs:string" />
+                          <xs:element name="CL_FNAME" type="xs:string" />
+                          <xs:element name="CL_SURNAME" type="xs:string" />
+                          <xs:element name="CL_SUFFX" type="xs:string" />
+                          <xs:element name="CL_DOB" type="xs:string" />
+                          <xs:element name="CL_ID_NO" type="xs:string" />
+                          <xs:element name="CL_AGENT_NO" type="xs:string" />
+                          <xs:element name="CL_WTEL" type="xs:string" />
+                          <xs:element name="CL_HTEL" type="xs:string" />
+                          <xs:element name="CL_CELL" type="xs:string" />
+                          <xs:element name="CL_EMAIL" type="xs:string" />
+                          <xs:element name="CL_REF" type="xs:string" />
+                          <xs:element name="CL_NOTICE_DATE" type="xs:string" />
+                          <xs:element name="CL_FAX" type="xs:string" />
+                          <xs:element name="CL_ACCT_DET" type="xs:string" />
+                          <xs:element name="CL_BNKNAME" type="xs:string" />
+                          <xs:element name="CL_BNKCDE" type="xs:string" />
+                          <xs:element name="CL_DATE1" type="xs:string" />
+                          <xs:element name="CL_DATE2" type="xs:string" />
+                          <xs:element name="CL_DATE3" type="xs:string" />
+                          <xs:element name="CL_DATE4" type="xs:string" />
+                          <xs:element name="CL_DATE5" type="xs:string" />
+                          <xs:element name="CL_NUMDIS1" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_NUMDIS2" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_NUMDIS3" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_NUMDIS4" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_NUMDIS5" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_NUMDIS6" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_NUMDIS7" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_NUMDIS8" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_NUMDIS9" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_NUMDIS10" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_AGE_ADMITTED" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD1_TYPE" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD1_VALID" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD1_ERR_CODE" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD1_L1" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD1_L2" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD1_L3" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD1_L4" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_POSTCODE1" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD2_TYPE" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD2_VALID" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD2_ERR_CODE" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD2_L1" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD2_L2" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD2_L3" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD2_L4" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_POSTCODE2" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD3_TYPE" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD3_VALID" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD3_ERR_CODE" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD3_L1" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD3_L2" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD3_L3" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD3_L4" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_POSTCODE3" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD4_TYPE" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD4_VALID" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD4_ERR_CODE" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD4_L1" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD4_L2" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD4_L3" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD4_L4" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_POSTCODE4" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD5_TYPE" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD5_VALID" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD5_ERR_CODE" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD5_L1" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD5_L2" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD5_L3" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD5_L4" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_POSTCODE5" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD6_TYPE" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD6_VALID" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD6_ERR_CODE" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD6_L1" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD6_L2" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD6_L3" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD6_L4" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_POSTCODE6" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD7_TYPE" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD7_VALID" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD7_ERR_CODE" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD7_L1" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD7_L2" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD7_L3" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD7_L4" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_POSTCODE7" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD8_TYPE" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD8_VALID" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD8_ERR_CODE" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD8_L1" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD8_L2" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD8_L3" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD8_L4" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_POSTCODE8" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD9_TYPE" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD9_VALID" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD9_ERR_CODE" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD9_L1" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD9_L2" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD9_L3" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD9_L4" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_POSTCODE9" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD10_TYPE" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD10_VALID" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD10_ERR_CODE" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD10_L1" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD10_L2" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD10_L3" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_ADD10_L4" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_POSTCODE10" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_TEXT1" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_TEXT2" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_TEXT3" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_TEXT4" type="xs:string" />
+                          <xs:element minOccurs="0" name="CL_TEXT5" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="DLSAGENT">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="AG_DOC_PACK_CODE" type="xs:string" />
+                          <xs:element name="AG_DOC_SET_CODE" type="xs:string" />
+                          <xs:element name="AG_KEYID" type="xs:string" />
+                          <xs:element name="AG_LINK1" type="xs:string" />
+                          <xs:element name="AG_LINK2" type="xs:string" />
+                          <xs:element name="AG_LINK3" type="xs:string" />
+                          <xs:element name="AG_AGENT_NO" type="xs:string" />
+                          <xs:element name="AG_LANGUAGE" type="xs:string" />
+                          <xs:element name="AG_NAME" type="xs:string" />
+                          <xs:element name="AG_DESIG" type="xs:string" />
+                          <xs:element name="AG_TYPE" type="xs:string" />
+                          <xs:element name="AG_STATUS" type="xs:string" />
+                          <xs:element name="AG_BRANCH" type="xs:string" />
+                          <xs:element name="AG_SALE_CENTRE" type="xs:string" />
+                          <xs:element name="AG_TEL_MARKER" type="xs:string" />
+                          <xs:element name="AG_TEL_NO" type="xs:string" />
+                          <xs:element name="AG_BRNAME" type="xs:string" />
+                          <xs:element name="AG_FIRMNAME" type="xs:string" />
+                          <xs:element name="AG_OMBNAME" type="xs:string" />
+                          <xs:element name="AG_OMBADR1" type="xs:string" />
+                          <xs:element name="AG_OMBADR2" type="xs:string" />
+                          <xs:element name="AG_OMBADR3" type="xs:string" />
+                          <xs:element name="AG_OMBPOST" type="xs:string" />
+                          <xs:element name="AG_OMBTEL" type="xs:string" />
+                          <xs:element name="AG_NOMB_ADR1" type="xs:string" />
+                          <xs:element name="AG_NOMB_ADR2" type="xs:string" />
+                          <xs:element name="AG_NOMB_TEL" type="xs:string" />
+                          <xs:element name="AG_CRPADR1" type="xs:string" />
+                          <xs:element name="AG_CRPADR2" type="xs:string" />
+                          <xs:element name="AG_CRPADR3" type="xs:string" />
+                          <xs:element name="AG_CRPADR4" type="xs:string" />
+                          <xs:element name="AG_CRPTEL" type="xs:string" />
+                          <xs:element name="AG_CRPEMAIL" type="xs:string" />
+                          <xs:element name="AG_INT_ADDR1" type="xs:string" />
+                          <xs:element name="AG_INT_ADDR2" type="xs:string" />
+                          <xs:element name="AG_INT_ADDR3" type="xs:string" />
+                          <xs:element name="AG_INT_ADDR4" type="xs:string" />
+                          <xs:element name="AG_INT_TELNO" type="xs:string" />
+                          <xs:element name="AG_INT_EMAIL" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="DLSSUPPLEMENT">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="SU_DOC_PACK_CODE" type="xs:string" />
+                          <xs:element name="SU_DOC_SET_CODE" type="xs:string" />
+                          <xs:element name="SU_KEYID" type="xs:string" />
+                          <xs:element name="SU_LINK1" type="xs:string" />
+                          <xs:element name="SU_LINK2" type="xs:string" />
+                          <xs:element name="SU_LINK3" type="xs:string" />
+                          <xs:element name="SU_CLIENT" type="xs:string" />
+                          <xs:element name="SU_VALUE1" type="xs:string" />
+                          <xs:element name="SU_VALUE2" type="xs:string" />
+                          <xs:element name="SU_VALUE3" type="xs:string" />
+                          <xs:element name="SU_VALUE4" type="xs:string" />
+                          <xs:element name="SU_VALUE5" type="xs:string" />
+                          <xs:element name="SU_CODE1" type="xs:string" />
+                          <xs:element name="SU_CODE2" type="xs:string" />
+                          <xs:element name="SU_CODE3" type="xs:string" />
+                          <xs:element name="SU_CODE4" type="xs:string" />
+                          <xs:element name="SU_CODE5" type="xs:string" />
+                          <xs:element name="SU_CODE6" type="xs:string" />
+                          <xs:element name="SU_CODE7" type="xs:string" />
+                          <xs:element name="SU_CODE8" type="xs:string" />
+                          <xs:element name="SU_CODE9" type="xs:string" />
+                          <xs:element name="SU_CODE10" type="xs:string" />
+                          <xs:element name="SU_NUM1" type="xs:string" />
+                          <xs:element name="SU_NUM2" type="xs:string" />
+                          <xs:element name="SU_NUM3" type="xs:string" />
+                          <xs:element name="SU_NUM4" type="xs:string" />
+                          <xs:element name="SU_NUM5" type="xs:string" />
+                          <xs:element name="SU_NUM6" type="xs:string" />
+                          <xs:element name="SU_NUM7" type="xs:string" />
+                          <xs:element name="SU_NUM8" type="xs:string" />
+                          <xs:element name="SU_NUM9" type="xs:string" />
+                          <xs:element name="SU_NUM10" type="xs:string" />
+                          <xs:element name="SU_NAME1" type="xs:string" />
+                          <xs:element name="SU_NAME2" type="xs:string" />
+                          <xs:element name="SU_NAME3" type="xs:string" />
+                          <xs:element name="SU_NAME4" type="xs:string" />
+                          <xs:element name="SU_NAME5" type="xs:string" />
+                          <xs:element name="SU_TEXT1" type="xs:string" />
+                          <xs:element name="SU_TEXT2" type="xs:string" />
+                          <xs:element name="SU_TEXT3" type="xs:string" />
+                          <xs:element name="SU_TEXT4" type="xs:string" />
+                          <xs:element name="SU_TEXT5" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="DLSAGREEMENT">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="AR_DOC_PACK_CODE" type="xs:string" />
+                          <xs:element name="AR_DOC_SET_CODE" type="xs:string" />
+                          <xs:element name="AR_KEYID" type="xs:string" />
+                          <xs:element name="AR_LINK1" type="xs:string" />
+                          <xs:element name="AR_LINK2" type="xs:string" />
+                          <xs:element name="AR_LINK3" type="xs:string" />
+                          <xs:element name="AR_CLIENT_NO" type="xs:string" />
+                          <xs:element name="AR_AGREE_NO" type="xs:string" />
+                          <xs:element name="AR_LANGUAGE" type="xs:string" />
+                          <xs:element name="AR_CODE1" type="xs:string" />
+                          <xs:element name="AR_CODE2" type="xs:string" />
+                          <xs:element name="AR_CODE3" type="xs:string" />
+                          <xs:element name="AR_CODE4" type="xs:string" />
+                          <xs:element name="AR_CODE5" type="xs:string" />
+                          <xs:element name="AR_CODE6" type="xs:string" />
+                          <xs:element name="AR_CODE7" type="xs:string" />
+                          <xs:element name="AR_CODE8" type="xs:string" />
+                          <xs:element name="AR_CODE9" type="xs:string" />
+                          <xs:element name="AR_CODE10" type="xs:string" />
+                          <xs:element name="AR_CODE11" type="xs:string" />
+                          <xs:element name="AR_CODE12" type="xs:string" />
+                          <xs:element name="AR_CODE13" type="xs:string" />
+                          <xs:element name="AR_CODE14" type="xs:string" />
+                          <xs:element name="AR_CODE15" type="xs:string" />
+                          <xs:element name="AR_CODE16" type="xs:string" />
+                          <xs:element name="AR_CODE17" type="xs:string" />
+                          <xs:element name="AR_CODE18" type="xs:string" />
+                          <xs:element name="AR_CODE19" type="xs:string" />
+                          <xs:element name="AR_CODE20" type="xs:string" />
+                          <xs:element name="AR_CODE21" type="xs:string" />
+                          <xs:element name="AR_CODE22" type="xs:string" />
+                          <xs:element name="AR_CODE23" type="xs:string" />
+                          <xs:element name="AR_CODE24" type="xs:string" />
+                          <xs:element name="AR_CODE25" type="xs:string" />
+                          <xs:element name="AR_CODE26" type="xs:string" />
+                          <xs:element name="AR_CODE27" type="xs:string" />
+                          <xs:element name="AR_CODE28" type="xs:string" />
+                          <xs:element name="AR_CODE29" type="xs:string" />
+                          <xs:element name="AR_CODE30" type="xs:string" />
+                          <xs:element name="AR_CODE31" type="xs:string" />
+                          <xs:element name="AR_CODE32" type="xs:string" />
+                          <xs:element name="AR_CODE33" type="xs:string" />
+                          <xs:element name="AR_CODE34" type="xs:string" />
+                          <xs:element name="AR_CODE35" type="xs:string" />
+                          <xs:element name="AR_CODE36" type="xs:string" />
+                          <xs:element name="AR_CODE37" type="xs:string" />
+                          <xs:element name="AR_CODE38" type="xs:string" />
+                          <xs:element name="AR_CODE39" type="xs:string" />
+                          <xs:element name="AR_CODE40" type="xs:string" />
+                          <xs:element name="AR_CODE41" type="xs:string" />
+                          <xs:element name="AR_CODE42" type="xs:string" />
+                          <xs:element name="AR_CODE43" type="xs:string" />
+                          <xs:element name="AR_CODE44" type="xs:string" />
+                          <xs:element name="AR_CODE45" type="xs:string" />
+                          <xs:element name="AR_CODE46" type="xs:string" />
+                          <xs:element name="AR_CODE47" type="xs:string" />
+                          <xs:element name="AR_CODE48" type="xs:string" />
+                          <xs:element name="AR_CODE49" type="xs:string" />
+                          <xs:element name="AR_CODE50" type="xs:string" />
+                          <xs:element name="AR_CODE51" type="xs:string" />
+                          <xs:element name="AR_CODE52" type="xs:string" />
+                          <xs:element name="AR_CODE53" type="xs:string" />
+                          <xs:element name="AR_CODE54" type="xs:string" />
+                          <xs:element name="AR_CODE55" type="xs:string" />
+                          <xs:element name="AR_CODE56" type="xs:string" />
+                          <xs:element name="AR_CODE57" type="xs:string" />
+                          <xs:element name="AR_CODE58" type="xs:string" />
+                          <xs:element name="AR_CODE59" type="xs:string" />
+                          <xs:element name="AR_CODE60" type="xs:string" />
+                          <xs:element name="AR_CODE61" type="xs:string" />
+                          <xs:element name="AR_CODE62" type="xs:string" />
+                          <xs:element name="AR_CODE63" type="xs:string" />
+                          <xs:element name="AR_CODE64" type="xs:string" />
+                          <xs:element name="AR_CODE65" type="xs:string" />
+                          <xs:element name="AR_CODE66" type="xs:string" />
+                          <xs:element name="AR_CODE67" type="xs:string" />
+                          <xs:element name="AR_CODE68" type="xs:string" />
+                          <xs:element name="AR_CODE69" type="xs:string" />
+                          <xs:element name="AR_CODE70" type="xs:string" />
+                          <xs:element name="AR_CODE71" type="xs:string" />
+                          <xs:element name="AR_CODE72" type="xs:string" />
+                          <xs:element name="AR_CODE73" type="xs:string" />
+                          <xs:element name="AR_CODE74" type="xs:string" />
+                          <xs:element name="AR_CODE75" type="xs:string" />
+                          <xs:element name="AR_CODE76" type="xs:string" />
+                          <xs:element name="AR_CODE77" type="xs:string" />
+                          <xs:element name="AR_CODE78" type="xs:string" />
+                          <xs:element name="AR_CODE79" type="xs:string" />
+                          <xs:element name="AR_CODE80" type="xs:string" />
+                          <xs:element name="AR_CODE81" type="xs:string" />
+                          <xs:element name="AR_CODE82" type="xs:string" />
+                          <xs:element name="AR_CODE83" type="xs:string" />
+                          <xs:element name="AR_CODE84" type="xs:string" />
+                          <xs:element name="AR_CODE85" type="xs:string" />
+                          <xs:element name="AR_CODE86" type="xs:string" />
+                          <xs:element name="AR_CODE87" type="xs:string" />
+                          <xs:element name="AR_CODE88" type="xs:string" />
+                          <xs:element name="AR_CODE89" type="xs:string" />
+                          <xs:element name="AR_CODE90" type="xs:string" />
+                          <xs:element name="AR_CODE91" type="xs:string" />
+                          <xs:element name="AR_CODE92" type="xs:string" />
+                          <xs:element name="AR_CODE93" type="xs:string" />
+                          <xs:element name="AR_CODE94" type="xs:string" />
+                          <xs:element name="AR_CODE95" type="xs:string" />
+                          <xs:element name="AR_CODE96" type="xs:string" />
+                          <xs:element name="AR_CODE97" type="xs:string" />
+                          <xs:element name="AR_CODE98" type="xs:string" />
+                          <xs:element name="AR_CODE99" type="xs:string" />
+                          <xs:element name="AR_CURR1" type="xs:string" />
+                          <xs:element name="AR_VALUE1" type="xs:string" />
+                          <xs:element name="AR_CURR2" type="xs:string" />
+                          <xs:element name="AR_VALUE2" type="xs:string" />
+                          <xs:element name="AR_CURR3" type="xs:string" />
+                          <xs:element name="AR_VALUE3" type="xs:string" />
+                          <xs:element name="AR_CURR4" type="xs:string" />
+                          <xs:element name="AR_VALUE4" type="xs:string" />
+                          <xs:element name="AR_CURR5" type="xs:string" />
+                          <xs:element name="AR_VALUE5" type="xs:string" />
+                          <xs:element name="AR_CURR6" type="xs:string" />
+                          <xs:element name="AR_VALUE6" type="xs:string" />
+                          <xs:element name="AR_CURR7" type="xs:string" />
+                          <xs:element name="AR_VALUE7" type="xs:string" />
+                          <xs:element name="AR_CURR8" type="xs:string" />
+                          <xs:element name="AR_VALUE8" type="xs:string" />
+                          <xs:element name="AR_CURR9" type="xs:string" />
+                          <xs:element name="AR_VALUE9" type="xs:string" />
+                          <xs:element name="AR_CURR10" type="xs:string" />
+                          <xs:element name="AR_VALUE10" type="xs:string" />
+                          <xs:element name="AR_CURR11" type="xs:string" />
+                          <xs:element name="AR_VALUE11" type="xs:string" />
+                          <xs:element name="AR_CURR12" type="xs:string" />
+                          <xs:element name="AR_VALUE12" type="xs:string" />
+                          <xs:element name="AR_CURR13" type="xs:string" />
+                          <xs:element name="AR_VALUE13" type="xs:string" />
+                          <xs:element name="AR_CURR14" type="xs:string" />
+                          <xs:element name="AR_VALUE14" type="xs:string" />
+                          <xs:element name="AR_CURR15" type="xs:string" />
+                          <xs:element name="AR_VALUE15" type="xs:string" />
+                          <xs:element name="AR_CURR16" type="xs:string" />
+                          <xs:element name="AR_VALUE16" type="xs:string" />
+                          <xs:element name="AR_CURR17" type="xs:string" />
+                          <xs:element name="AR_VALUE17" type="xs:string" />
+                          <xs:element name="AR_CURR18" type="xs:string" />
+                          <xs:element name="AR_VALUE18" type="xs:string" />
+                          <xs:element name="AR_CURR19" type="xs:string" />
+                          <xs:element name="AR_VALUE19" type="xs:string" />
+                          <xs:element name="AR_CURR20" type="xs:string" />
+                          <xs:element name="AR_VALUE20" type="xs:string" />
+                          <xs:element name="AR_CURR21" type="xs:string" />
+                          <xs:element name="AR_VALUE21" type="xs:string" />
+                          <xs:element name="AR_CURR22" type="xs:string" />
+                          <xs:element name="AR_VALUE22" type="xs:string" />
+                          <xs:element name="AR_CURR23" type="xs:string" />
+                          <xs:element name="AR_VALUE23" type="xs:string" />
+                          <xs:element name="AR_CURR24" type="xs:string" />
+                          <xs:element name="AR_VALUE24" type="xs:string" />
+                          <xs:element name="AR_CURR25" type="xs:string" />
+                          <xs:element name="AR_VALUE25" type="xs:string" />
+                          <xs:element name="AR_CURR26" type="xs:string" />
+                          <xs:element name="AR_VALUE26" type="xs:string" />
+                          <xs:element name="AR_CURR27" type="xs:string" />
+                          <xs:element name="AR_VALUE27" type="xs:string" />
+                          <xs:element name="AR_CURR28" type="xs:string" />
+                          <xs:element name="AR_VALUE28" type="xs:string" />
+                          <xs:element name="AR_CURR29" type="xs:string" />
+                          <xs:element name="AR_VALUE29" type="xs:string" />
+                          <xs:element name="AR_CURR30" type="xs:string" />
+                          <xs:element name="AR_VALUE30" type="xs:string" />
+                          <xs:element name="AR_CURR31" type="xs:string" />
+                          <xs:element name="AR_VALUE31" type="xs:string" />
+                          <xs:element name="AR_CURR32" type="xs:string" />
+                          <xs:element name="AR_VALUE32" type="xs:string" />
+                          <xs:element name="AR_CURR33" type="xs:string" />
+                          <xs:element name="AR_VALUE33" type="xs:string" />
+                          <xs:element name="AR_CURR34" type="xs:string" />
+                          <xs:element name="AR_VALUE34" type="xs:string" />
+                          <xs:element name="AR_CURR35" type="xs:string" />
+                          <xs:element name="AR_VALUE35" type="xs:string" />
+                          <xs:element name="AR_CURR36" type="xs:string" />
+                          <xs:element name="AR_VALUE36" type="xs:string" />
+                          <xs:element name="AR_CURR37" type="xs:string" />
+                          <xs:element name="AR_VALUE37" type="xs:string" />
+                          <xs:element name="AR_CURR38" type="xs:string" />
+                          <xs:element name="AR_VALUE38" type="xs:string" />
+                          <xs:element name="AR_CURR39" type="xs:string" />
+                          <xs:element name="AR_VALUE39" type="xs:string" />
+                          <xs:element name="AR_CURR40" type="xs:string" />
+                          <xs:element name="AR_VALUE40" type="xs:string" />
+                          <xs:element name="AR_CURR41" type="xs:string" />
+                          <xs:element name="AR_VALUE41" type="xs:string" />
+                          <xs:element name="AR_CURR42" type="xs:string" />
+                          <xs:element name="AR_VALUE42" type="xs:string" />
+                          <xs:element name="AR_CURR43" type="xs:string" />
+                          <xs:element name="AR_VALUE43" type="xs:string" />
+                          <xs:element name="AR_CURR44" type="xs:string" />
+                          <xs:element name="AR_VALUE44" type="xs:string" />
+                          <xs:element name="AR_CURR45" type="xs:string" />
+                          <xs:element name="AR_VALUE45" type="xs:string" />
+                          <xs:element name="AR_CURR46" type="xs:string" />
+                          <xs:element name="AR_VALUE46" type="xs:string" />
+                          <xs:element name="AR_CURR47" type="xs:string" />
+                          <xs:element name="AR_VALUE47" type="xs:string" />
+                          <xs:element name="AR_CURR48" type="xs:string" />
+                          <xs:element name="AR_VALUE48" type="xs:string" />
+                          <xs:element name="AR_CURR49" type="xs:string" />
+                          <xs:element name="AR_VALUE49" type="xs:string" />
+                          <xs:element name="AR_CURR50" type="xs:string" />
+                          <xs:element name="AR_VALUE50" type="xs:string" />
+                          <xs:element name="AR_CURR51" type="xs:string" />
+                          <xs:element name="AR_VALUE51" type="xs:string" />
+                          <xs:element name="AR_CURR52" type="xs:string" />
+                          <xs:element name="AR_VALUE52" type="xs:string" />
+                          <xs:element name="AR_CURR53" type="xs:string" />
+                          <xs:element name="AR_VALUE53" type="xs:string" />
+                          <xs:element name="AR_CURR54" type="xs:string" />
+                          <xs:element name="AR_VALUE54" type="xs:string" />
+                          <xs:element name="AR_CURR55" type="xs:string" />
+                          <xs:element name="AR_VALUE55" type="xs:string" />
+                          <xs:element name="AR_CURR56" type="xs:string" />
+                          <xs:element name="AR_VALUE56" type="xs:string" />
+                          <xs:element name="AR_CURR57" type="xs:string" />
+                          <xs:element name="AR_VALUE57" type="xs:string" />
+                          <xs:element name="AR_CURR58" type="xs:string" />
+                          <xs:element name="AR_VALUE58" type="xs:string" />
+                          <xs:element name="AR_CURR59" type="xs:string" />
+                          <xs:element name="AR_VALUE59" type="xs:string" />
+                          <xs:element name="AR_CURR60" type="xs:string" />
+                          <xs:element name="AR_VALUE60" type="xs:string" />
+                          <xs:element name="AR_CURR61" type="xs:string" />
+                          <xs:element name="AR_VALUE61" type="xs:string" />
+                          <xs:element name="AR_CURR62" type="xs:string" />
+                          <xs:element name="AR_VALUE62" type="xs:string" />
+                          <xs:element name="AR_CURR63" type="xs:string" />
+                          <xs:element name="AR_VALUE63" type="xs:string" />
+                          <xs:element name="AR_CURR64" type="xs:string" />
+                          <xs:element name="AR_VALUE64" type="xs:string" />
+                          <xs:element name="AR_CURR65" type="xs:string" />
+                          <xs:element name="AR_VALUE65" type="xs:string" />
+                          <xs:element name="AR_CURR66" type="xs:string" />
+                          <xs:element name="AR_VALUE66" type="xs:string" />
+                          <xs:element name="AR_CURR67" type="xs:string" />
+                          <xs:element name="AR_VALUE67" type="xs:string" />
+                          <xs:element name="AR_CURR68" type="xs:string" />
+                          <xs:element name="AR_VALUE68" type="xs:string" />
+                          <xs:element name="AR_CURR69" type="xs:string" />
+                          <xs:element name="AR_VALUE69" type="xs:string" />
+                          <xs:element name="AR_CURR70" type="xs:string" />
+                          <xs:element name="AR_VALUE70" type="xs:string" />
+                          <xs:element name="AR_CURR71" type="xs:string" />
+                          <xs:element name="AR_VALUE71" type="xs:string" />
+                          <xs:element name="AR_CURR72" type="xs:string" />
+                          <xs:element name="AR_VALUE72" type="xs:string" />
+                          <xs:element name="AR_CURR73" type="xs:string" />
+                          <xs:element name="AR_VALUE73" type="xs:string" />
+                          <xs:element name="AR_CURR74" type="xs:string" />
+                          <xs:element name="AR_VALUE74" type="xs:string" />
+                          <xs:element name="AR_CURR75" type="xs:string" />
+                          <xs:element name="AR_VALUE75" type="xs:string" />
+                          <xs:element name="AR_CURR76" type="xs:string" />
+                          <xs:element name="AR_VALUE76" type="xs:string" />
+                          <xs:element name="AR_CURR77" type="xs:string" />
+                          <xs:element name="AR_VALUE77" type="xs:string" />
+                          <xs:element name="AR_CURR78" type="xs:string" />
+                          <xs:element name="AR_VALUE78" type="xs:string" />
+                          <xs:element name="AR_CURR79" type="xs:string" />
+                          <xs:element name="AR_VALUE79" type="xs:string" />
+                          <xs:element name="AR_CURR80" type="xs:string" />
+                          <xs:element name="AR_VALUE80" type="xs:string" />
+                          <xs:element name="AR_CURR81" type="xs:string" />
+                          <xs:element name="AR_VALUE81" type="xs:string" />
+                          <xs:element name="AR_CURR82" type="xs:string" />
+                          <xs:element name="AR_VALUE82" type="xs:string" />
+                          <xs:element name="AR_CURR83" type="xs:string" />
+                          <xs:element name="AR_VALUE83" type="xs:string" />
+                          <xs:element name="AR_CURR84" type="xs:string" />
+                          <xs:element name="AR_VALUE84" type="xs:string" />
+                          <xs:element name="AR_CURR85" type="xs:string" />
+                          <xs:element name="AR_VALUE85" type="xs:string" />
+                          <xs:element name="AR_CURR86" type="xs:string" />
+                          <xs:element name="AR_VALUE86" type="xs:string" />
+                          <xs:element name="AR_CURR87" type="xs:string" />
+                          <xs:element name="AR_VALUE87" type="xs:string" />
+                          <xs:element name="AR_CURR88" type="xs:string" />
+                          <xs:element name="AR_VALUE88" type="xs:string" />
+                          <xs:element name="AR_CURR89" type="xs:string" />
+                          <xs:element name="AR_VALUE89" type="xs:string" />
+                          <xs:element name="AR_CURR90" type="xs:string" />
+                          <xs:element name="AR_VALUE90" type="xs:string" />
+                          <xs:element name="AR_CURR91" type="xs:string" />
+                          <xs:element name="AR_VALUE91" type="xs:string" />
+                          <xs:element name="AR_CURR92" type="xs:string" />
+                          <xs:element name="AR_VALUE92" type="xs:string" />
+                          <xs:element name="AR_CURR93" type="xs:string" />
+                          <xs:element name="AR_VALUE93" type="xs:string" />
+                          <xs:element name="AR_CURR94" type="xs:string" />
+                          <xs:element name="AR_VALUE94" type="xs:string" />
+                          <xs:element name="AR_CURR95" type="xs:string" />
+                          <xs:element name="AR_VALUE95" type="xs:string" />
+                          <xs:element name="AR_CURR96" type="xs:string" />
+                          <xs:element name="AR_VALUE96" type="xs:string" />
+                          <xs:element name="AR_CURR97" type="xs:string" />
+                          <xs:element name="AR_VALUE97" type="xs:string" />
+                          <xs:element name="AR_CURR98" type="xs:string" />
+                          <xs:element name="AR_VALUE98" type="xs:string" />
+                          <xs:element name="AR_CURR99" type="xs:string" />
+                          <xs:element name="AR_VALUE99" type="xs:string" />
+                          <xs:element name="AR_NAME1" type="xs:string" />
+                          <xs:element name="AR_NAME2" type="xs:string" />
+                          <xs:element name="AR_NAME3" type="xs:string" />
+                          <xs:element name="AR_NAME4" type="xs:string" />
+                          <xs:element name="AR_NAME5" type="xs:string" />
+                          <xs:element name="AR_NAME6" type="xs:string" />
+                          <xs:element name="AR_NAME7" type="xs:string" />
+                          <xs:element name="AR_NAME8" type="xs:string" />
+                          <xs:element name="AR_NAME9" type="xs:string" />
+                          <xs:element name="AR_NAME10" type="xs:string" />
+                          <xs:element name="AR_NAME11" type="xs:string" />
+                          <xs:element name="AR_NAME12" type="xs:string" />
+                          <xs:element name="AR_NAME13" type="xs:string" />
+                          <xs:element name="AR_NAME14" type="xs:string" />
+                          <xs:element name="AR_NAME15" type="xs:string" />
+                          <xs:element name="AR_NAME16" type="xs:string" />
+                          <xs:element name="AR_NAME17" type="xs:string" />
+                          <xs:element name="AR_NAME18" type="xs:string" />
+                          <xs:element name="AR_NAME19" type="xs:string" />
+                          <xs:element name="AR_NAME20" type="xs:string" />
+                          <xs:element name="AR_NAME21" type="xs:string" />
+                          <xs:element name="AR_NAME22" type="xs:string" />
+                          <xs:element name="AR_NAME23" type="xs:string" />
+                          <xs:element name="AR_NAME24" type="xs:string" />
+                          <xs:element name="AR_NAME25" type="xs:string" />
+                          <xs:element name="AR_NAME26" type="xs:string" />
+                          <xs:element name="AR_NAME27" type="xs:string" />
+                          <xs:element name="AR_NAME28" type="xs:string" />
+                          <xs:element name="AR_NAME29" type="xs:string" />
+                          <xs:element name="AR_NAME30" type="xs:string" />
+                          <xs:element name="AR_DATE1" type="xs:string" />
+                          <xs:element name="AR_DATE2" type="xs:string" />
+                          <xs:element name="AR_DATE3" type="xs:string" />
+                          <xs:element name="AR_DATE4" type="xs:string" />
+                          <xs:element name="AR_DATE5" type="xs:string" />
+                          <xs:element name="AR_DATE6" type="xs:string" />
+                          <xs:element name="AR_DATE7" type="xs:string" />
+                          <xs:element name="AR_DATE8" type="xs:string" />
+                          <xs:element name="AR_DATE9" type="xs:string" />
+                          <xs:element name="AR_DATE10" type="xs:string" />
+                          <xs:element name="AR_DATE11" type="xs:string" />
+                          <xs:element name="AR_DATE12" type="xs:string" />
+                          <xs:element name="AR_DATE13" type="xs:string" />
+                          <xs:element name="AR_DATE14" type="xs:string" />
+                          <xs:element name="AR_DATE15" type="xs:string" />
+                          <xs:element name="AR_DATE16" type="xs:string" />
+                          <xs:element name="AR_DATE17" type="xs:string" />
+                          <xs:element name="AR_DATE18" type="xs:string" />
+                          <xs:element name="AR_DATE19" type="xs:string" />
+                          <xs:element name="AR_DATE20" type="xs:string" />
+                          <xs:element name="AR_DATE21" type="xs:string" />
+                          <xs:element name="AR_DATE22" type="xs:string" />
+                          <xs:element name="AR_DATE23" type="xs:string" />
+                          <xs:element name="AR_DATE24" type="xs:string" />
+                          <xs:element name="AR_DATE25" type="xs:string" />
+                          <xs:element name="AR_DATE26" type="xs:string" />
+                          <xs:element name="AR_DATE27" type="xs:string" />
+                          <xs:element name="AR_DATE28" type="xs:string" />
+                          <xs:element name="AR_DATE29" type="xs:string" />
+                          <xs:element name="AR_DATE30" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
